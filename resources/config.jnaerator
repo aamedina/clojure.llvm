@@ -1,0 +1,17 @@
+-I/usr/local/opt/llvm/include/llvm-c
+
+-library llvm-3.4
+
+-f
+-emptyStructsAsForwardDecls
+-noComments
+// -structsInLibrary
+
+-arch darwin_universal
+-runtime JNA
+-mode Directory
+-o $(DIR)/../src/java
+-package llvm
+
+/usr/local/opt/llvm/include/llvm-c/Transforms/*.h
+/usr/local/opt/llvm/include/llvm-c/*.h
