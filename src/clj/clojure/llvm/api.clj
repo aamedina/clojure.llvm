@@ -1,12 +1,39 @@
 (ns clojure.llvm.api
   (:require [clojure.reflect :refer [reflect]]
             [clojure.set :as set]
-            [clojure.string :as str])
+            [clojure.string :as str]
+            [clojure.java.io :as io])
   (:import [llvm
             Llvm34Library
             LLVMOpInfo1
             LLVMOpInfoSymbol1
             LLVMMCJITCompilerOptions]))
+
+(set! *print-meta* true)
+
+(defn resolve-class
+  [type]
+  (case type
+    Integer/TYPE Integer
+    Long/TYPE Long
+    Character/TYPE Character
+    Boolean/TYPE Boolean
+    Float/TYPE Float
+    Double/TYPE Double
+    Void/TYPE Void
+    type))
+
+(defn strip-deprecated-methods
+  [path]
+  (->> (reduce (fn [new-file-lines line]
+                 (if (seq new-file-lines)
+                   (if-not (re-find #"@Deprecated" (peek new-file-lines))
+                     (conj new-file-lines line)
+                     (pop new-file-lines))
+                   (conj new-file-lines line)))
+               [] (line-seq (io/reader (io/file path))))
+       (str/join "\n")
+       (spit (io/file path))))
 
 (defmacro gen-inline-llvm-c-types
   []
@@ -15,13 +42,18 @@
 
 (defmacro gen-inline-llvm-c-bindings
   "A macro which generates and defs in the calling namespace inline Clojure
-   functions, maps, and classes which directly correspond to the bindings 
+   functions, maps, and classes which directly correspond to the bindings
    found in the LLVM-C native library."
   []
   (let [{:keys [bases flags members] :as llvm} (reflect Llvm34Library)]
     `(do ~@(for [member members]
              (let [args (:parameter-types member)]
-               `(defn ~(:name member) [~@(repeatedly (count args) gensym)]
+               `(defn ~(vary-meta (:name member) assoc :tag
+                                  (resolve-class (:return-type member)))
+                  [~@(map (fn [arg-type]
+                            (vary-meta (gensym (resolve-class arg-type))
+                                       assoc :tag (resolve-class arg-type)))
+                          args)]
                   ~member))))))
 
 (defn split-by
