@@ -13,4 +13,5 @@
 
 (defn -main
   [& args]
-  (println (:out (apply sh jnaerator-cmd))))
+  (println (:out (apply sh jnaerator-cmd)))
+  (api/strip-deprecated-methods "src/java/llvm/Llvm34Library.java"))

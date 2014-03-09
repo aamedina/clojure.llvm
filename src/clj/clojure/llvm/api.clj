@@ -2,7 +2,8 @@
   (:require [clojure.reflect :refer [reflect]]
             [clojure.set :as set]
             [clojure.string :as str]
-            [clojure.java.io :as io])
+            [clojure.java.io :as io]
+            [clojure.tools.namespace.repl :refer [refresh]])
   (:import [llvm
             Llvm34Library
             LLVMOpInfo1
