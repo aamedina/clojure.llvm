@@ -9,9 +9,14 @@
             LLVMOpInfo1
             LLVMOpInfoSymbol1
             LLVMMCJITCompilerOptions]
-           [com.sun.jna Function]))
+           [com.sun.jna Pointer Function]))
 
 (set! *print-meta* true)
+
+(defn pointer
+  [ptr]
+  {:address (Pointer/nativeValue ptr)
+   :jna-pointer ptr})
 
 (defn strip-deprecated-methods
   [path]
@@ -24,11 +29,6 @@
                [] (line-seq (io/reader (io/file path))))
        (str/join "\n")
        (spit (io/file path))))
-
-(defmacro gen-inline-llvm-c-types
-  []
-  `(do ~@(for [class (.getDeclaredClasses Llvm34Library)]
-           `(def ~(symbol (last (str/split (.getName class) #"\$"))) ~class))))
 
 (defn inline-type
   [sym]
@@ -59,22 +59,20 @@
 (defmethod gen-inline-def [clojure.reflect.Method #{}]
   [{:keys [name parameter-types] :as member}]
   `(defn ~name ~parameter-types
-     (. Llvm34Library/INSTANCE ~name)))
+     (. Llvm34Library/INSTANCE ~name ~@parameter-types)))
 
 (defmethod gen-inline-def [clojure.reflect.Method #{:static}]
   [{:keys [name parameter-types] :as member}]
   `(defn ~name ~parameter-types
-     (. Llvm34Library ~name)))
+     (. Llvm34Library ~name ~@parameter-types)))
 
 (defmethod gen-inline-def [clojure.reflect.Field #{}]
   [{:keys [name type] :as member}]
-  `(def ~name
-     (. Llvm34Library/INSTANCE ~name)))
+  `(def ~name (. Llvm34Library/INSTANCE ~name)))
 
 (defmethod gen-inline-def [clojure.reflect.Field #{:static}]
   [{:keys [name type] :as member}]
-  `(def ~name
-     (. Llvm34Library ~name)))
+  `(def ~name (. Llvm34Library ~name)))
 
 (defn prep-method-or-field
   [member]
@@ -104,5 +102,4 @@
   [pred coll]
   ((juxt #(filter pred %) #(remove pred %)) coll))
 
-(gen-inline-llvm-c-types)
 (gen-inline-llvm-c-bindings)
