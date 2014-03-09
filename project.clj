@@ -12,6 +12,7 @@
                  [org.clojure/tools.namespace "0.2.4"]
                  [org.clojure/tools.cli "0.3.1"]
                  [org.clojure/core.async "0.1.278.0-76b25b-alpha"]
+                 [org.clojure/tools.reader "0.8.3"]
                  [net.java.dev.jna/jna "4.1.0"]
                  [com.nativelibs4java/jnaerator "0.12-SNAPSHOT"]]
   :jvm-opts ["-Xmx1g" "-server"]
