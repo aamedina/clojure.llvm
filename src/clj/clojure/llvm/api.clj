@@ -48,37 +48,47 @@
            class)
       sym)))
 
-(defn type-pred
-  [sym type]
-  (condp = (str type)
-    "short" `(number? ~sym)
-    "int" `(integer? ~sym)
-    "float" `(float? ~sym)
-    "double" `(number? ~sym)))
-
 (defn get-function
   [fn-name]
   (Function/getFunction "llvm-3.4" (name fn-name)))
 
-(defmulti gen-inline-binding-form
+(defmulti gen-inline-def
   (fn [{:keys [flags] :as member}]
-    [(class member) (set/union #{:static} flags)]))
+    [(class member) (set/intersection #{:static} flags)]))
 
-(defmethod gen-inline-binding-form [clojure.reflect.Method #{}]
-  [{:keys [name parameter-types return-type] :as member}]
-  )
+(defmethod gen-inline-def [clojure.reflect.Method #{}]
+  [{:keys [name parameter-types] :as member}]
+  `(defn ~name ~parameter-types
+     (. Llvm34Library/INSTANCE ~name)))
 
-(defmethod gen-inline-binding-form [clojure.reflect.Method #{:static}]
-  [{:keys [name parameter-types return-type] :as member}]
-  )
+(defmethod gen-inline-def [clojure.reflect.Method #{:static}]
+  [{:keys [name parameter-types] :as member}]
+  `(defn ~name ~parameter-types
+     (. Llvm34Library ~name)))
 
-(defmethod gen-inline-binding-form [clojure.reflect.Field #{}]
+(defmethod gen-inline-def [clojure.reflect.Field #{}]
   [{:keys [name type] :as member}]
-  )
+  `(def ~name
+     (. Llvm34Library/INSTANCE ~name)))
 
-(defmethod gen-inline-binding-form [clojure.reflect.Field #{:static}]
+(defmethod gen-inline-def [clojure.reflect.Field #{:static}]
   [{:keys [name type] :as member}]
-  )
+  `(def ~name
+     (. Llvm34Library ~name)))
+
+(defn prep-method-or-field
+  [member]
+  (if (instance? clojure.reflect.Method member)
+    (-> (update-in member [:return-type] inline-type)
+        ((fn [{:keys [return-type] :as member}]
+           (update-in member [:name] vary-meta assoc :tag return-type)))
+        (update-in [:parameter-types] #(mapv inline-type %))
+        (update-in [:parameter-types] #(mapv (fn [hint]
+                                               (with-meta (gensym)
+                                                 {:tag hint})) %)))
+    (-> (update-in member [:type] inline-type)
+        ((fn [{:keys [type] :as member}]
+           (update-in member [:name] vary-meta assoc :tag type))))))
 
 (defmacro gen-inline-llvm-c-bindings
   "A macro which generates and defs in the calling namespace inline Clojure
@@ -86,40 +96,8 @@
    found in the LLVM-C native library."
   []
   (let [{:keys [bases flags members] :as llvm} (reflect Llvm34Library)]
-    `(do ~@(for [member members]
-             (let [ret (inline-type (:return-type member))
-                   hinted-name (vary-meta (:name member) assoc :tag ret)
-                   arg-hints (map inline-type (:parameter-types member))
-                   hinted-args (map (fn [arg-hint]
-                                      (with-meta (gensym)
-                                        {:tag arg-hint}))
-                                    arg-hints)
-                   pre-conditions {:pre (mapv (fn [arg-sym type-hint]
-                                                (let [arg (gensym "arg")]
-                                                  `(= (type ~arg) ~type-hint)))
-                                              hinted-args arg-hints)}
-                   post-conditions {:post [(if (= ret Void/TYPE)
-                                             `(nil? ~(symbol "%"))
-                                             `(= (type ~(symbol "%")) ~ret))]}]
-               (cond
-                 (and (instance? clojure.reflect.Method member)
-                      (contains? (:flags member) :static))
-                 `(defn ^:static ~hinted-name
-                    [~@hinted-args]
-                    (. Llvm34Library ~(:name member)))
-                 (instance? clojure.reflect.Method member)
-                 `(defn ~hinted-name
-                    [~@hinted-args]
-                    (. Llvm34Library/INSTANCE ~(:name member)))
-                 (and (instance? clojure.reflect.Field member)
-                      (contains? (:flags member) :static))
-                 `(def ^:static ~hinted-name
-                    (. Llvm34Library
-                       ~(symbol (str "-" (name (:name member))))))
-                 (instance? clojure.reflect.Field member)
-                 `(def ~hinted-name
-                    (. Llvm34Library
-                       ~(symbol (str "-" (name (:name member))))))))))))
+    `(do ~@(for [member (map prep-method-or-field members)]
+             (gen-inline-def member)))))
 
 (defn split-by
   "Split a collection according to some predicate."
