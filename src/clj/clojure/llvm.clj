@@ -1,10 +1,15 @@
 (ns clojure.llvm
-  (:gen-class))
+  (:gen-class)
+  (:require [clojure.java.io :as io]
+            [clojure.java.shell :refer [sh]]
+            [clojure.tools.namespace.repl :refer [refresh]]))
 
 (System/setProperty "jna.library.path"
                     "/usr/local/opt/llvm/lib:/usr/local/lib:/usr/lib")
 
+(def jnaerator-cmd
+  ["java" "-jar" "resources/jnaerator.jar" "resources/config.jnaerator"])
+
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (println (:out (apply sh jnaerator-cmd))))

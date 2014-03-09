@@ -14,6 +14,7 @@
                  [org.clojure/core.async "0.1.278.0-76b25b-alpha"]
                  [net.java.dev.jna/jna "4.1.0"]
                  [com.nativelibs4java/jnaerator "0.12-SNAPSHOT"]]
+  :jvm-opts ["-Xmx1g" "-server"]
   :source-paths ["src/clj"]
   :java-source-paths ["src/java"]
   :main ^:skip-aot clojure.llvm

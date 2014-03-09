@@ -5,7 +5,6 @@
 -f
 -emptyStructsAsForwardDecls
 -noComments
-// -structsInLibrary
 
 -arch darwin_universal
 -runtime JNA
