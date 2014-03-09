@@ -41,7 +41,19 @@
     'byte Byte/TYPE
     'boolean Boolean/TYPE
     'void Void/TYPE
-    sym))
+    (if (and sym (re-find #"<>" (name sym)))
+      `(-> ~(inline-type (symbol (first (str/split "long<>" #"<>"))))
+           into-array
+           class)
+      sym)))
+
+(defn type-pred
+  [sym type]
+  (condp = (str type)
+    "short" `(number? ~sym)
+    "int" `(integer? ~sym)
+    "float" `(float? ~sym)
+    "double" `(number? ~sym)))
 
 (defmacro gen-inline-llvm-c-bindings
   "A macro which generates and defs in the calling namespace inline Clojure
@@ -50,11 +62,22 @@
   []
   (let [{:keys [bases flags members] :as llvm} (reflect Llvm34Library)]
     `(do ~@(for [member members]
-             (let [hinted-name (vary-meta (:name member) assoc :tag
-                                          (inline-type (:return-type member)))
-                   hinted-args (repeatedly (count (:parameter-types member))
-                                           gensym)]
-               `(defn ~hinted-name [~@hinted-args]
+             (let [ret (inline-type (:return-type member))
+                   hinted-name (vary-meta (:name member) assoc :tag ret)
+                   arg-hints (map inline-type (:parameter-types member))
+                   hinted-args (map (fn [arg-hint]
+                                      (with-meta (gensym)
+                                        {:tag arg-hint}))
+                                    arg-hints)
+                   pre-conditions {:pre (mapv (fn [arg-sym type-hint]
+                                                (let [arg (gensym "arg")]
+                                                  `(= (type ~arg) ~type-hint)))
+                                              hinted-args arg-hints)}
+                   post-conditions {:post [(if (= ret Void/TYPE)
+                                             `(nil? ~(symbol "%"))
+                                             `(= (type ~(symbol "%")) ~ret))]}]
+               `(defn ~hinted-name
+                  [~@hinted-args]
                   ~member))))))
 
 (defn split-by
