@@ -1,4 +1,6 @@
 package llvm;
+import com.ochafik.lang.jnaerator.runtime.LibraryExtractor;
+import com.ochafik.lang.jnaerator.runtime.MangledFunctionMapper;
 import com.ochafik.lang.jnaerator.runtime.NativeSize;
 import com.ochafik.lang.jnaerator.runtime.NativeSizeByReference;
 import com.sun.jna.Callback;
@@ -19,9 +21,9 @@ import java.nio.IntBuffer;
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
 public interface Llvm34Library extends Library {
-	public static final String JNA_LIBRARY_NAME = "llvm-3.4";
-	public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(Llvm34Library.JNA_LIBRARY_NAME);
-	public static final Llvm34Library INSTANCE = (Llvm34Library)Native.loadLibrary(Llvm34Library.JNA_LIBRARY_NAME, Llvm34Library.class);
+	public static final String JNA_LIBRARY_NAME = LibraryExtractor.getLibraryPath("llvm-3.4", true, Llvm34Library.class);
+	public static final NativeLibrary JNA_NATIVE_LIB = NativeLibrary.getInstance(Llvm34Library.JNA_LIBRARY_NAME, MangledFunctionMapper.DEFAULT_OPTIONS);
+	public static final Llvm34Library INSTANCE = (Llvm34Library)Native.loadLibrary(Llvm34Library.JNA_LIBRARY_NAME, Llvm34Library.class, MangledFunctionMapper.DEFAULT_OPTIONS);
 	public static interface LLVMVerifierFailureAction {
 		public static final int LLVMAbortProcessAction = 0;
 		public static final int LLVMPrintMessageAction = 1;

@@ -7,7 +7,7 @@
 -noComments
 
 -arch darwin_universal
--runtime JNA
+-runtime JNAerator
 -mode Directory
 -o $(DIR)/../src/java
 -package llvm

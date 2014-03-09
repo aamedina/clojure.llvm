@@ -1,6 +1,6 @@
 package llvm;
+import com.ochafik.lang.jnaerator.runtime.Structure;
 import com.sun.jna.Pointer;
-import com.sun.jna.Structure;
 import java.util.Arrays;
 import java.util.List;
 import llvm.Llvm34Library.LLVMMCJITMemoryManagerRef;
@@ -9,7 +9,7 @@ import llvm.Llvm34Library.LLVMMCJITMemoryManagerRef;
  * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> , <a href="http://rococoa.dev.java.net/">Rococoa</a>, or <a href="http://jna.dev.java.net/">JNA</a>.
  */
-public class LLVMMCJITCompilerOptions extends Structure {
+public class LLVMMCJITCompilerOptions extends Structure<LLVMMCJITCompilerOptions, LLVMMCJITCompilerOptions.ByValue, LLVMMCJITCompilerOptions.ByReference > {
 	public int OptLevel;
 	/** @see LLVMCodeModel */
 	public int CodeModel;
@@ -32,6 +32,12 @@ public class LLVMMCJITCompilerOptions extends Structure {
 	}
 	public LLVMMCJITCompilerOptions(Pointer peer) {
 		super(peer);
+	}
+	protected ByReference newByReference() { return new ByReference(); }
+	protected ByValue newByValue() { return new ByValue(); }
+	protected LLVMMCJITCompilerOptions newInstance() { return new LLVMMCJITCompilerOptions(); }
+	public static LLVMMCJITCompilerOptions[] newArray(int arrayLength) {
+		return Structure.newArray(LLVMMCJITCompilerOptions.class, arrayLength);
 	}
 	public static class ByReference extends LLVMMCJITCompilerOptions implements Structure.ByReference {
 		
