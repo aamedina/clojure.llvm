@@ -8,7 +8,8 @@
             Llvm34Library
             LLVMOpInfo1
             LLVMOpInfoSymbol1
-            LLVMMCJITCompilerOptions]))
+            LLVMMCJITCompilerOptions]
+           [com.sun.jna Function]))
 
 (set! *print-meta* true)
 
@@ -55,6 +56,10 @@
     "float" `(float? ~sym)
     "double" `(number? ~sym)))
 
+(defn get-function
+  [fn-name]
+  (Function/getFunction "llvm-3.4" (name fn-name)))
+
 (defmacro gen-inline-llvm-c-bindings
   "A macro which generates and defs in the calling namespace inline Clojure
    functions, maps, and classes which directly correspond to the bindings
@@ -76,9 +81,25 @@
                    post-conditions {:post [(if (= ret Void/TYPE)
                                              `(nil? ~(symbol "%"))
                                              `(= (type ~(symbol "%")) ~ret))]}]
-               `(defn ~hinted-name
-                  [~@hinted-args]
-                  ~member))))))
+               (cond
+                 (and (instance? clojure.reflect.Method member)
+                      (contains? (:flags member) :static))
+                 `(defn ^:static ~hinted-name
+                    [~@hinted-args]
+                    (. Llvm34Library ~(:name member)))
+                 (instance? clojure.reflect.Method member)
+                 `(defn ~hinted-name
+                    [~@hinted-args]
+                    (. Llvm34Library/INSTANCE ~(:name member)))
+                 (and (instance? clojure.reflect.Field member)
+                      (contains? (:flags member) :static))
+                 `(def ^:static ~hinted-name
+                    (. Llvm34Library
+                       ~(symbol (str "-" (name (:name member))))))
+                 (instance? clojure.reflect.Field member)
+                 `(def ~hinted-name
+                    (. Llvm34Library
+                       ~(symbol (str "-" (name (:name member))))))))))))
 
 (defn split-by
   "Split a collection according to some predicate."
