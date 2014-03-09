@@ -12,18 +12,6 @@
 
 (set! *print-meta* true)
 
-(defn resolve-class
-  [type]
-  (case type
-    Integer/TYPE Integer
-    Long/TYPE Long
-    Character/TYPE Character
-    Boolean/TYPE Boolean
-    Float/TYPE Float
-    Double/TYPE Double
-    Void/TYPE Void
-    type))
-
 (defn strip-deprecated-methods
   [path]
   (->> (reduce (fn [new-file-lines line]
@@ -41,6 +29,20 @@
   `(do ~@(for [class (.getDeclaredClasses Llvm34Library)]
            `(def ~(symbol (last (str/split (.getName class) #"\$"))) ~class))))
 
+(defn inline-type
+  [sym]
+  (condp = sym
+    'char Character/TYPE
+    'short Short/TYPE
+    'int Integer/TYPE
+    'long Long/TYPE
+    'float Float/TYPE
+    'double Double/TYPE
+    'byte Byte/TYPE
+    'boolean Boolean/TYPE
+    'void Void/TYPE
+    sym))
+
 (defmacro gen-inline-llvm-c-bindings
   "A macro which generates and defs in the calling namespace inline Clojure
    functions, maps, and classes which directly correspond to the bindings
@@ -48,13 +50,11 @@
   []
   (let [{:keys [bases flags members] :as llvm} (reflect Llvm34Library)]
     `(do ~@(for [member members]
-             (let [args (:parameter-types member)]
-               `(defn ~(vary-meta (:name member) assoc :tag
-                                  (resolve-class (:return-type member)))
-                  [~@(map (fn [arg-type]
-                            (vary-meta (gensym (resolve-class arg-type))
-                                       assoc :tag (resolve-class arg-type)))
-                          args)]
+             (let [hinted-name (vary-meta (:name member) assoc :tag
+                                          (inline-type (:return-type member)))
+                   hinted-args (repeatedly (count (:parameter-types member))
+                                           gensym)]
+               `(defn ~hinted-name [~@hinted-args]
                   ~member))))))
 
 (defn split-by
@@ -63,4 +63,4 @@
   ((juxt #(filter pred %) #(remove pred %)) coll))
 
 (gen-inline-llvm-c-types)
-;; (gen-inline-llvm-c-bindings)
+(gen-inline-llvm-c-bindings)
