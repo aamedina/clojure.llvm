@@ -60,6 +60,26 @@
   [fn-name]
   (Function/getFunction "llvm-3.4" (name fn-name)))
 
+(defmulti gen-inline-binding-form
+  (fn [{:keys [flags] :as member}]
+    [(class member) (set/union #{:static} flags)]))
+
+(defmethod gen-inline-binding-form [clojure.reflect.Method #{}]
+  [{:keys [name parameter-types return-type] :as member}]
+  )
+
+(defmethod gen-inline-binding-form [clojure.reflect.Method #{:static}]
+  [{:keys [name parameter-types return-type] :as member}]
+  )
+
+(defmethod gen-inline-binding-form [clojure.reflect.Field #{}]
+  [{:keys [name type] :as member}]
+  )
+
+(defmethod gen-inline-binding-form [clojure.reflect.Field #{:static}]
+  [{:keys [name type] :as member}]
+  )
+
 (defmacro gen-inline-llvm-c-bindings
   "A macro which generates and defs in the calling namespace inline Clojure
    functions, maps, and classes which directly correspond to the bindings
