@@ -172,22 +172,6 @@
         table
         (assoc table val (gen-constant-id val))))))
 
-(def empty-ns
-  {:mappings {}
-   :aliases {}
-   :ns nil})
-
-(def default-namespaces
-  {'clojure.core (assoc empty-ns :ns 'clojure.core)
-   'user (assoc empty-ns :ns 'user)})
-
-(def namespaces
-  (reify clojure.lang.IDeref
-    (deref [_]
-      (if-not (nil? env/*compiler*)
-        (::namespaces @env/*compiler*)
-        default-namespaces))))
-
 (defn get-namespace [key]
   (get-in @env/*compiler* [::namespaces key]))
 
@@ -212,24 +196,38 @@
 (def specials
   (into ana/specials '#{}))
 
+(def empty-ns
+  {:mappings {}
+   :aliases {}
+   :ns nil})
+
+(def default-namespaces
+  {'clojure.core (assoc empty-ns :ns 'clojure.core)
+   'user (assoc empty-ns :ns 'user)})
+
+(def namespaces
+  (reify clojure.lang.IDeref
+    (deref [_]
+      (if-not (nil? env/*compiler*)
+        (::namespaces @env/*compiler*)
+        default-namespaces))))
+
 (defn empty-env []
   (env/ensure
-   {:ns (get-namespace *ns*)
+   {:ns 'user
     :context :expr
     :locals {}
-    :namespaces (atom {})}))
+    :namespaces (atom default-namespaces)}))
 
 (defn desugar-host-expr
   [[op & expr :as form]]
-  (if (symbol? form)
+  (if (symbol? op)
     (let [opname (name op)]
       (cond
-        (= (first opname \.))
+        (= (first opname) \.)
         (let [[target & args] expr
               args (list* (symbol (subs opname 1)) args)]
-          (with-meta (list '. target (if (= 1 (count args))
-                                       (first args)
-                                       args))
+          (with-meta (list '. target (if (= 1 (count args)) (first args) args))
             (meta form)))
         (= (last opname) \.)
         (let [sym (symbol (subs opname 0 (dec (count opname))))

@@ -21,11 +21,9 @@
 (defmacro ensure
   [& body]
   `(let [val# *compiler*]
-     (if (nil? val#)
+     (when (nil? val#)
        (push-thread-bindings
-        (hash-map (var *compiler*) (default-compiler-env)))
-       (try
-         ~@body
-         (finally
-           (when (nil? val#)
-             (pop-thread-bindings)))))))
+        (hash-map (var *compiler*) (default-compiler-env))))
+     (try ~@body
+          (finally (when (nil? val#)
+                     (pop-thread-bindings))))))
