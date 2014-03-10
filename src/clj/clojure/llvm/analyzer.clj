@@ -178,7 +178,8 @@
 (defn get-col [x env]
   (or (-> x meta :column) (:column env)))
 
-(def vars (atom {}))
+(def vars
+  (atom '{}))
 
 (def specials
   (into ana/specials '#{}))
@@ -187,6 +188,11 @@
   {:mappings {}
    :aliases {}
    :ns nil})
+
+(def clojure
+  {:mappings {}
+   :aliases {}
+   :ns 'clojure})
 
 (def default-namespaces
   {'clojure.core (assoc empty-ns :ns 'clojure.core)
