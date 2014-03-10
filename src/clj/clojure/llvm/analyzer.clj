@@ -1,5 +1,5 @@
 (ns clojure.llvm.analyzer
-  (:refer-clojure :exlude [var? *ns* *file*])
+  (:refer-clojure :exclude [var? macroexpand-1])
   (:require [clojure.tools.analyzer :as ana]
             [clojure.tools.analyzer
              [utils :refer [ctx resolve-var -source-info resolve-ns]]
@@ -15,17 +15,14 @@
             [clojure.java.io :as io]
             [clojure.string :as str]
             [clojure.set :as set]
-            [clojure.llvm.env :as env]
             [clojure.tools.reader :as reader]
-            [clojure.tools.reader.reader-types :as reader-types]
+            [clojure.tools.reader.reader-types :as readers]
             [clojure.tools.namespace.repl :refer [refresh]])
   (:import java.lang.StringBuilder
            java.io.File))
 
 (set! *warn-on-reflection* true)
 
-(def ^:dynamic *ns* 'user)
-(def ^:dynamic *file* nil)
 (def ^:dynamic *unchecked-if* (atom false))
 (def ^:dynamic *warnings*
   {:unprovided true
@@ -165,16 +162,6 @@
                                          " not supported"))))]
     (symbol (str prefix (swap! constant-counter inc)))))
 
-(defn- register-constant! [val]
-  (swap! env/*compiler* update-in [::constant-table]
-    (fn [table]
-      (if (get table val)
-        table
-        (assoc table val (gen-constant-id val))))))
-
-(defn get-namespace [key]
-  (get-in @env/*compiler* [::namespaces key]))
-
 (defmacro no-warn [& body]
   (let [no-warnings (zipmap (keys *warnings*) (repeat false))]
     `(binding [*warnings* ~no-warnings]
@@ -205,19 +192,15 @@
   {'clojure.core (assoc empty-ns :ns 'clojure.core)
    'user (assoc empty-ns :ns 'user)})
 
-(def namespaces
-  (reify clojure.lang.IDeref
-    (deref [_]
-      (if-not (nil? env/*compiler*)
-        (::namespaces @env/*compiler*)
-        default-namespaces))))
-
 (defn empty-env []
-  (env/ensure
-   {:ns 'user
-    :context :expr
-    :locals {}
-    :namespaces (atom default-namespaces)}))
+  {:ns 'user
+   :context :expr
+   :locals {}
+   :namespaces (atom default-namespaces)})
+
+(defmacro debug-prn
+  [& args]
+  `(.println *err* (str ~@args)))
 
 (defn desugar-host-expr
   [[op & expr :as form]]
