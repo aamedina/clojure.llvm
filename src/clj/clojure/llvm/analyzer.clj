@@ -12,6 +12,7 @@
              [collect :refer [collect collect-closed-overs]]
              [add-binding-atom :refer [add-binding-atom]]
              [uniquify :refer [uniquify-locals]]]
+            [clojure.tools.analyzer.jvm :as jvm]
             [clojure.java.io :as io]
             [clojure.string :as str]
             [clojure.set :as set]
@@ -199,10 +200,7 @@
    'user (assoc empty-ns :ns 'user)})
 
 (defn empty-env []
-  {:ns 'user
-   :context :expr
-   :locals {}
-   :namespaces (atom default-namespaces)})
+  (jvm/empty-env))
 
 (defmacro debug-prn
   [& args]
