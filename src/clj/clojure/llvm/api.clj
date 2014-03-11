@@ -9,14 +9,10 @@
             LLVMOpInfo1
             LLVMOpInfoSymbol1
             LLVMMCJITCompilerOptions]
-           [com.sun.jna Pointer Function]))
+           [com.sun.jna Pointer Function]
+           [com.sun.jna.ptr PointerByReference]))
 
 (set! *print-meta* true)
-
-(defn pointer
-  [ptr]
-  {:address (Pointer/nativeValue ptr)
-   :jna-pointer ptr})
 
 (defn strip-deprecated-methods
   [path]
@@ -90,7 +86,7 @@
 
 (defmacro gen-inline-llvm-c-bindings
   "A macro which generates and defs in the calling namespace inline Clojure
-   functions, maps, and classes which directly correspond to the bindings
+   functions and classes which directly correspond to the bindings
    found in the LLVM-C native library."
   []
   (let [{:keys [bases flags members] :as llvm} (reflect Llvm34Library)]
@@ -103,3 +99,37 @@
   ((juxt #(filter pred %) #(remove pred %)) coll))
 
 (gen-inline-llvm-c-bindings)
+
+(defprotocol NativeValue
+  (native-value [val]))
+
+(defn ^Pointer malloc
+  "Returns a pointer with 'size' bytes of memory allocated."
+  [^long size]
+  (com.sun.jna.Memory. size))
+
+(defn ^Pointer pointer
+  "Returns a new pointer of platform defined width."
+  []
+  (.getPointer (com.sun.jna.Memory. Pointer/SIZE) 0))
+
+(extend-protocol NativeValue
+  String
+  (native-value [val] (com.sun.jna.NativeString. val)))
+
+(defn ^llvm.Llvm34Library$LLVMModuleRef module
+  [^String name]
+  (LLVMModuleCreateWithName name))
+
+(defn ^llvm.Llvm34Library$LLVMBuilderRef builder
+  []
+  (LLVMCreateBuilder))
+
+(defn ^long address-of
+  [^Pointer pointer]
+  (Pointer/nativeValue pointer))
+
+(defn ^PointerByReference reference
+  [^Pointer pointer]
+  (PointerByReference. pointer))
+
