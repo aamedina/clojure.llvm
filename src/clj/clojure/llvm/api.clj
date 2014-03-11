@@ -9,7 +9,7 @@
             LLVMOpInfo1
             LLVMOpInfoSymbol1
             LLVMMCJITCompilerOptions]
-           [com.sun.jna Pointer Function]
+           [com.sun.jna Pointer Function Memory Native]
            [com.sun.jna.ptr PointerByReference]))
 
 (set! *print-meta* true)
@@ -100,36 +100,10 @@
 
 (gen-inline-llvm-c-bindings)
 
-(defprotocol NativeValue
-  (native-value [val]))
+(defprotocol IPointer
+  (-pointer [val]))
 
-(defn ^Pointer malloc
-  "Returns a pointer with 'size' bytes of memory allocated."
-  [^long size]
-  (com.sun.jna.Memory. size))
-
-(defn ^Pointer pointer
+(defn pointer
   "Returns a new pointer of platform defined width."
-  []
-  (.getPointer (com.sun.jna.Memory. Pointer/SIZE) 0))
-
-(extend-protocol NativeValue
-  String
-  (native-value [val] (com.sun.jna.NativeString. val)))
-
-(defn ^llvm.Llvm34Library$LLVMModuleRef module
-  [^String name]
-  (LLVMModuleCreateWithName name))
-
-(defn ^llvm.Llvm34Library$LLVMBuilderRef builder
-  []
-  (LLVMCreateBuilder))
-
-(defn ^long address-of
-  [^Pointer pointer]
-  (Pointer/nativeValue pointer))
-
-(defn ^PointerByReference reference
-  [^Pointer pointer]
-  (PointerByReference. pointer))
-
+  ([] (Pointer. (Native/malloc Pointer/SIZE)))
+  ([val] (-pointer val)))
