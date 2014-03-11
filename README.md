@@ -4,7 +4,9 @@ A LLVM bytecode compiler for Clojure
 
 ## Prerequisites
 
-Mac OS X with LLVM 3.4 built from source & installed to /usr/local/opt/llvm
+Mac OS X with LLVM 3.5 built from source. If you use Homebrew, you can build and install LLVM with the following command:
+
+    $ brew install llvm35 --HEAD --with-clang --with-libcxx --with-asan --all-targets --rtti
 
 ## Usage
 
@@ -17,13 +19,11 @@ This will populate the java source paths at src/java with the bindings JNA requi
 Documentation for the LLVM-C interface to the C++ LLVM backend can be found at
 http://llvm.org/doxygen.
 
-General documentation for LLVM 3.4 can be found at http://llvm.org/releases/3.4/docs.
+General documentation for LLVM can be found at http://llvm.org/docs.
 
 ## TODO
 
 1. Make this library actually work :)
-2. Make JNA bindings & build process cross platform
-
 
 ## License
 

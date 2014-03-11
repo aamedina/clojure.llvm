@@ -4,12 +4,7 @@
             [clojure.string :as str]
             [clojure.java.io :as io]
             [clojure.tools.namespace.repl :refer [refresh]])
-  (:import [llvm
-            Llvm34Library
-            LLVMOpInfo1
-            LLVMOpInfoSymbol1
-            LLVMMCJITCompilerOptions]
-           [com.sun.jna Pointer Function Memory Native]
+  (:import [com.sun.jna Pointer Function Memory Native]
            [com.sun.jna.ptr PointerByReference]))
 
 (set! *print-meta* true)
@@ -55,20 +50,20 @@
 (defmethod gen-inline-def [clojure.reflect.Method #{}]
   [{:keys [name parameter-types] :as member}]
   `(defn ~name ~parameter-types
-     (. Llvm34Library/INSTANCE ~name ~@parameter-types)))
+     (. llvm.Llvm34Library/INSTANCE ~name ~@parameter-types)))
 
 (defmethod gen-inline-def [clojure.reflect.Method #{:static}]
   [{:keys [name parameter-types] :as member}]
   `(defn ~name ~parameter-types
-     (. Llvm34Library ~name ~@parameter-types)))
+     (. llvm.Llvm34Library ~name ~@parameter-types)))
 
 (defmethod gen-inline-def [clojure.reflect.Field #{}]
   [{:keys [name type] :as member}]
-  `(def ~name (. Llvm34Library/INSTANCE ~name)))
+  `(def ~name (. llvm.Llvm34Library/INSTANCE ~name)))
 
 (defmethod gen-inline-def [clojure.reflect.Field #{:static}]
   [{:keys [name type] :as member}]
-  `(def ~name (. Llvm34Library ~name)))
+  `(def ~name (. llvm.Llvm34Library ~name)))
 
 (defn prep-method-or-field
   [member]
@@ -89,7 +84,7 @@
    functions and classes which directly correspond to the bindings
    found in the LLVM-C native library."
   []
-  (let [{:keys [bases flags members] :as llvm} (reflect Llvm34Library)]
+  (let [{:keys [bases flags members] :as llvm} (reflect llvm.Llvm34Library)]
     `(do ~@(for [member (map prep-method-or-field members)]
              (gen-inline-def member)))))
 

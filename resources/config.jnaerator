@@ -1,6 +1,6 @@
--I/usr/local/opt/llvm/include/llvm-c
+-I($LLVM_SOURCE_PATH)/include
 
--library llvm-3.4
+-library llvm-3.5
 
 -f
 -emptyStructsAsForwardDecls
@@ -12,5 +12,5 @@
 -o $(DIR)/../src/java
 -package llvm
 
-/usr/local/opt/llvm/include/llvm-c/Transforms/*.h
-/usr/local/opt/llvm/include/llvm-c/*.h
+/usr/local/opt/llvm/include/llvm-c/Core.h
+# /usr/local/opt/llvm/include/llvm-c/Transforms/*.h

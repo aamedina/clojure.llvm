@@ -1,6 +1,6 @@
 (ns clojure.llvm.analyzer
-  (:refer-clojure :exclude [var? macroexpand-1])
-  (:require [clojure.tools.analyzer :as ana]
+  (:refer-clojure :exclude [macroexpand-1 macroexpand])
+  (:require [clojure.tools.analyzer :as ana :refer [macroexpand-1 macroexpand]]
             [clojure.tools.analyzer
              [utils :refer [ctx resolve-var -source-info resolve-ns]]
              [ast :refer [walk prewalk postwalk cycling]]]
@@ -12,7 +12,10 @@
              [collect :refer [collect collect-closed-overs]]
              [add-binding-atom :refer [add-binding-atom]]
              [uniquify :refer [uniquify-locals]]]
-            [clojure.tools.analyzer.jvm :as jvm]
+            [clojure.tools.analyzer.jvm
+             :as jvm
+             :refer [analyze empty-env]
+             :rename {analyze -analyze}]
             [clojure.java.io :as io]
             [clojure.string :as str]
             [clojure.set :as set]
@@ -24,9 +27,7 @@
 
 (set! *warn-on-reflection* true)
 
-(defn empty-env []
-  (jvm/empty-env))
-
 (defn analyze
-  [form env]
-  (jvm/analyze form env))
+  ([form] (analyze form (empty-env)))
+  ([form env]
+     (-analyze form env)))
