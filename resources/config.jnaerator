@@ -1,16 +1,16 @@
--I($LLVM_SOURCE_PATH)/include
+-I/usr/local/lib/llvm-3.5/include/llvm-c
 
--library llvm-3.5
+-library LLVM-3.5svn
 
 -f
 -emptyStructsAsForwardDecls
+-noPrimitiveArrays
 -noComments
 
--arch darwin_universal
--runtime JNAerator
 -mode Directory
 -o $(DIR)/../src/java
--package llvm
+-package clojure.llvm
 
-/usr/local/opt/llvm/include/llvm-c/Core.h
-# /usr/local/opt/llvm/include/llvm-c/Transforms/*.h
+/usr/local/lib/llvm-3.5/include/llvm-c/**.h
+
+/usr/local/lib/llvm-3.5/lib/libLLVM-3.5svn.dylib

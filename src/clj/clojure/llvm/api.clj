@@ -93,7 +93,7 @@
   [pred coll]
   ((juxt #(filter pred %) #(remove pred %)) coll))
 
-(gen-inline-llvm-c-bindings)
+;; (gen-inline-llvm-c-bindings)
 
 (defprotocol IPointer
   (-pointer [val]))

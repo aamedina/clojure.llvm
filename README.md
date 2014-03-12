@@ -6,7 +6,7 @@ A LLVM bytecode compiler for Clojure
 
 Mac OS X with LLVM 3.5 built from source. If you use Homebrew, you can build and install LLVM with the following command:
 
-    $ brew install llvm35 --HEAD --with-clang --with-libcxx --with-asan --all-targets --rtti
+    $ brew install --HEAD llvm35 --with-clang --with-libcxx --with-asan --all-targets --rtti
 
 ## Usage
 
