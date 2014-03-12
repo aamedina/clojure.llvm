@@ -5,13 +5,9 @@
             [clojure.tools.namespace.repl :refer [refresh]]
             [clojure.llvm.api :as api]))
 
-(System/setProperty "jna.library.path"
-                    "/usr/local/opt/llvm/lib:/usr/local/lib:/usr/lib")
-
 (def jnaerator-cmd
   ["java" "-jar" "resources/jnaerator.jar" "resources/config.jnaerator"])
 
 (defn -main
   [& args]
-  (println (:out (apply sh jnaerator-cmd)))
-  (api/strip-deprecated-methods "src/java/llvm/Llvm34Library.java"))
+  (println (:out (apply sh jnaerator-cmd))))

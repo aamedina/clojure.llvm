@@ -50,20 +50,20 @@
 (defmethod gen-inline-def [clojure.reflect.Method #{}]
   [{:keys [name parameter-types] :as member}]
   `(defn ~name ~parameter-types
-     (. llvm.Llvm34Library/INSTANCE ~name ~@parameter-types)))
+     (. clojure.llvm.LLVM35svnLibrary/INSTANCE ~name ~@parameter-types)))
 
 (defmethod gen-inline-def [clojure.reflect.Method #{:static}]
   [{:keys [name parameter-types] :as member}]
   `(defn ~name ~parameter-types
-     (. llvm.Llvm34Library ~name ~@parameter-types)))
+     (. clojure.llvm.LLVM35svnLibrary ~name ~@parameter-types)))
 
 (defmethod gen-inline-def [clojure.reflect.Field #{}]
   [{:keys [name type] :as member}]
-  `(def ~name (. llvm.Llvm34Library/INSTANCE ~name)))
+  `(def ~name (. clojure.llvm.LLVM35svnLibrary/INSTANCE ~name)))
 
 (defmethod gen-inline-def [clojure.reflect.Field #{:static}]
   [{:keys [name type] :as member}]
-  `(def ~name (. llvm.Llvm34Library ~name)))
+  `(def ~name (. clojure.llvm.LLVM35svnLibrary ~name)))
 
 (defn prep-method-or-field
   [member]
@@ -84,9 +84,10 @@
    functions and classes which directly correspond to the bindings
    found in the LLVM-C native library."
   []
-  (let [{:keys [bases flags members] :as llvm} (reflect llvm.Llvm34Library)]
-    `(do ~@(for [member (map prep-method-or-field members)]
-             (gen-inline-def member)))))
+  ;; (let [{:keys [members] :as llvm} (reflect clojure.llvm.LLVM35svnLibrary)]
+  ;;   `(do ~@(for [member (map prep-method-or-field members)]
+  ;;            (gen-inline-def member))))
+  )
 
 (defn split-by
   "Split a collection according to some predicate."

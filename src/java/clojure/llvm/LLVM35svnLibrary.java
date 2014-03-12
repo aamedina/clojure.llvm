@@ -23,4164 +23,4164 @@ import org.bridj.util.DefaultParameterizedType;
 @Library("LLVM-3.5svn") 
 @Runtime(CRuntime.class) 
 public class LLVM35svnLibrary {
-  static {
-    BridJ.register();
-  }
-  public enum LLVMCodeGenOptLevel implements IntValuedEnum<LLVMCodeGenOptLevel > {
-    LLVMCodeGenLevelNone(0),
-        LLVMCodeGenLevelLess(1),
-        LLVMCodeGenLevelDefault(2),
-        LLVMCodeGenLevelAggressive(3);
-    LLVMCodeGenOptLevel(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMCodeGenOptLevel > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMCodeGenOptLevel > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMRelocMode implements IntValuedEnum<LLVMRelocMode > {
-    LLVMRelocDefault(0),
-        LLVMRelocStatic(1),
-        LLVMRelocPIC(2),
-        LLVMRelocDynamicNoPic(3);
-    LLVMRelocMode(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMRelocMode > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMRelocMode > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMCodeModel implements IntValuedEnum<LLVMCodeModel > {
-    LLVMCodeModelDefault(0),
-        LLVMCodeModelJITDefault(1),
-        LLVMCodeModelSmall(2),
-        LLVMCodeModelKernel(3),
-        LLVMCodeModelMedium(4),
-        LLVMCodeModelLarge(5);
-    LLVMCodeModel(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMCodeModel > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMCodeModel > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMCodeGenFileType implements IntValuedEnum<LLVMCodeGenFileType > {
-    LLVMAssemblyFile(0),
-        LLVMObjectFile(1);
-    LLVMCodeGenFileType(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMCodeGenFileType > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMCodeGenFileType > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum lto_symbol_attributes implements IntValuedEnum<lto_symbol_attributes > {
-    LTO_SYMBOL_ALIGNMENT_MASK(0x0000001F),
-        LTO_SYMBOL_PERMISSIONS_MASK(0x000000E0),
-        LTO_SYMBOL_PERMISSIONS_CODE(0x000000A0),
-        LTO_SYMBOL_PERMISSIONS_DATA(0x000000C0),
-        LTO_SYMBOL_PERMISSIONS_RODATA(0x00000080),
-        LTO_SYMBOL_DEFINITION_MASK(0x00000700),
-        LTO_SYMBOL_DEFINITION_REGULAR(0x00000100),
-        LTO_SYMBOL_DEFINITION_TENTATIVE(0x00000200),
-        LTO_SYMBOL_DEFINITION_WEAK(0x00000300),
-        LTO_SYMBOL_DEFINITION_UNDEFINED(0x00000400),
-        LTO_SYMBOL_DEFINITION_WEAKUNDEF(0x00000500),
-        LTO_SYMBOL_SCOPE_MASK(0x00003800),
-        LTO_SYMBOL_SCOPE_INTERNAL(0x00000800),
-        LTO_SYMBOL_SCOPE_HIDDEN(0x00001000),
-        LTO_SYMBOL_SCOPE_PROTECTED(0x00002000),
-        LTO_SYMBOL_SCOPE_DEFAULT(0x00001800),
-        LTO_SYMBOL_SCOPE_DEFAULT_CAN_BE_HIDDEN(0x00002800);
-    lto_symbol_attributes(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<lto_symbol_attributes > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<lto_symbol_attributes > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum lto_debug_model implements IntValuedEnum<lto_debug_model > {
-    LTO_DEBUG_MODEL_NONE(0),
-        LTO_DEBUG_MODEL_DWARF(1);
-    lto_debug_model(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<lto_debug_model > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<lto_debug_model > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum lto_codegen_model implements IntValuedEnum<lto_codegen_model > {
-    LTO_CODEGEN_PIC_MODEL_STATIC(0),
-        LTO_CODEGEN_PIC_MODEL_DYNAMIC(1),
-        LTO_CODEGEN_PIC_MODEL_DYNAMIC_NO_PIC(2);
-    lto_codegen_model(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<lto_codegen_model > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<lto_codegen_model > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum lto_internalize_strategy implements IntValuedEnum<lto_internalize_strategy > {
-    LTO_INTERNALIZE_FULL(0),
-        LTO_INTERNALIZE_NONE(1),
-        LTO_INTERNALIZE_HIDDEN(2);
-    lto_internalize_strategy(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<lto_internalize_strategy > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<lto_internalize_strategy > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum lto_codegen_diagnostic_severity_t implements IntValuedEnum<lto_codegen_diagnostic_severity_t > {
-    LTO_DS_ERROR(0),
-        LTO_DS_WARNING(1),
-        LTO_DS_REMARK(3),
-        LTO_DS_NOTE(2);
-    lto_codegen_diagnostic_severity_t(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<lto_codegen_diagnostic_severity_t > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<lto_codegen_diagnostic_severity_t > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMAttribute implements IntValuedEnum<LLVMAttribute > {
-    LLVMZExtAttribute(1 << 0),
-        LLVMSExtAttribute(1 << 1),
-        LLVMNoReturnAttribute(1 << 2),
-        LLVMInRegAttribute(1 << 3),
-        LLVMStructRetAttribute(1 << 4),
-        LLVMNoUnwindAttribute(1 << 5),
-        LLVMNoAliasAttribute(1 << 6),
-        LLVMByValAttribute(1 << 7),
-        LLVMNestAttribute(1 << 8),
-        LLVMReadNoneAttribute(1 << 9),
-        LLVMReadOnlyAttribute(1 << 10),
-        LLVMNoInlineAttribute(1 << 11),
-        LLVMAlwaysInlineAttribute(1 << 12),
-        LLVMOptimizeForSizeAttribute(1 << 13),
-        LLVMStackProtectAttribute(1 << 14),
-        LLVMStackProtectReqAttribute(1 << 15),
-        LLVMAlignment(31 << 16),
-        LLVMNoCaptureAttribute(1 << 21),
-        LLVMNoRedZoneAttribute(1 << 22),
-        LLVMNoImplicitFloatAttribute(1 << 23),
-        LLVMNakedAttribute(1 << 24),
-        LLVMInlineHintAttribute(1 << 25),
-        LLVMStackAlignment(7 << 26),
-        LLVMReturnsTwice(1 << 29),
-        LLVMUWTable(1 << 30),
-        LLVMNonLazyBind(1 << 31);
-    LLVMAttribute(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMAttribute > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMAttribute > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMOpcode implements IntValuedEnum<LLVMOpcode > {
-    LLVMRet(1),
-        LLVMBr(2),
-        LLVMSwitch(3),
-        LLVMIndirectBr(4),
-        LLVMInvoke(5),
-        LLVMUnreachable(7),
-        LLVMAdd(8),
-        LLVMFAdd(9),
-        LLVMSub(10),
-        LLVMFSub(11),
-        LLVMMul(12),
-        LLVMFMul(13),
-        LLVMUDiv(14),
-        LLVMSDiv(15),
-        LLVMFDiv(16),
-        LLVMURem(17),
-        LLVMSRem(18),
-        LLVMFRem(19),
-        LLVMShl(20),
-        LLVMLShr(21),
-        LLVMAShr(22),
-        LLVMAnd(23),
-        LLVMOr(24),
-        LLVMXor(25),
-        LLVMAlloca(26),
-        LLVMLoad(27),
-        LLVMStore(28),
-        LLVMGetElementPtr(29),
-        LLVMTrunc(30),
-        LLVMZExt(31),
-        LLVMSExt(32),
-        LLVMFPToUI(33),
-        LLVMFPToSI(34),
-        LLVMUIToFP(35),
-        LLVMSIToFP(36),
-        LLVMFPTrunc(37),
-        LLVMFPExt(38),
-        LLVMPtrToInt(39),
-        LLVMIntToPtr(40),
-        LLVMBitCast(41),
-        LLVMAddrSpaceCast(60),
-        LLVMICmp(42),
-        LLVMFCmp(43),
-        LLVMPHI(44),
-        LLVMCall(45),
-        LLVMSelect(46),
-        LLVMUserOp1(47),
-        LLVMUserOp2(48),
-        LLVMVAArg(49),
-        LLVMExtractElement(50),
-        LLVMInsertElement(51),
-        LLVMShuffleVector(52),
-        LLVMExtractValue(53),
-        LLVMInsertValue(54),
-        LLVMFence(55),
-        LLVMAtomicCmpXchg(56),
-        LLVMAtomicRMW(57),
-        LLVMResume(58),
-        LLVMLandingPad(59);
-    LLVMOpcode(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMOpcode > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMOpcode > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMTypeKind implements IntValuedEnum<LLVMTypeKind > {
-    LLVMVoidTypeKind(0),
-        LLVMHalfTypeKind(1),
-        LLVMFloatTypeKind(2),
-        LLVMDoubleTypeKind(3),
-        LLVMX86_FP80TypeKind(4),
-        LLVMFP128TypeKind(5),
-        LLVMPPC_FP128TypeKind(6),
-        LLVMLabelTypeKind(7),
-        LLVMIntegerTypeKind(8),
-        LLVMFunctionTypeKind(9),
-        LLVMStructTypeKind(10),
-        LLVMArrayTypeKind(11),
-        LLVMPointerTypeKind(12),
-        LLVMVectorTypeKind(13),
-        LLVMMetadataTypeKind(14),
-        LLVMX86_MMXTypeKind(15);
-    LLVMTypeKind(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMTypeKind > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMTypeKind > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMLinkage implements IntValuedEnum<LLVMLinkage > {
-    LLVMExternalLinkage(0),
-        LLVMAvailableExternallyLinkage(1),
-        LLVMLinkOnceAnyLinkage(2),
-        LLVMLinkOnceODRLinkage(3),
-        LLVMLinkOnceODRAutoHideLinkage(4),
-        LLVMWeakAnyLinkage(5),
-        LLVMWeakODRLinkage(6),
-        LLVMAppendingLinkage(7),
-        LLVMInternalLinkage(8),
-        LLVMPrivateLinkage(9),
-        LLVMDLLImportLinkage(10),
-        LLVMDLLExportLinkage(11),
-        LLVMExternalWeakLinkage(12),
-        LLVMGhostLinkage(13),
-        LLVMCommonLinkage(14),
-        LLVMLinkerPrivateLinkage(15),
-        LLVMLinkerPrivateWeakLinkage(16);
-    LLVMLinkage(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMLinkage > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMLinkage > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMVisibility implements IntValuedEnum<LLVMVisibility > {
-    LLVMDefaultVisibility(0),
-        LLVMHiddenVisibility(1),
-        LLVMProtectedVisibility(2);
-    LLVMVisibility(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMVisibility > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMVisibility > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMDLLStorageClass implements IntValuedEnum<LLVMDLLStorageClass > {
-    LLVMDefaultStorageClass(0),
-        LLVMDLLImportStorageClass(1),
-        LLVMDLLExportStorageClass(2);
-    LLVMDLLStorageClass(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMDLLStorageClass > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMDLLStorageClass > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMCallConv implements IntValuedEnum<LLVMCallConv > {
-    LLVMCCallConv(0),
-        LLVMFastCallConv(8),
-        LLVMColdCallConv(9),
-        LLVMWebKitJSCallConv(12),
-        LLVMAnyRegCallConv(13),
-        LLVMX86StdcallCallConv(64),
-        LLVMX86FastcallCallConv(65);
-    LLVMCallConv(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMCallConv > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMCallConv > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMIntPredicate implements IntValuedEnum<LLVMIntPredicate > {
-    LLVMIntEQ(32),
-        LLVMIntNE(33),
-        LLVMIntUGT(34),
-        LLVMIntUGE(35),
-        LLVMIntULT(36),
-        LLVMIntULE(37),
-        LLVMIntSGT(38),
-        LLVMIntSGE(39),
-        LLVMIntSLT(40),
-        LLVMIntSLE(41);
-    LLVMIntPredicate(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMIntPredicate > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMIntPredicate > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMRealPredicate implements IntValuedEnum<LLVMRealPredicate > {
-    LLVMRealPredicateFalse(0),
-        LLVMRealOEQ(1),
-        LLVMRealOGT(2),
-        LLVMRealOGE(3),
-        LLVMRealOLT(4),
-        LLVMRealOLE(5),
-        LLVMRealONE(6),
-        LLVMRealORD(7),
-        LLVMRealUNO(8),
-        LLVMRealUEQ(9),
-        LLVMRealUGT(10),
-        LLVMRealUGE(11),
-        LLVMRealULT(12),
-        LLVMRealULE(13),
-        LLVMRealUNE(14),
-        LLVMRealPredicateTrue(15);
-    LLVMRealPredicate(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMRealPredicate > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMRealPredicate > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMLandingPadClauseTy implements IntValuedEnum<LLVMLandingPadClauseTy > {
-    LLVMLandingPadCatch(0),
-        LLVMLandingPadFilter(1);
-    LLVMLandingPadClauseTy(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMLandingPadClauseTy > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMLandingPadClauseTy > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMThreadLocalMode implements IntValuedEnum<LLVMThreadLocalMode > {
-    LLVMNotThreadLocal(0),
-        LLVMGeneralDynamicTLSModel(1),
-        LLVMLocalDynamicTLSModel(2),
-        LLVMInitialExecTLSModel(3),
-        LLVMLocalExecTLSModel(4);
-    LLVMThreadLocalMode(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMThreadLocalMode > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMThreadLocalMode > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMAtomicOrdering implements IntValuedEnum<LLVMAtomicOrdering > {
-    LLVMAtomicOrderingNotAtomic(0),
-        LLVMAtomicOrderingUnordered(1),
-        LLVMAtomicOrderingMonotonic(2),
-        LLVMAtomicOrderingAcquire(4),
-        LLVMAtomicOrderingRelease(5),
-        LLVMAtomicOrderingAcquireRelease(6),
-        LLVMAtomicOrderingSequentiallyConsistent(7);
-    LLVMAtomicOrdering(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMAtomicOrdering > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMAtomicOrdering > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMAtomicRMWBinOp implements IntValuedEnum<LLVMAtomicRMWBinOp > {
-    LLVMAtomicRMWBinOpXchg(0),
-        LLVMAtomicRMWBinOpAdd(1),
-        LLVMAtomicRMWBinOpSub(2),
-        LLVMAtomicRMWBinOpAnd(3),
-        LLVMAtomicRMWBinOpNand(4),
-        LLVMAtomicRMWBinOpOr(5),
-        LLVMAtomicRMWBinOpXor(6),
-        LLVMAtomicRMWBinOpMax(7),
-        LLVMAtomicRMWBinOpMin(8),
-        LLVMAtomicRMWBinOpUMax(9),
-        LLVMAtomicRMWBinOpUMin(10);
-    LLVMAtomicRMWBinOp(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMAtomicRMWBinOp > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMAtomicRMWBinOp > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMVerifierFailureAction implements IntValuedEnum<LLVMVerifierFailureAction > {
-    LLVMAbortProcessAction(0),
-        LLVMPrintMessageAction(1),
-        LLVMReturnStatusAction(2);
-    LLVMVerifierFailureAction(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMVerifierFailureAction > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMVerifierFailureAction > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMByteOrdering implements IntValuedEnum<LLVMByteOrdering > {
-    LLVMBigEndian(0),
-        LLVMLittleEndian(1);
-    LLVMByteOrdering(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMByteOrdering > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMByteOrdering > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum llvm_lto_status implements IntValuedEnum<llvm_lto_status > {
-    LLVM_LTO_UNKNOWN(0),
-        LLVM_LTO_OPT_SUCCESS(1),
-        LLVM_LTO_READ_SUCCESS(2),
-        LLVM_LTO_READ_FAILURE(3),
-        LLVM_LTO_WRITE_FAILURE(4),
-        LLVM_LTO_NO_TARGET(5),
-        LLVM_LTO_NO_WORK(6),
-        LLVM_LTO_MODULE_MERGE_FAILURE(7),
-        LLVM_LTO_ASM_FAILURE(8),
-        LLVM_LTO_NULL_OBJECT(9);
-    llvm_lto_status(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<llvm_lto_status > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<llvm_lto_status > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public enum LLVMLinkerMode implements IntValuedEnum<LLVMLinkerMode > {
-    LLVMLinkerDestroySource(0),
-        LLVMLinkerPreserveSource(1);
-    LLVMLinkerMode(long value) {
-      this.value = value;
-    }
-    public final long value;
-    public long value() {
-      return this.value;
-    }
-    public Iterator<LLVMLinkerMode > iterator() {
-      return Collections.singleton(this).iterator();
-    }
-    public static IntValuedEnum<LLVMLinkerMode > fromValue(int value) {
-      return FlagSet.fromValue(value, values());
-    }
-  };
-  public static final int LLVMDisassembler_Option_AsmPrinterVariant = (int)4;
-  public static final int LLVMDisassembler_Option_PrintLatency = (int)16;
-  public static final int LLVMDisassembler_ReferenceType_Out_Objc_Message = (int)5;
-  public static final int LLVMDisassembler_Option_UseMarkup = (int)1;
-  public static final int LLVMDisassembler_ReferenceType_Out_Objc_Class_Ref = (int)8;
-  public static final int LLVMDisassembler_ReferenceType_Out_Objc_Selector_Ref = (int)7;
-  public static final int LLVMDisassembler_Option_PrintImmHex = (int)2;
-  public static final int LTO_API_VERSION = (int)10;
-  public static final int LLVMDisassembler_ReferenceType_Out_Objc_CFString_Ref = (int)4;
-  public static final int LLVMDisassembler_ReferenceType_Out_Objc_Message_Ref = (int)6;
-  public static final int LLVMDisassembler_ReferenceType_InOut_None = (int)0;
-  public static final int LLVMDisassembler_ReferenceType_Out_SymbolStub = (int)1;
-  public static final int LLVMDisassembler_VariantKind_ARM_HI16 = (int)1;
-  public static final int LLVMDisassembler_VariantKind_ARM_LO16 = (int)2;
-  public static final int LLVMDisassembler_Option_SetInstrComments = (int)8;
-  public static final int LLVMDisassembler_VariantKind_None = (int)0;
-  public static final int LLVMDisassembler_ReferenceType_DeMangled_Name = (int)9;
-  public static final int LLVMDisassembler_ReferenceType_Out_LitPool_SymAddr = (int)2;
-  public static final int LLVMDisassembler_ReferenceType_In_PCrel_Load = (int)2;
-  public static final int LLVMDisassembler_ReferenceType_Out_LitPool_CstrAddr = (int)3;
-  public static final int LLVMDisassembler_ReferenceType_In_Branch = (int)1;
-  public static abstract class lto_diagnostic_handler_t extends Callback<lto_diagnostic_handler_t > {
-    public void apply(IntValuedEnum<LLVM35svnLibrary.lto_codegen_diagnostic_severity_t > severity, Pointer<Byte > diag, Pointer<? > ctxt) {
-      apply((int)severity.value(), Pointer.getPeer(diag), Pointer.getPeer(ctxt));
-    }
-    public void apply(int severity, @Ptr long diag, @Ptr long ctxt) {
-      apply(FlagSet.fromValue(severity, LLVM35svnLibrary.lto_codegen_diagnostic_severity_t.class), Pointer.pointerToAddress(diag, Byte.class), Pointer.pointerToAddress(ctxt));
-    }
-  };
-  public static abstract class LLVMOpInfoCallback extends Callback<LLVMOpInfoCallback > {
-    public int apply(Pointer<? > DisInfo, long PC, long Offset, long Size, int TagType, Pointer<? > TagBuf) {
-      return apply(Pointer.getPeer(DisInfo), PC, Offset, Size, TagType, Pointer.getPeer(TagBuf));
-    }
-    public int apply(@Ptr long DisInfo, long PC, long Offset, long Size, int TagType, @Ptr long TagBuf) {
-      return apply(Pointer.pointerToAddress(DisInfo), PC, Offset, Size, TagType, Pointer.pointerToAddress(TagBuf));
-    }
-  };
-  public static abstract class LLVMSymbolLookupCallback extends Callback<LLVMSymbolLookupCallback > {
-    public Pointer<Byte > apply(Pointer<? > DisInfo, long ReferenceValue, Pointer<Long > ReferenceType, long ReferencePC, Pointer<Pointer<Byte > > ReferenceName) {
-      return Pointer.pointerToAddress(apply(Pointer.getPeer(DisInfo), ReferenceValue, Pointer.getPeer(ReferenceType), ReferencePC, Pointer.getPeer(ReferenceName)), Byte.class);
-    }
-    @Ptr 
-      public long apply(@Ptr long DisInfo, long ReferenceValue, @Ptr long ReferenceType, long ReferencePC, @Ptr long ReferenceName) {
-      return Pointer.getPeer(apply(Pointer.pointerToAddress(DisInfo), ReferenceValue, Pointer.pointerToAddress(ReferenceType, Long.class), ReferencePC, Pointer.pointerToAddress(ReferenceName, DefaultParameterizedType.paramType(Pointer.class, Byte.class))));
-    }
-  };
-  public static abstract class LLVMFatalErrorHandler extends Callback<LLVMFatalErrorHandler > {
-    public void apply(Pointer<Byte > Reason) {
-      apply(Pointer.getPeer(Reason));
-    }
-    public void apply(@Ptr long Reason) {
-      apply(Pointer.pointerToAddress(Reason, Byte.class));
-    }
-  };
-  public static abstract class LLVMMemoryManagerAllocateCodeSectionCallback extends Callback<LLVMMemoryManagerAllocateCodeSectionCallback > {
-    public Pointer<Byte > apply(Pointer<? > Opaque, @CLong long Size, int Alignment, int SectionID, Pointer<Byte > SectionName) {
-      return Pointer.pointerToAddress(apply(Pointer.getPeer(Opaque), Size, Alignment, SectionID, Pointer.getPeer(SectionName)), Byte.class);
-    }
-    @Ptr 
-      public long apply(@Ptr long Opaque, @CLong long Size, int Alignment, int SectionID, @Ptr long SectionName) {
-      return Pointer.getPeer(apply(Pointer.pointerToAddress(Opaque), Size, Alignment, SectionID, Pointer.pointerToAddress(SectionName, Byte.class)));
-    }
-  };
-  public static abstract class LLVMMemoryManagerAllocateDataSectionCallback extends Callback<LLVMMemoryManagerAllocateDataSectionCallback > {
-    public Pointer<Byte > apply(Pointer<? > Opaque, @CLong long Size, int Alignment, int SectionID, Pointer<Byte > SectionName, int IsReadOnly) {
-      return Pointer.pointerToAddress(apply(Pointer.getPeer(Opaque), Size, Alignment, SectionID, Pointer.getPeer(SectionName), IsReadOnly), Byte.class);
-    }
-    @Ptr 
-      public long apply(@Ptr long Opaque, @CLong long Size, int Alignment, int SectionID, @Ptr long SectionName, int IsReadOnly) {
-      return Pointer.getPeer(apply(Pointer.pointerToAddress(Opaque), Size, Alignment, SectionID, Pointer.pointerToAddress(SectionName, Byte.class), IsReadOnly));
-    }
-  };
-  public static abstract class LLVMMemoryManagerFinalizeMemoryCallback extends Callback<LLVMMemoryManagerFinalizeMemoryCallback > {
-    public int apply(Pointer<? > Opaque, Pointer<Pointer<Byte > > ErrMsg) {
-      return apply(Pointer.getPeer(Opaque), Pointer.getPeer(ErrMsg));
-    }
-    public int apply(@Ptr long Opaque, @Ptr long ErrMsg) {
-      return apply(Pointer.pointerToAddress(Opaque), Pointer.pointerToAddress(ErrMsg, DefaultParameterizedType.paramType(Pointer.class, Byte.class)));
-    }
-  };
-  public static abstract class LLVMMemoryManagerDestroyCallback extends Callback<LLVMMemoryManagerDestroyCallback > {
-    public void apply(Pointer<? > Opaque) {
-      apply(Pointer.getPeer(Opaque));
-    }
-    public void apply(@Ptr long Opaque) {
-      apply(Pointer.pointerToAddress(Opaque));
-    }
-  };
-  public static int LLVMWriteBitcodeToFile(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Path) {
-    return LLVMWriteBitcodeToFile(Pointer.getPeer(M), Pointer.getPeer(Path));
-  }
-  protected native static int LLVMWriteBitcodeToFile(@Ptr long M, @Ptr long Path);
-  public static int LLVMWriteBitcodeToFD(LLVM35svnLibrary.LLVMModuleRef M, int FD, int ShouldClose, int Unbuffered) {
-    return LLVMWriteBitcodeToFD(Pointer.getPeer(M), FD, ShouldClose, Unbuffered);
-  }
-  protected native static int LLVMWriteBitcodeToFD(@Ptr long M, int FD, int ShouldClose, int Unbuffered);
-  public static int LLVMWriteBitcodeToFileHandle(LLVM35svnLibrary.LLVMModuleRef M, int Handle) {
-    return LLVMWriteBitcodeToFileHandle(Pointer.getPeer(M), Handle);
-  }
-  protected native static int LLVMWriteBitcodeToFileHandle(@Ptr long M, int Handle);
-  public static int LLVMParseIRInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutM, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMParseIRInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutM), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMParseIRInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutM, @Ptr long OutMessage);
-  public static LLVM35svnLibrary.LLVMObjectFileRef LLVMCreateObjectFile(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
-    return new LLVM35svnLibrary.LLVMObjectFileRef(LLVMCreateObjectFile(Pointer.getPeer(MemBuf)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateObjectFile(@Ptr long MemBuf);
-  public static void LLVMDisposeObjectFile(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile) {
-    LLVMDisposeObjectFile(Pointer.getPeer(ObjectFile));
-  }
-  protected native static void LLVMDisposeObjectFile(@Ptr long ObjectFile);
-  public static LLVM35svnLibrary.LLVMSectionIteratorRef LLVMGetSections(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile) {
-    return new LLVM35svnLibrary.LLVMSectionIteratorRef(LLVMGetSections(Pointer.getPeer(ObjectFile)));
-  }
-  @Ptr 
-  protected native static long LLVMGetSections(@Ptr long ObjectFile);
-  public static void LLVMDisposeSectionIterator(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
-    LLVMDisposeSectionIterator(Pointer.getPeer(SI));
-  }
-  protected native static void LLVMDisposeSectionIterator(@Ptr long SI);
-  public static int LLVMIsSectionIteratorAtEnd(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile, LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
-    return LLVMIsSectionIteratorAtEnd(Pointer.getPeer(ObjectFile), Pointer.getPeer(SI));
-  }
-  protected native static int LLVMIsSectionIteratorAtEnd(@Ptr long ObjectFile, @Ptr long SI);
-  public static void LLVMMoveToNextSection(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
-    LLVMMoveToNextSection(Pointer.getPeer(SI));
-  }
-  protected native static void LLVMMoveToNextSection(@Ptr long SI);
-  public static void LLVMMoveToContainingSection(LLVM35svnLibrary.LLVMSectionIteratorRef Sect, LLVM35svnLibrary.LLVMSymbolIteratorRef Sym) {
-    LLVMMoveToContainingSection(Pointer.getPeer(Sect), Pointer.getPeer(Sym));
-  }
-  protected native static void LLVMMoveToContainingSection(@Ptr long Sect, @Ptr long Sym);
-  public static LLVM35svnLibrary.LLVMSymbolIteratorRef LLVMGetSymbols(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile) {
-    return new LLVM35svnLibrary.LLVMSymbolIteratorRef(LLVMGetSymbols(Pointer.getPeer(ObjectFile)));
-  }
-  @Ptr 
-  protected native static long LLVMGetSymbols(@Ptr long ObjectFile);
-  public static void LLVMDisposeSymbolIterator(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
-    LLVMDisposeSymbolIterator(Pointer.getPeer(SI));
-  }
-  protected native static void LLVMDisposeSymbolIterator(@Ptr long SI);
-  public static int LLVMIsSymbolIteratorAtEnd(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile, LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
-    return LLVMIsSymbolIteratorAtEnd(Pointer.getPeer(ObjectFile), Pointer.getPeer(SI));
-  }
-  protected native static int LLVMIsSymbolIteratorAtEnd(@Ptr long ObjectFile, @Ptr long SI);
-  public static void LLVMMoveToNextSymbol(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
-    LLVMMoveToNextSymbol(Pointer.getPeer(SI));
-  }
-  protected native static void LLVMMoveToNextSymbol(@Ptr long SI);
-  public static Pointer<Byte > LLVMGetSectionName(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
-    return Pointer.pointerToAddress(LLVMGetSectionName(Pointer.getPeer(SI)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetSectionName(@Ptr long SI);
-  public static long LLVMGetSectionSize(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
-    return LLVMGetSectionSize(Pointer.getPeer(SI));
-  }
-  protected native static long LLVMGetSectionSize(@Ptr long SI);
-  public static Pointer<Byte > LLVMGetSectionContents(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
-    return Pointer.pointerToAddress(LLVMGetSectionContents(Pointer.getPeer(SI)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetSectionContents(@Ptr long SI);
-  public static long LLVMGetSectionAddress(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
-    return LLVMGetSectionAddress(Pointer.getPeer(SI));
-  }
-  protected native static long LLVMGetSectionAddress(@Ptr long SI);
-  public static int LLVMGetSectionContainsSymbol(LLVM35svnLibrary.LLVMSectionIteratorRef SI, LLVM35svnLibrary.LLVMSymbolIteratorRef Sym) {
-    return LLVMGetSectionContainsSymbol(Pointer.getPeer(SI), Pointer.getPeer(Sym));
-  }
-  protected native static int LLVMGetSectionContainsSymbol(@Ptr long SI, @Ptr long Sym);
-  public static LLVM35svnLibrary.LLVMRelocationIteratorRef LLVMGetRelocations(LLVM35svnLibrary.LLVMSectionIteratorRef Section) {
-    return new LLVM35svnLibrary.LLVMRelocationIteratorRef(LLVMGetRelocations(Pointer.getPeer(Section)));
-  }
-  @Ptr 
-  protected native static long LLVMGetRelocations(@Ptr long Section);
-  public static void LLVMDisposeRelocationIterator(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    LLVMDisposeRelocationIterator(Pointer.getPeer(RI));
-  }
-  protected native static void LLVMDisposeRelocationIterator(@Ptr long RI);
-  public static int LLVMIsRelocationIteratorAtEnd(LLVM35svnLibrary.LLVMSectionIteratorRef Section, LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    return LLVMIsRelocationIteratorAtEnd(Pointer.getPeer(Section), Pointer.getPeer(RI));
-  }
-  protected native static int LLVMIsRelocationIteratorAtEnd(@Ptr long Section, @Ptr long RI);
-  public static void LLVMMoveToNextRelocation(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    LLVMMoveToNextRelocation(Pointer.getPeer(RI));
-  }
-  protected native static void LLVMMoveToNextRelocation(@Ptr long RI);
-  public static Pointer<Byte > LLVMGetSymbolName(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
-    return Pointer.pointerToAddress(LLVMGetSymbolName(Pointer.getPeer(SI)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetSymbolName(@Ptr long SI);
-  public static long LLVMGetSymbolAddress(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
-    return LLVMGetSymbolAddress(Pointer.getPeer(SI));
-  }
-  protected native static long LLVMGetSymbolAddress(@Ptr long SI);
-  public static long LLVMGetSymbolFileOffset(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
-    return LLVMGetSymbolFileOffset(Pointer.getPeer(SI));
-  }
-  protected native static long LLVMGetSymbolFileOffset(@Ptr long SI);
-  public static long LLVMGetSymbolSize(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
-    return LLVMGetSymbolSize(Pointer.getPeer(SI));
-  }
-  protected native static long LLVMGetSymbolSize(@Ptr long SI);
-  public static long LLVMGetRelocationAddress(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    return LLVMGetRelocationAddress(Pointer.getPeer(RI));
-  }
-  protected native static long LLVMGetRelocationAddress(@Ptr long RI);
-  public static long LLVMGetRelocationOffset(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    return LLVMGetRelocationOffset(Pointer.getPeer(RI));
-  }
-  protected native static long LLVMGetRelocationOffset(@Ptr long RI);
-  public static LLVM35svnLibrary.LLVMSymbolIteratorRef LLVMGetRelocationSymbol(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    return new LLVM35svnLibrary.LLVMSymbolIteratorRef(LLVMGetRelocationSymbol(Pointer.getPeer(RI)));
-  }
-  @Ptr 
-  protected native static long LLVMGetRelocationSymbol(@Ptr long RI);
-  public static long LLVMGetRelocationType(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    return LLVMGetRelocationType(Pointer.getPeer(RI));
-  }
-  protected native static long LLVMGetRelocationType(@Ptr long RI);
-  public static Pointer<Byte > LLVMGetRelocationTypeName(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    return Pointer.pointerToAddress(LLVMGetRelocationTypeName(Pointer.getPeer(RI)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetRelocationTypeName(@Ptr long RI);
-  public static Pointer<Byte > LLVMGetRelocationValueString(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
-    return Pointer.pointerToAddress(LLVMGetRelocationValueString(Pointer.getPeer(RI)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetRelocationValueString(@Ptr long RI);
-  public static LLVM35svnLibrary.LLVMTargetRef LLVMGetFirstTarget() {
-    return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetFirstTarget$2());
-  }
-  @Ptr 
-  protected native static long LLVMGetFirstTarget$2();
-  public static LLVM35svnLibrary.LLVMTargetRef LLVMGetNextTarget(LLVM35svnLibrary.LLVMTargetRef T) {
-    return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetNextTarget(Pointer.getPeer(T)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNextTarget(@Ptr long T);
-  public static LLVM35svnLibrary.LLVMTargetRef LLVMGetTargetFromName(Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetTargetFromName(Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetFromName(@Ptr long Name);
-  public static int LLVMGetTargetFromTriple(Pointer<Byte > Triple, Pointer<LLVM35svnLibrary.LLVMTargetRef > T, Pointer<Pointer<Byte > > ErrorMessage) {
-    return LLVMGetTargetFromTriple(Pointer.getPeer(Triple), Pointer.getPeer(T), Pointer.getPeer(ErrorMessage));
-  }
-  protected native static int LLVMGetTargetFromTriple(@Ptr long Triple, @Ptr long T, @Ptr long ErrorMessage);
-  public static Pointer<Byte > LLVMGetTargetName(LLVM35svnLibrary.LLVMTargetRef T) {
-    return Pointer.pointerToAddress(LLVMGetTargetName(Pointer.getPeer(T)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetName(@Ptr long T);
-  public static Pointer<Byte > LLVMGetTargetDescription(LLVM35svnLibrary.LLVMTargetRef T) {
-    return Pointer.pointerToAddress(LLVMGetTargetDescription(Pointer.getPeer(T)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetDescription(@Ptr long T);
-  public static int LLVMTargetHasJIT(LLVM35svnLibrary.LLVMTargetRef T) {
-    return LLVMTargetHasJIT(Pointer.getPeer(T));
-  }
-  protected native static int LLVMTargetHasJIT(@Ptr long T);
-  public static int LLVMTargetHasTargetMachine(LLVM35svnLibrary.LLVMTargetRef T) {
-    return LLVMTargetHasTargetMachine(Pointer.getPeer(T));
-  }
-  protected native static int LLVMTargetHasTargetMachine(@Ptr long T);
-  public static int LLVMTargetHasAsmBackend(LLVM35svnLibrary.LLVMTargetRef T) {
-    return LLVMTargetHasAsmBackend(Pointer.getPeer(T));
-  }
-  protected native static int LLVMTargetHasAsmBackend(@Ptr long T);
-  public static LLVM35svnLibrary.LLVMTargetMachineRef LLVMCreateTargetMachine(LLVM35svnLibrary.LLVMTargetRef T, Pointer<Byte > Triple, Pointer<Byte > CPU, Pointer<Byte > Features, IntValuedEnum<LLVM35svnLibrary.LLVMCodeGenOptLevel > Level, IntValuedEnum<LLVM35svnLibrary.LLVMRelocMode > Reloc, IntValuedEnum<LLVM35svnLibrary.LLVMCodeModel > CodeModel) {
-    return new LLVM35svnLibrary.LLVMTargetMachineRef(LLVMCreateTargetMachine(Pointer.getPeer(T), Pointer.getPeer(Triple), Pointer.getPeer(CPU), Pointer.getPeer(Features), (int)Level.value(), (int)Reloc.value(), (int)CodeModel.value()));
-  }
-  @Ptr 
-  protected native static long LLVMCreateTargetMachine(@Ptr long T, @Ptr long Triple, @Ptr long CPU, @Ptr long Features, int Level, int Reloc, int CodeModel);
-  public static void LLVMDisposeTargetMachine(LLVM35svnLibrary.LLVMTargetMachineRef T) {
-    LLVMDisposeTargetMachine(Pointer.getPeer(T));
-  }
-  protected native static void LLVMDisposeTargetMachine(@Ptr long T);
-  public static LLVM35svnLibrary.LLVMTargetRef LLVMGetTargetMachineTarget(LLVM35svnLibrary.LLVMTargetMachineRef T) {
-    return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetTargetMachineTarget(Pointer.getPeer(T)));
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetMachineTarget(@Ptr long T);
-  public static Pointer<Byte > LLVMGetTargetMachineTriple(LLVM35svnLibrary.LLVMTargetMachineRef T) {
-    return Pointer.pointerToAddress(LLVMGetTargetMachineTriple(Pointer.getPeer(T)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetMachineTriple(@Ptr long T);
-  public static Pointer<Byte > LLVMGetTargetMachineCPU(LLVM35svnLibrary.LLVMTargetMachineRef T) {
-    return Pointer.pointerToAddress(LLVMGetTargetMachineCPU(Pointer.getPeer(T)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetMachineCPU(@Ptr long T);
-  public static Pointer<Byte > LLVMGetTargetMachineFeatureString(LLVM35svnLibrary.LLVMTargetMachineRef T) {
-    return Pointer.pointerToAddress(LLVMGetTargetMachineFeatureString(Pointer.getPeer(T)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetMachineFeatureString(@Ptr long T);
-  public static LLVM35svnLibrary.LLVMTargetDataRef LLVMGetTargetMachineData(LLVM35svnLibrary.LLVMTargetMachineRef T) {
-    return new LLVM35svnLibrary.LLVMTargetDataRef(LLVMGetTargetMachineData(Pointer.getPeer(T)));
-  }
-  @Ptr 
-  protected native static long LLVMGetTargetMachineData(@Ptr long T);
-  public static void LLVMSetTargetMachineAsmVerbosity(LLVM35svnLibrary.LLVMTargetMachineRef T, int VerboseAsm) {
-    LLVMSetTargetMachineAsmVerbosity(Pointer.getPeer(T), VerboseAsm);
-  }
-  protected native static void LLVMSetTargetMachineAsmVerbosity(@Ptr long T, int VerboseAsm);
-  public static int LLVMTargetMachineEmitToFile(LLVM35svnLibrary.LLVMTargetMachineRef T, LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Filename, IntValuedEnum<LLVM35svnLibrary.LLVMCodeGenFileType > codegen, Pointer<Pointer<Byte > > ErrorMessage) {
-    return LLVMTargetMachineEmitToFile(Pointer.getPeer(T), Pointer.getPeer(M), Pointer.getPeer(Filename), (int)codegen.value(), Pointer.getPeer(ErrorMessage));
-  }
-  protected native static int LLVMTargetMachineEmitToFile(@Ptr long T, @Ptr long M, @Ptr long Filename, int codegen, @Ptr long ErrorMessage);
-  public static int LLVMTargetMachineEmitToMemoryBuffer(LLVM35svnLibrary.LLVMTargetMachineRef T, LLVM35svnLibrary.LLVMModuleRef M, IntValuedEnum<LLVM35svnLibrary.LLVMCodeGenFileType > codegen, Pointer<Pointer<Byte > > ErrorMessage, Pointer<LLVM35svnLibrary.LLVMMemoryBufferRef > OutMemBuf) {
-    return LLVMTargetMachineEmitToMemoryBuffer(Pointer.getPeer(T), Pointer.getPeer(M), (int)codegen.value(), Pointer.getPeer(ErrorMessage), Pointer.getPeer(OutMemBuf));
-  }
-  protected native static int LLVMTargetMachineEmitToMemoryBuffer(@Ptr long T, @Ptr long M, int codegen, @Ptr long ErrorMessage, @Ptr long OutMemBuf);
-  public static Pointer<Byte > LLVMGetDefaultTargetTriple() {
-    return Pointer.pointerToAddress(LLVMGetDefaultTargetTriple$2(), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetDefaultTargetTriple$2();
-  public static void LLVMAddAnalysisPasses(LLVM35svnLibrary.LLVMTargetMachineRef T, LLVM35svnLibrary.LLVMPassManagerRef PM) {
-    LLVMAddAnalysisPasses(Pointer.getPeer(T), Pointer.getPeer(PM));
-  }
-  protected native static void LLVMAddAnalysisPasses(@Ptr long T, @Ptr long PM);
-  public static int LLVMLoadLibraryPermanently(Pointer<Byte > Filename) {
-    return LLVMLoadLibraryPermanently(Pointer.getPeer(Filename));
-  }
-  protected native static int LLVMLoadLibraryPermanently(@Ptr long Filename);
-  public static void LLVMInitializeCore(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeCore(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeCore(@Ptr long R);
-  public static void LLVMInitializeTransformUtils(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeTransformUtils(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeTransformUtils(@Ptr long R);
-  public static void LLVMInitializeScalarOpts(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeScalarOpts(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeScalarOpts(@Ptr long R);
-  public static void LLVMInitializeObjCARCOpts(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeObjCARCOpts(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeObjCARCOpts(@Ptr long R);
-  public static void LLVMInitializeVectorization(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeVectorization(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeVectorization(@Ptr long R);
-  public static void LLVMInitializeInstCombine(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeInstCombine(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeInstCombine(@Ptr long R);
-  public static void LLVMInitializeIPO(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeIPO(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeIPO(@Ptr long R);
-  public static void LLVMInitializeInstrumentation(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeInstrumentation(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeInstrumentation(@Ptr long R);
-  public static void LLVMInitializeAnalysis(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeAnalysis(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeAnalysis(@Ptr long R);
-  public static void LLVMInitializeIPA(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeIPA(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeIPA(@Ptr long R);
-  public static void LLVMInitializeCodeGen(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeCodeGen(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeCodeGen(@Ptr long R);
-  public static void LLVMInitializeTarget(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeTarget(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeTarget(@Ptr long R);
-  public static Pointer<Byte > lto_get_version() {
-    return Pointer.pointerToAddress(lto_get_version$2(), Byte.class);
-  }
-  @Ptr 
-  protected native static long lto_get_version$2();
-  public static Pointer<Byte > lto_get_error_message() {
-    return Pointer.pointerToAddress(lto_get_error_message$2(), Byte.class);
-  }
-  @Ptr 
-  protected native static long lto_get_error_message$2();
-  public static boolean lto_module_is_object_file(Pointer<Byte > path) {
-    return lto_module_is_object_file(Pointer.getPeer(path));
-  }
-  protected native static boolean lto_module_is_object_file(@Ptr long path);
-  public static boolean lto_module_is_object_file_for_target(Pointer<Byte > path, Pointer<Byte > target_triple_prefix) {
-    return lto_module_is_object_file_for_target(Pointer.getPeer(path), Pointer.getPeer(target_triple_prefix));
-  }
-  protected native static boolean lto_module_is_object_file_for_target(@Ptr long path, @Ptr long target_triple_prefix);
-  public static boolean lto_module_is_object_file_in_memory(Pointer<? > mem, @Ptr long length) {
-    return lto_module_is_object_file_in_memory(Pointer.getPeer(mem), length);
-  }
-  protected native static boolean lto_module_is_object_file_in_memory(@Ptr long mem, @Ptr long length);
-  public static boolean lto_module_is_object_file_in_memory_for_target(Pointer<? > mem, @Ptr long length, Pointer<Byte > target_triple_prefix) {
-    return lto_module_is_object_file_in_memory_for_target(Pointer.getPeer(mem), length, Pointer.getPeer(target_triple_prefix));
-  }
-  protected native static boolean lto_module_is_object_file_in_memory_for_target(@Ptr long mem, @Ptr long length, @Ptr long target_triple_prefix);
-  public static LLVM35svnLibrary.lto_module_t lto_module_create(Pointer<Byte > path) {
-    return new LLVM35svnLibrary.lto_module_t(lto_module_create(Pointer.getPeer(path)));
-  }
-  @Ptr 
-  protected native static long lto_module_create(@Ptr long path);
-  public static LLVM35svnLibrary.lto_module_t lto_module_create_from_memory(Pointer<? > mem, @Ptr long length) {
-    return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_memory(Pointer.getPeer(mem), length));
-  }
-  @Ptr 
-  protected native static long lto_module_create_from_memory(@Ptr long mem, @Ptr long length);
-  public static LLVM35svnLibrary.lto_module_t lto_module_create_from_memory_with_path(Pointer<? > mem, @Ptr long length, Pointer<Byte > path) {
-    return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_memory_with_path(Pointer.getPeer(mem), length, Pointer.getPeer(path)));
-  }
-  @Ptr 
-  protected native static long lto_module_create_from_memory_with_path(@Ptr long mem, @Ptr long length, @Ptr long path);
-  public static LLVM35svnLibrary.lto_module_t lto_module_create_from_fd(int fd, Pointer<Byte > path, @Ptr long file_size) {
-    return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_fd(fd, Pointer.getPeer(path), file_size));
-  }
-  @Ptr 
-  protected native static long lto_module_create_from_fd(int fd, @Ptr long path, @Ptr long file_size);
-  public static LLVM35svnLibrary.lto_module_t lto_module_create_from_fd_at_offset(int fd, Pointer<Byte > path, @Ptr long file_size, @Ptr long map_size, long offset) {
-    return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_fd_at_offset(fd, Pointer.getPeer(path), file_size, map_size, offset));
-  }
-  @Ptr 
-  protected native static long lto_module_create_from_fd_at_offset(int fd, @Ptr long path, @Ptr long file_size, @Ptr long map_size, long offset);
-  public static void lto_module_dispose(LLVM35svnLibrary.lto_module_t mod) {
-    lto_module_dispose(Pointer.getPeer(mod));
-  }
-  protected native static void lto_module_dispose(@Ptr long mod);
-  public static Pointer<Byte > lto_module_get_target_triple(LLVM35svnLibrary.lto_module_t mod) {
-    return Pointer.pointerToAddress(lto_module_get_target_triple(Pointer.getPeer(mod)), Byte.class);
-  }
-  @Ptr 
-  protected native static long lto_module_get_target_triple(@Ptr long mod);
-  public static void lto_module_set_target_triple(LLVM35svnLibrary.lto_module_t mod, Pointer<Byte > triple) {
-    lto_module_set_target_triple(Pointer.getPeer(mod), Pointer.getPeer(triple));
-  }
-  protected native static void lto_module_set_target_triple(@Ptr long mod, @Ptr long triple);
-  public static int lto_module_get_num_symbols(LLVM35svnLibrary.lto_module_t mod) {
-    return lto_module_get_num_symbols(Pointer.getPeer(mod));
-  }
-  protected native static int lto_module_get_num_symbols(@Ptr long mod);
-  public static Pointer<Byte > lto_module_get_symbol_name(LLVM35svnLibrary.lto_module_t mod, int index) {
-    return Pointer.pointerToAddress(lto_module_get_symbol_name(Pointer.getPeer(mod), index), Byte.class);
-  }
-  @Ptr 
-  protected native static long lto_module_get_symbol_name(@Ptr long mod, int index);
-  public static IntValuedEnum<LLVM35svnLibrary.lto_symbol_attributes > lto_module_get_symbol_attribute(LLVM35svnLibrary.lto_module_t mod, int index) {
-    return FlagSet.fromValue(lto_module_get_symbol_attribute(Pointer.getPeer(mod), index), LLVM35svnLibrary.lto_symbol_attributes.class);
-  }
-  protected native static int lto_module_get_symbol_attribute(@Ptr long mod, int index);
-  public static int lto_module_get_num_deplibs(LLVM35svnLibrary.lto_module_t mod) {
-    return lto_module_get_num_deplibs(Pointer.getPeer(mod));
-  }
-  protected native static int lto_module_get_num_deplibs(@Ptr long mod);
-  public static Pointer<Byte > lto_module_get_deplib(LLVM35svnLibrary.lto_module_t mod, int index) {
-    return Pointer.pointerToAddress(lto_module_get_deplib(Pointer.getPeer(mod), index), Byte.class);
-  }
-  @Ptr 
-  protected native static long lto_module_get_deplib(@Ptr long mod, int index);
-  public static int lto_module_get_num_linkeropts(LLVM35svnLibrary.lto_module_t mod) {
-    return lto_module_get_num_linkeropts(Pointer.getPeer(mod));
-  }
-  protected native static int lto_module_get_num_linkeropts(@Ptr long mod);
-  public static Pointer<Byte > lto_module_get_linkeropt(LLVM35svnLibrary.lto_module_t mod, int index) {
-    return Pointer.pointerToAddress(lto_module_get_linkeropt(Pointer.getPeer(mod), index), Byte.class);
-  }
-  @Ptr 
-  protected native static long lto_module_get_linkeropt(@Ptr long mod, int index);
-  public static void lto_codegen_set_diagnostic_handler(LLVM35svnLibrary.lto_code_gen_t lto_code_gen_t1, Pointer<LLVM35svnLibrary.lto_diagnostic_handler_t > lto_diagnostic_handler_t1, Pointer<? > voidPtr1) {
-    lto_codegen_set_diagnostic_handler(Pointer.getPeer(lto_code_gen_t1), Pointer.getPeer(lto_diagnostic_handler_t1), Pointer.getPeer(voidPtr1));
-  }
-  protected native static void lto_codegen_set_diagnostic_handler(@Ptr long lto_code_gen_t1, @Ptr long lto_diagnostic_handler_t1, @Ptr long voidPtr1);
-  public static LLVM35svnLibrary.lto_code_gen_t lto_codegen_create() {
-    return new LLVM35svnLibrary.lto_code_gen_t(lto_codegen_create$2());
-  }
-  @Ptr 
-  protected native static long lto_codegen_create$2();
-  public static void lto_codegen_dispose(LLVM35svnLibrary.lto_code_gen_t lto_code_gen_t1) {
-    lto_codegen_dispose(Pointer.getPeer(lto_code_gen_t1));
-  }
-  protected native static void lto_codegen_dispose(@Ptr long lto_code_gen_t1);
-  public static boolean lto_codegen_add_module(LLVM35svnLibrary.lto_code_gen_t cg, LLVM35svnLibrary.lto_module_t mod) {
-    return lto_codegen_add_module(Pointer.getPeer(cg), Pointer.getPeer(mod));
-  }
-  protected native static boolean lto_codegen_add_module(@Ptr long cg, @Ptr long mod);
-  public static boolean lto_codegen_set_debug_model(LLVM35svnLibrary.lto_code_gen_t cg, IntValuedEnum<LLVM35svnLibrary.lto_debug_model > lto_debug_model1) {
-    return lto_codegen_set_debug_model(Pointer.getPeer(cg), (int)lto_debug_model1.value());
-  }
-  protected native static boolean lto_codegen_set_debug_model(@Ptr long cg, int lto_debug_model1);
-  public static boolean lto_codegen_set_pic_model(LLVM35svnLibrary.lto_code_gen_t cg, IntValuedEnum<LLVM35svnLibrary.lto_codegen_model > lto_codegen_model1) {
-    return lto_codegen_set_pic_model(Pointer.getPeer(cg), (int)lto_codegen_model1.value());
-  }
-  protected native static boolean lto_codegen_set_pic_model(@Ptr long cg, int lto_codegen_model1);
-  public static void lto_codegen_set_cpu(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > cpu) {
-    lto_codegen_set_cpu(Pointer.getPeer(cg), Pointer.getPeer(cpu));
-  }
-  protected native static void lto_codegen_set_cpu(@Ptr long cg, @Ptr long cpu);
-  public static void lto_codegen_set_assembler_path(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > path) {
-    lto_codegen_set_assembler_path(Pointer.getPeer(cg), Pointer.getPeer(path));
-  }
-  protected native static void lto_codegen_set_assembler_path(@Ptr long cg, @Ptr long path);
-  public static void lto_codegen_set_assembler_args(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Pointer<Byte > > args, int nargs) {
-    lto_codegen_set_assembler_args(Pointer.getPeer(cg), Pointer.getPeer(args), nargs);
-  }
-  protected native static void lto_codegen_set_assembler_args(@Ptr long cg, @Ptr long args, int nargs);
-  public static void lto_codegen_set_internalize_strategy(LLVM35svnLibrary.lto_code_gen_t cg, IntValuedEnum<LLVM35svnLibrary.lto_internalize_strategy > lto_internalize_strategy1) {
-    lto_codegen_set_internalize_strategy(Pointer.getPeer(cg), (int)lto_internalize_strategy1.value());
-  }
-  protected native static void lto_codegen_set_internalize_strategy(@Ptr long cg, int lto_internalize_strategy1);
-  public static void lto_codegen_add_must_preserve_symbol(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > symbol) {
-    lto_codegen_add_must_preserve_symbol(Pointer.getPeer(cg), Pointer.getPeer(symbol));
-  }
-  protected native static void lto_codegen_add_must_preserve_symbol(@Ptr long cg, @Ptr long symbol);
-  public static boolean lto_codegen_write_merged_modules(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > path) {
-    return lto_codegen_write_merged_modules(Pointer.getPeer(cg), Pointer.getPeer(path));
-  }
-  protected native static boolean lto_codegen_write_merged_modules(@Ptr long cg, @Ptr long path);
-  public static Pointer<? > lto_codegen_compile(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<SizeT > length) {
-    return Pointer.pointerToAddress(lto_codegen_compile(Pointer.getPeer(cg), Pointer.getPeer(length)));
-  }
-  @Ptr 
-  protected native static long lto_codegen_compile(@Ptr long cg, @Ptr long length);
-  public static boolean lto_codegen_compile_to_file(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Pointer<Byte > > name) {
-    return lto_codegen_compile_to_file(Pointer.getPeer(cg), Pointer.getPeer(name));
-  }
-  protected native static boolean lto_codegen_compile_to_file(@Ptr long cg, @Ptr long name);
-  public static void lto_codegen_debug_options(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > charPtr1) {
-    lto_codegen_debug_options(Pointer.getPeer(cg), Pointer.getPeer(charPtr1));
-  }
-  protected native static void lto_codegen_debug_options(@Ptr long cg, @Ptr long charPtr1);
-  public static native void lto_initialize_disassembler();
-  public static int LLVMParseBitcode(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutModule, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMParseBitcode(Pointer.getPeer(MemBuf), Pointer.getPeer(OutModule), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMParseBitcode(@Ptr long MemBuf, @Ptr long OutModule, @Ptr long OutMessage);
-  public static int LLVMParseBitcodeInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutModule, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMParseBitcodeInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutModule), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMParseBitcodeInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutModule, @Ptr long OutMessage);
-  public static int LLVMGetBitcodeModuleInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutM, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMGetBitcodeModuleInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutM), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMGetBitcodeModuleInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutM, @Ptr long OutMessage);
-  public static int LLVMGetBitcodeModule(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutM, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMGetBitcodeModule(Pointer.getPeer(MemBuf), Pointer.getPeer(OutM), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMGetBitcodeModule(@Ptr long MemBuf, @Ptr long OutM, @Ptr long OutMessage);
-  public static int LLVMGetBitcodeModuleProviderInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleProviderRef > OutMP, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMGetBitcodeModuleProviderInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutMP), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMGetBitcodeModuleProviderInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutMP, @Ptr long OutMessage);
-  public static int LLVMGetBitcodeModuleProvider(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleProviderRef > OutMP, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMGetBitcodeModuleProvider(Pointer.getPeer(MemBuf), Pointer.getPeer(OutMP), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMGetBitcodeModuleProvider(@Ptr long MemBuf, @Ptr long OutMP, @Ptr long OutMessage);
-  public static Pointer<? > LLVMCreateDisasm(Pointer<Byte > TripleName, Pointer<? > DisInfo, int TagType, Pointer<LLVM35svnLibrary.LLVMOpInfoCallback > GetOpInfo, Pointer<LLVM35svnLibrary.LLVMSymbolLookupCallback > SymbolLookUp) {
-    return Pointer.pointerToAddress(LLVMCreateDisasm(Pointer.getPeer(TripleName), Pointer.getPeer(DisInfo), TagType, Pointer.getPeer(GetOpInfo), Pointer.getPeer(SymbolLookUp)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateDisasm(@Ptr long TripleName, @Ptr long DisInfo, int TagType, @Ptr long GetOpInfo, @Ptr long SymbolLookUp);
-  public static Pointer<? > LLVMCreateDisasmCPU(Pointer<Byte > Triple, Pointer<Byte > CPU, Pointer<? > DisInfo, int TagType, Pointer<LLVM35svnLibrary.LLVMOpInfoCallback > GetOpInfo, Pointer<LLVM35svnLibrary.LLVMSymbolLookupCallback > SymbolLookUp) {
-    return Pointer.pointerToAddress(LLVMCreateDisasmCPU(Pointer.getPeer(Triple), Pointer.getPeer(CPU), Pointer.getPeer(DisInfo), TagType, Pointer.getPeer(GetOpInfo), Pointer.getPeer(SymbolLookUp)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateDisasmCPU(@Ptr long Triple, @Ptr long CPU, @Ptr long DisInfo, int TagType, @Ptr long GetOpInfo, @Ptr long SymbolLookUp);
-  public static int LLVMSetDisasmOptions(Pointer<? > DC, long Options) {
-    return LLVMSetDisasmOptions(Pointer.getPeer(DC), Options);
-  }
-  protected native static int LLVMSetDisasmOptions(@Ptr long DC, long Options);
-  public static void LLVMDisasmDispose(Pointer<? > DC) {
-    LLVMDisasmDispose(Pointer.getPeer(DC));
-  }
-  protected native static void LLVMDisasmDispose(@Ptr long DC);
-  @Ptr 
-  public static long LLVMDisasmInstruction(Pointer<? > DC, Pointer<Byte > Bytes, long BytesSize, long PC, Pointer<Byte > OutString, @Ptr long OutStringSize) {
-    return LLVMDisasmInstruction(Pointer.getPeer(DC), Pointer.getPeer(Bytes), BytesSize, PC, Pointer.getPeer(OutString), OutStringSize);
-  }
-  @Ptr 
-  protected native static long LLVMDisasmInstruction(@Ptr long DC, @Ptr long Bytes, long BytesSize, long PC, @Ptr long OutString, @Ptr long OutStringSize);
-  public static void LLVMInitializeCore$2(LLVM35svnLibrary.LLVMPassRegistryRef R) {
-    LLVMInitializeCore$2(Pointer.getPeer(R));
-  }
-  protected native static void LLVMInitializeCore$2(@Ptr long R);
-  public static native void LLVMShutdown();
-  public static Pointer<Byte > LLVMCreateMessage(Pointer<Byte > Message) {
-    return Pointer.pointerToAddress(LLVMCreateMessage(Pointer.getPeer(Message)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMCreateMessage(@Ptr long Message);
-  public static void LLVMDisposeMessage(Pointer<Byte > Message) {
-    LLVMDisposeMessage(Pointer.getPeer(Message));
-  }
-  protected native static void LLVMDisposeMessage(@Ptr long Message);
-  public static void LLVMInstallFatalErrorHandler(Pointer<LLVM35svnLibrary.LLVMFatalErrorHandler > Handler) {
-    LLVMInstallFatalErrorHandler(Pointer.getPeer(Handler));
-  }
-  protected native static void LLVMInstallFatalErrorHandler(@Ptr long Handler);
-  public static native void LLVMResetFatalErrorHandler();
-  public static native void LLVMEnablePrettyStackTrace();
-  public static LLVM35svnLibrary.LLVMContextRef LLVMContextCreate() {
-    return new LLVM35svnLibrary.LLVMContextRef(LLVMContextCreate$2());
-  }
-  @Ptr 
-  protected native static long LLVMContextCreate$2();
-  public static LLVM35svnLibrary.LLVMContextRef LLVMGetGlobalContext() {
-    return new LLVM35svnLibrary.LLVMContextRef(LLVMGetGlobalContext$2());
-  }
-  @Ptr 
-  protected native static long LLVMGetGlobalContext$2();
-  public static void LLVMContextDispose(LLVM35svnLibrary.LLVMContextRef C) {
-    LLVMContextDispose(Pointer.getPeer(C));
-  }
-  protected native static void LLVMContextDispose(@Ptr long C);
-  public static int LLVMGetMDKindIDInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Name, int SLen) {
-    return LLVMGetMDKindIDInContext(Pointer.getPeer(C), Pointer.getPeer(Name), SLen);
-  }
-  protected native static int LLVMGetMDKindIDInContext(@Ptr long C, @Ptr long Name, int SLen);
-  public static int LLVMGetMDKindID(Pointer<Byte > Name, int SLen) {
-    return LLVMGetMDKindID(Pointer.getPeer(Name), SLen);
-  }
-  protected native static int LLVMGetMDKindID(@Ptr long Name, int SLen);
-  public static LLVM35svnLibrary.LLVMModuleRef LLVMModuleCreateWithName(Pointer<Byte > ModuleID) {
-    return new LLVM35svnLibrary.LLVMModuleRef(LLVMModuleCreateWithName(Pointer.getPeer(ModuleID)));
-  }
-  @Ptr 
-  protected native static long LLVMModuleCreateWithName(@Ptr long ModuleID);
-  public static LLVM35svnLibrary.LLVMModuleRef LLVMModuleCreateWithNameInContext(Pointer<Byte > ModuleID, LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMModuleRef(LLVMModuleCreateWithNameInContext(Pointer.getPeer(ModuleID), Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMModuleCreateWithNameInContext(@Ptr long ModuleID, @Ptr long C);
-  public static void LLVMDisposeModule(LLVM35svnLibrary.LLVMModuleRef M) {
-    LLVMDisposeModule(Pointer.getPeer(M));
-  }
-  protected native static void LLVMDisposeModule(@Ptr long M);
-  public static Pointer<Byte > LLVMGetDataLayout(LLVM35svnLibrary.LLVMModuleRef M) {
-    return Pointer.pointerToAddress(LLVMGetDataLayout(Pointer.getPeer(M)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetDataLayout(@Ptr long M);
-  public static void LLVMSetDataLayout(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Triple) {
-    LLVMSetDataLayout(Pointer.getPeer(M), Pointer.getPeer(Triple));
-  }
-  protected native static void LLVMSetDataLayout(@Ptr long M, @Ptr long Triple);
-  public static Pointer<Byte > LLVMGetTarget(LLVM35svnLibrary.LLVMModuleRef M) {
-    return Pointer.pointerToAddress(LLVMGetTarget(Pointer.getPeer(M)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetTarget(@Ptr long M);
-  public static void LLVMSetTarget(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Triple) {
-    LLVMSetTarget(Pointer.getPeer(M), Pointer.getPeer(Triple));
-  }
-  protected native static void LLVMSetTarget(@Ptr long M, @Ptr long Triple);
-  public static void LLVMDumpModule(LLVM35svnLibrary.LLVMModuleRef M) {
-    LLVMDumpModule(Pointer.getPeer(M));
-  }
-  protected native static void LLVMDumpModule(@Ptr long M);
-  public static int LLVMPrintModuleToFile(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Filename, Pointer<Pointer<Byte > > ErrorMessage) {
-    return LLVMPrintModuleToFile(Pointer.getPeer(M), Pointer.getPeer(Filename), Pointer.getPeer(ErrorMessage));
-  }
-  protected native static int LLVMPrintModuleToFile(@Ptr long M, @Ptr long Filename, @Ptr long ErrorMessage);
-  public static Pointer<Byte > LLVMPrintModuleToString(LLVM35svnLibrary.LLVMModuleRef M) {
-    return Pointer.pointerToAddress(LLVMPrintModuleToString(Pointer.getPeer(M)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMPrintModuleToString(@Ptr long M);
-  public static void LLVMSetModuleInlineAsm(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Asm) {
-    LLVMSetModuleInlineAsm(Pointer.getPeer(M), Pointer.getPeer(Asm));
-  }
-  protected native static void LLVMSetModuleInlineAsm(@Ptr long M, @Ptr long Asm);
-  public static LLVM35svnLibrary.LLVMContextRef LLVMGetModuleContext(LLVM35svnLibrary.LLVMModuleRef M) {
-    return new LLVM35svnLibrary.LLVMContextRef(LLVMGetModuleContext(Pointer.getPeer(M)));
-  }
-  @Ptr 
-  protected native static long LLVMGetModuleContext(@Ptr long M);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMGetTypeByName(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMGetTypeByName(Pointer.getPeer(M), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMGetTypeByName(@Ptr long M, @Ptr long Name);
-  public static int LLVMGetNamedMetadataNumOperands(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > name) {
-    return LLVMGetNamedMetadataNumOperands(Pointer.getPeer(M), Pointer.getPeer(name));
-  }
-  protected native static int LLVMGetNamedMetadataNumOperands(@Ptr long M, @Ptr long name);
-  public static void LLVMGetNamedMetadataOperands(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > name, Pointer<LLVM35svnLibrary.LLVMValueRef > Dest) {
-    LLVMGetNamedMetadataOperands(Pointer.getPeer(M), Pointer.getPeer(name), Pointer.getPeer(Dest));
-  }
-  protected native static void LLVMGetNamedMetadataOperands(@Ptr long M, @Ptr long name, @Ptr long Dest);
-  public static void LLVMAddNamedMetadataOperand(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > name, LLVM35svnLibrary.LLVMValueRef Val) {
-    LLVMAddNamedMetadataOperand(Pointer.getPeer(M), Pointer.getPeer(name), Pointer.getPeer(Val));
-  }
-  protected native static void LLVMAddNamedMetadataOperand(@Ptr long M, @Ptr long name, @Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMAddFunction(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name, LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMAddFunction(Pointer.getPeer(M), Pointer.getPeer(Name), Pointer.getPeer(FunctionTy)));
-  }
-  @Ptr 
-  protected native static long LLVMAddFunction(@Ptr long M, @Ptr long Name, @Ptr long FunctionTy);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetNamedFunction(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNamedFunction(Pointer.getPeer(M), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNamedFunction(@Ptr long M, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstFunction(LLVM35svnLibrary.LLVMModuleRef M) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstFunction(Pointer.getPeer(M)));
-  }
-  @Ptr 
-  protected native static long LLVMGetFirstFunction(@Ptr long M);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastFunction(LLVM35svnLibrary.LLVMModuleRef M) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastFunction(Pointer.getPeer(M)));
-  }
-  @Ptr 
-  protected native static long LLVMGetLastFunction(@Ptr long M);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextFunction(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextFunction(Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNextFunction(@Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousFunction(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousFunction(Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMGetPreviousFunction(@Ptr long Fn);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMTypeKind > LLVMGetTypeKind(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return FlagSet.fromValue(LLVMGetTypeKind(Pointer.getPeer(Ty)), LLVM35svnLibrary.LLVMTypeKind.class);
-  }
-  protected native static int LLVMGetTypeKind(@Ptr long Ty);
-  public static int LLVMTypeIsSized(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return LLVMTypeIsSized(Pointer.getPeer(Ty));
-  }
-  protected native static int LLVMTypeIsSized(@Ptr long Ty);
-  public static LLVM35svnLibrary.LLVMContextRef LLVMGetTypeContext(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMContextRef(LLVMGetTypeContext(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMGetTypeContext(@Ptr long Ty);
-  public static void LLVMDumpType(LLVM35svnLibrary.LLVMTypeRef Val) {
-    LLVMDumpType(Pointer.getPeer(Val));
-  }
-  protected native static void LLVMDumpType(@Ptr long Val);
-  public static Pointer<Byte > LLVMPrintTypeToString(LLVM35svnLibrary.LLVMTypeRef Val) {
-    return Pointer.pointerToAddress(LLVMPrintTypeToString(Pointer.getPeer(Val)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMPrintTypeToString(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt1TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt1TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMInt1TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt8TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt8TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMInt8TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt16TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt16TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMInt16TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt32TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt32TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMInt32TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt64TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt64TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMInt64TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMIntTypeInContext(LLVM35svnLibrary.LLVMContextRef C, int NumBits) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntTypeInContext(Pointer.getPeer(C), NumBits));
-  }
-  @Ptr 
-  protected native static long LLVMIntTypeInContext(@Ptr long C, int NumBits);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt1Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt1Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMInt1Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt8Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt8Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMInt8Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt16Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt16Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMInt16Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt32Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt32Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMInt32Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMInt64Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt64Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMInt64Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMIntType(int NumBits) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntType$2(NumBits));
-  }
-  @Ptr 
-  protected native static long LLVMIntType$2(int NumBits);
-  public static int LLVMGetIntTypeWidth(LLVM35svnLibrary.LLVMTypeRef IntegerTy) {
-    return LLVMGetIntTypeWidth(Pointer.getPeer(IntegerTy));
-  }
-  protected native static int LLVMGetIntTypeWidth(@Ptr long IntegerTy);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMHalfTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMHalfTypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMHalfTypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMFloatTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMFloatTypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMFloatTypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMDoubleTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMDoubleTypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMDoubleTypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMX86FP80TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86FP80TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMX86FP80TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMFP128TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMFP128TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMFP128TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMPPCFP128TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMPPCFP128TypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMPPCFP128TypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMHalfType() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMHalfType$2());
-  }
-  @Ptr 
-  protected native static long LLVMHalfType$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMFloatType() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMFloatType$2());
-  }
-  @Ptr 
-  protected native static long LLVMFloatType$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMDoubleType() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMDoubleType$2());
-  }
-  @Ptr 
-  protected native static long LLVMDoubleType$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMX86FP80Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86FP80Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMX86FP80Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMFP128Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMFP128Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMFP128Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMPPCFP128Type() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMPPCFP128Type$2());
-  }
-  @Ptr 
-  protected native static long LLVMPPCFP128Type$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMFunctionType(LLVM35svnLibrary.LLVMTypeRef ReturnType, Pointer<LLVM35svnLibrary.LLVMTypeRef > ParamTypes, int ParamCount, int IsVarArg) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMFunctionType(Pointer.getPeer(ReturnType), Pointer.getPeer(ParamTypes), ParamCount, IsVarArg));
-  }
-  @Ptr 
-  protected native static long LLVMFunctionType(@Ptr long ReturnType, @Ptr long ParamTypes, int ParamCount, int IsVarArg);
-  public static int LLVMIsFunctionVarArg(LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
-    return LLVMIsFunctionVarArg(Pointer.getPeer(FunctionTy));
-  }
-  protected native static int LLVMIsFunctionVarArg(@Ptr long FunctionTy);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMGetReturnType(LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMGetReturnType(Pointer.getPeer(FunctionTy)));
-  }
-  @Ptr 
-  protected native static long LLVMGetReturnType(@Ptr long FunctionTy);
-  public static int LLVMCountParamTypes(LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
-    return LLVMCountParamTypes(Pointer.getPeer(FunctionTy));
-  }
-  protected native static int LLVMCountParamTypes(@Ptr long FunctionTy);
-  public static void LLVMGetParamTypes(LLVM35svnLibrary.LLVMTypeRef FunctionTy, Pointer<LLVM35svnLibrary.LLVMTypeRef > Dest) {
-    LLVMGetParamTypes(Pointer.getPeer(FunctionTy), Pointer.getPeer(Dest));
-  }
-  protected native static void LLVMGetParamTypes(@Ptr long FunctionTy, @Ptr long Dest);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMStructTypeInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<LLVM35svnLibrary.LLVMTypeRef > ElementTypes, int ElementCount, int Packed) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMStructTypeInContext(Pointer.getPeer(C), Pointer.getPeer(ElementTypes), ElementCount, Packed));
-  }
-  @Ptr 
-  protected native static long LLVMStructTypeInContext(@Ptr long C, @Ptr long ElementTypes, int ElementCount, int Packed);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMStructType(Pointer<LLVM35svnLibrary.LLVMTypeRef > ElementTypes, int ElementCount, int Packed) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMStructType(Pointer.getPeer(ElementTypes), ElementCount, Packed));
-  }
-  @Ptr 
-  protected native static long LLVMStructType(@Ptr long ElementTypes, int ElementCount, int Packed);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMStructCreateNamed(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMStructCreateNamed(Pointer.getPeer(C), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMStructCreateNamed(@Ptr long C, @Ptr long Name);
-  public static Pointer<Byte > LLVMGetStructName(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return Pointer.pointerToAddress(LLVMGetStructName(Pointer.getPeer(Ty)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetStructName(@Ptr long Ty);
-  public static void LLVMStructSetBody(LLVM35svnLibrary.LLVMTypeRef StructTy, Pointer<LLVM35svnLibrary.LLVMTypeRef > ElementTypes, int ElementCount, int Packed) {
-    LLVMStructSetBody(Pointer.getPeer(StructTy), Pointer.getPeer(ElementTypes), ElementCount, Packed);
-  }
-  protected native static void LLVMStructSetBody(@Ptr long StructTy, @Ptr long ElementTypes, int ElementCount, int Packed);
-  public static int LLVMCountStructElementTypes(LLVM35svnLibrary.LLVMTypeRef StructTy) {
-    return LLVMCountStructElementTypes(Pointer.getPeer(StructTy));
-  }
-  protected native static int LLVMCountStructElementTypes(@Ptr long StructTy);
-  public static void LLVMGetStructElementTypes(LLVM35svnLibrary.LLVMTypeRef StructTy, Pointer<LLVM35svnLibrary.LLVMTypeRef > Dest) {
-    LLVMGetStructElementTypes(Pointer.getPeer(StructTy), Pointer.getPeer(Dest));
-  }
-  protected native static void LLVMGetStructElementTypes(@Ptr long StructTy, @Ptr long Dest);
-  public static int LLVMIsPackedStruct(LLVM35svnLibrary.LLVMTypeRef StructTy) {
-    return LLVMIsPackedStruct(Pointer.getPeer(StructTy));
-  }
-  protected native static int LLVMIsPackedStruct(@Ptr long StructTy);
-  public static int LLVMIsOpaqueStruct(LLVM35svnLibrary.LLVMTypeRef StructTy) {
-    return LLVMIsOpaqueStruct(Pointer.getPeer(StructTy));
-  }
-  protected native static int LLVMIsOpaqueStruct(@Ptr long StructTy);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMGetElementType(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMGetElementType(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMGetElementType(@Ptr long Ty);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMArrayType(LLVM35svnLibrary.LLVMTypeRef ElementType, int ElementCount) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMArrayType(Pointer.getPeer(ElementType), ElementCount));
-  }
-  @Ptr 
-  protected native static long LLVMArrayType(@Ptr long ElementType, int ElementCount);
-  public static int LLVMGetArrayLength(LLVM35svnLibrary.LLVMTypeRef ArrayTy) {
-    return LLVMGetArrayLength(Pointer.getPeer(ArrayTy));
-  }
-  protected native static int LLVMGetArrayLength(@Ptr long ArrayTy);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMPointerType(LLVM35svnLibrary.LLVMTypeRef ElementType, int AddressSpace) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMPointerType(Pointer.getPeer(ElementType), AddressSpace));
-  }
-  @Ptr 
-  protected native static long LLVMPointerType(@Ptr long ElementType, int AddressSpace);
-  public static int LLVMGetPointerAddressSpace(LLVM35svnLibrary.LLVMTypeRef PointerTy) {
-    return LLVMGetPointerAddressSpace(Pointer.getPeer(PointerTy));
-  }
-  protected native static int LLVMGetPointerAddressSpace(@Ptr long PointerTy);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMVectorType(LLVM35svnLibrary.LLVMTypeRef ElementType, int ElementCount) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMVectorType(Pointer.getPeer(ElementType), ElementCount));
-  }
-  @Ptr 
-  protected native static long LLVMVectorType(@Ptr long ElementType, int ElementCount);
-  public static int LLVMGetVectorSize(LLVM35svnLibrary.LLVMTypeRef VectorTy) {
-    return LLVMGetVectorSize(Pointer.getPeer(VectorTy));
-  }
-  protected native static int LLVMGetVectorSize(@Ptr long VectorTy);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMVoidTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMVoidTypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMVoidTypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMLabelTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMLabelTypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMLabelTypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMX86MMXTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86MMXTypeInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMX86MMXTypeInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMVoidType() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMVoidType$2());
-  }
-  @Ptr 
-  protected native static long LLVMVoidType$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMLabelType() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMLabelType$2());
-  }
-  @Ptr 
-  protected native static long LLVMLabelType$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMX86MMXType() {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86MMXType$2());
-  }
-  @Ptr 
-  protected native static long LLVMX86MMXType$2();
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMTypeOf(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMTypeOf(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMTypeOf(@Ptr long Val);
-  public static Pointer<Byte > LLVMGetValueName(LLVM35svnLibrary.LLVMValueRef Val) {
-    return Pointer.pointerToAddress(LLVMGetValueName(Pointer.getPeer(Val)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetValueName(@Ptr long Val);
-  public static void LLVMSetValueName(LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
-    LLVMSetValueName(Pointer.getPeer(Val), Pointer.getPeer(Name));
-  }
-  protected native static void LLVMSetValueName(@Ptr long Val, @Ptr long Name);
-  public static void LLVMDumpValue(LLVM35svnLibrary.LLVMValueRef Val) {
-    LLVMDumpValue(Pointer.getPeer(Val));
-  }
-  protected native static void LLVMDumpValue(@Ptr long Val);
-  public static Pointer<Byte > LLVMPrintValueToString(LLVM35svnLibrary.LLVMValueRef Val) {
-    return Pointer.pointerToAddress(LLVMPrintValueToString(Pointer.getPeer(Val)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMPrintValueToString(@Ptr long Val);
-  public static void LLVMReplaceAllUsesWith(LLVM35svnLibrary.LLVMValueRef OldVal, LLVM35svnLibrary.LLVMValueRef NewVal) {
-    LLVMReplaceAllUsesWith(Pointer.getPeer(OldVal), Pointer.getPeer(NewVal));
-  }
-  protected native static void LLVMReplaceAllUsesWith(@Ptr long OldVal, @Ptr long NewVal);
-  public static int LLVMIsConstant(LLVM35svnLibrary.LLVMValueRef Val) {
-    return LLVMIsConstant(Pointer.getPeer(Val));
-  }
-  protected native static int LLVMIsConstant(@Ptr long Val);
-  public static int LLVMIsUndef(LLVM35svnLibrary.LLVMValueRef Val) {
-    return LLVMIsUndef(Pointer.getPeer(Val));
-  }
-  protected native static int LLVMIsUndef(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAArgument(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAArgument(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAArgument(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsABasicBlock(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABasicBlock(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsABasicBlock(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInlineAsm(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInlineAsm(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAInlineAsm(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMDNode(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMDNode(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAMDNode(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMDString(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMDString(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAMDString(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUser(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUser(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAUser(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstant(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstant(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstant(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsABlockAddress(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABlockAddress(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsABlockAddress(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantAggregateZero(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantAggregateZero(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantAggregateZero(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantArray(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantArray(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantArray(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantDataSequential(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantDataSequential(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantDataSequential(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantDataArray(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantDataArray(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantDataArray(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantDataVector(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantDataVector(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantDataVector(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantExpr(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantExpr(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantExpr(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantFP(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantFP(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantFP(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantInt(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantInt(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantInt(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantPointerNull(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantPointerNull(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantPointerNull(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantStruct(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantStruct(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantStruct(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantVector(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantVector(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAConstantVector(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGlobalValue(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGlobalValue(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAGlobalValue(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFunction(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFunction(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAFunction(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGlobalAlias(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGlobalAlias(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAGlobalAlias(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGlobalVariable(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGlobalVariable(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAGlobalVariable(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUndefValue(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUndefValue(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAUndefValue(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInstruction(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInstruction(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAInstruction(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsABinaryOperator(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABinaryOperator(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsABinaryOperator(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsACallInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsACallInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsACallInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAIntrinsicInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAIntrinsicInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAIntrinsicInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsADbgInfoIntrinsic(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsADbgInfoIntrinsic(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsADbgInfoIntrinsic(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsADbgDeclareInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsADbgDeclareInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsADbgDeclareInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemIntrinsic(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemIntrinsic(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAMemIntrinsic(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemCpyInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemCpyInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAMemCpyInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemMoveInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemMoveInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAMemMoveInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemSetInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemSetInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAMemSetInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsACmpInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsACmpInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsACmpInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFCmpInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFCmpInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAFCmpInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAICmpInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAICmpInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAICmpInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAExtractElementInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAExtractElementInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAExtractElementInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGetElementPtrInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGetElementPtrInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAGetElementPtrInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInsertElementInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInsertElementInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAInsertElementInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInsertValueInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInsertValueInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAInsertValueInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsALandingPadInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsALandingPadInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsALandingPadInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAPHINode(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAPHINode(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAPHINode(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsASelectInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASelectInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsASelectInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAShuffleVectorInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAShuffleVectorInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAShuffleVectorInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAStoreInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAStoreInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAStoreInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsATerminatorInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsATerminatorInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsATerminatorInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsABranchInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABranchInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsABranchInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAIndirectBrInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAIndirectBrInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAIndirectBrInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInvokeInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInvokeInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAInvokeInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAReturnInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAReturnInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAReturnInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsASwitchInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASwitchInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsASwitchInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUnreachableInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUnreachableInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAUnreachableInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAResumeInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAResumeInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAResumeInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUnaryInstruction(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUnaryInstruction(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAUnaryInstruction(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAAllocaInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAAllocaInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAAllocaInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsACastInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsACastInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsACastInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAAddrSpaceCastInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAAddrSpaceCastInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAAddrSpaceCastInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsABitCastInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABitCastInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsABitCastInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPExtInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPExtInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAFPExtInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPToSIInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPToSIInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAFPToSIInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPToUIInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPToUIInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAFPToUIInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPTruncInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPTruncInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAFPTruncInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAIntToPtrInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAIntToPtrInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAIntToPtrInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAPtrToIntInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAPtrToIntInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAPtrToIntInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsASExtInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASExtInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsASExtInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsASIToFPInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASIToFPInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsASIToFPInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsATruncInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsATruncInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsATruncInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUIToFPInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUIToFPInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAUIToFPInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAZExtInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAZExtInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAZExtInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAExtractValueInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAExtractValueInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAExtractValueInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsALoadInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsALoadInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsALoadInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMIsAVAArgInst(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAVAArgInst(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMIsAVAArgInst(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMUseRef LLVMGetFirstUse(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMUseRef(LLVMGetFirstUse(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMGetFirstUse(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMUseRef LLVMGetNextUse(LLVM35svnLibrary.LLVMUseRef U) {
-    return new LLVM35svnLibrary.LLVMUseRef(LLVMGetNextUse(Pointer.getPeer(U)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNextUse(@Ptr long U);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetUser(LLVM35svnLibrary.LLVMUseRef U) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetUser(Pointer.getPeer(U)));
-  }
-  @Ptr 
-  protected native static long LLVMGetUser(@Ptr long U);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetUsedValue(LLVM35svnLibrary.LLVMUseRef U) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetUsedValue(Pointer.getPeer(U)));
-  }
-  @Ptr 
-  protected native static long LLVMGetUsedValue(@Ptr long U);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetOperand(LLVM35svnLibrary.LLVMValueRef Val, int Index) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetOperand(Pointer.getPeer(Val), Index));
-  }
-  @Ptr 
-  protected native static long LLVMGetOperand(@Ptr long Val, int Index);
-  public static void LLVMSetOperand(LLVM35svnLibrary.LLVMValueRef User, int Index, LLVM35svnLibrary.LLVMValueRef Val) {
-    LLVMSetOperand(Pointer.getPeer(User), Index, Pointer.getPeer(Val));
-  }
-  protected native static void LLVMSetOperand(@Ptr long User, int Index, @Ptr long Val);
-  public static int LLVMGetNumOperands(LLVM35svnLibrary.LLVMValueRef Val) {
-    return LLVMGetNumOperands(Pointer.getPeer(Val));
-  }
-  protected native static int LLVMGetNumOperands(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNull(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNull(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNull(@Ptr long Ty);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstAllOnes(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAllOnes(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMConstAllOnes(@Ptr long Ty);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetUndef(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetUndef(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMGetUndef(@Ptr long Ty);
-  public static int LLVMIsNull(LLVM35svnLibrary.LLVMValueRef Val) {
-    return LLVMIsNull(Pointer.getPeer(Val));
-  }
-  protected native static int LLVMIsNull(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstPointerNull(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstPointerNull(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMConstPointerNull(@Ptr long Ty);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstInt(LLVM35svnLibrary.LLVMTypeRef IntTy, long N, int SignExtend) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInt(Pointer.getPeer(IntTy), N, SignExtend));
-  }
-  @Ptr 
-  protected native static long LLVMConstInt(@Ptr long IntTy, long N, int SignExtend);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntOfArbitraryPrecision(LLVM35svnLibrary.LLVMTypeRef IntTy, int NumWords, Pointer<Long > Words) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntOfArbitraryPrecision(Pointer.getPeer(IntTy), NumWords, Pointer.getPeer(Words)));
-  }
-  @Ptr 
-  protected native static long LLVMConstIntOfArbitraryPrecision(@Ptr long IntTy, int NumWords, @Ptr long Words);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntOfString(LLVM35svnLibrary.LLVMTypeRef IntTy, Pointer<Byte > Text, byte Radix) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntOfString(Pointer.getPeer(IntTy), Pointer.getPeer(Text), Radix));
-  }
-  @Ptr 
-  protected native static long LLVMConstIntOfString(@Ptr long IntTy, @Ptr long Text, byte Radix);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntOfStringAndSize(LLVM35svnLibrary.LLVMTypeRef IntTy, Pointer<Byte > Text, int SLen, byte Radix) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntOfStringAndSize(Pointer.getPeer(IntTy), Pointer.getPeer(Text), SLen, Radix));
-  }
-  @Ptr 
-  protected native static long LLVMConstIntOfStringAndSize(@Ptr long IntTy, @Ptr long Text, int SLen, byte Radix);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstReal(LLVM35svnLibrary.LLVMTypeRef RealTy, double N) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstReal(Pointer.getPeer(RealTy), N));
-  }
-  @Ptr 
-  protected native static long LLVMConstReal(@Ptr long RealTy, double N);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstRealOfString(LLVM35svnLibrary.LLVMTypeRef RealTy, Pointer<Byte > Text) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstRealOfString(Pointer.getPeer(RealTy), Pointer.getPeer(Text)));
-  }
-  @Ptr 
-  protected native static long LLVMConstRealOfString(@Ptr long RealTy, @Ptr long Text);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstRealOfStringAndSize(LLVM35svnLibrary.LLVMTypeRef RealTy, Pointer<Byte > Text, int SLen) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstRealOfStringAndSize(Pointer.getPeer(RealTy), Pointer.getPeer(Text), SLen));
-  }
-  @Ptr 
-  protected native static long LLVMConstRealOfStringAndSize(@Ptr long RealTy, @Ptr long Text, int SLen);
-  public static long LLVMConstIntGetZExtValue(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return LLVMConstIntGetZExtValue(Pointer.getPeer(ConstantVal));
-  }
-  protected native static long LLVMConstIntGetZExtValue(@Ptr long ConstantVal);
-  public static long LLVMConstIntGetSExtValue(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return LLVMConstIntGetSExtValue(Pointer.getPeer(ConstantVal));
-  }
-  protected native static long LLVMConstIntGetSExtValue(@Ptr long ConstantVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstStringInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Str, int Length, int DontNullTerminate) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstStringInContext(Pointer.getPeer(C), Pointer.getPeer(Str), Length, DontNullTerminate));
-  }
-  @Ptr 
-  protected native static long LLVMConstStringInContext(@Ptr long C, @Ptr long Str, int Length, int DontNullTerminate);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstString(Pointer<Byte > Str, int Length, int DontNullTerminate) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstString(Pointer.getPeer(Str), Length, DontNullTerminate));
-  }
-  @Ptr 
-  protected native static long LLVMConstString(@Ptr long Str, int Length, int DontNullTerminate);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstStructInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Count, int Packed) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstStructInContext(Pointer.getPeer(C), Pointer.getPeer(ConstantVals), Count, Packed));
-  }
-  @Ptr 
-  protected native static long LLVMConstStructInContext(@Ptr long C, @Ptr long ConstantVals, int Count, int Packed);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstStruct(Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Count, int Packed) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstStruct(Pointer.getPeer(ConstantVals), Count, Packed));
-  }
-  @Ptr 
-  protected native static long LLVMConstStruct(@Ptr long ConstantVals, int Count, int Packed);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstArray(LLVM35svnLibrary.LLVMTypeRef ElementTy, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Length) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstArray(Pointer.getPeer(ElementTy), Pointer.getPeer(ConstantVals), Length));
-  }
-  @Ptr 
-  protected native static long LLVMConstArray(@Ptr long ElementTy, @Ptr long ConstantVals, int Length);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNamedStruct(LLVM35svnLibrary.LLVMTypeRef StructTy, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Count) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNamedStruct(Pointer.getPeer(StructTy), Pointer.getPeer(ConstantVals), Count));
-  }
-  @Ptr 
-  protected native static long LLVMConstNamedStruct(@Ptr long StructTy, @Ptr long ConstantVals, int Count);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstVector(Pointer<LLVM35svnLibrary.LLVMValueRef > ScalarConstantVals, int Size) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstVector(Pointer.getPeer(ScalarConstantVals), Size));
-  }
-  @Ptr 
-  protected native static long LLVMConstVector(@Ptr long ScalarConstantVals, int Size);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > LLVMGetConstOpcode(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return FlagSet.fromValue(LLVMGetConstOpcode(Pointer.getPeer(ConstantVal)), LLVM35svnLibrary.LLVMOpcode.class);
-  }
-  protected native static int LLVMGetConstOpcode(@Ptr long ConstantVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMAlignOf(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMAlignOf(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMAlignOf(@Ptr long Ty);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMSizeOf(LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMSizeOf(Pointer.getPeer(Ty)));
-  }
-  @Ptr 
-  protected native static long LLVMSizeOf(@Ptr long Ty);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNeg(Pointer.getPeer(ConstantVal)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNeg(@Ptr long ConstantVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWNeg(Pointer.getPeer(ConstantVal)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNSWNeg(@Ptr long ConstantVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWNeg(Pointer.getPeer(ConstantVal)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNUWNeg(@Ptr long ConstantVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFNeg(Pointer.getPeer(ConstantVal)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFNeg(@Ptr long ConstantVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNot(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNot(Pointer.getPeer(ConstantVal)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNot(@Ptr long ConstantVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNSWAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNUWAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNSWSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNUWSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNSWMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstNUWMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstUDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstUDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstUDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstSDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstSDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstExactSDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstExactSDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstExactSDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstURem(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstURem(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstURem(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstSRem(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSRem(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstSRem(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFRem(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFRem(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFRem(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstAnd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAnd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstAnd(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstOr(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstOr(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstOr(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstXor(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstXor(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstXor(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstICmp(IntValuedEnum<LLVM35svnLibrary.LLVMIntPredicate > Predicate, LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstICmp((int)Predicate.value(), Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstICmp(int Predicate, @Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFCmp(IntValuedEnum<LLVM35svnLibrary.LLVMRealPredicate > Predicate, LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFCmp((int)Predicate.value(), Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFCmp(int Predicate, @Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstShl(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstShl(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstShl(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstLShr(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstLShr(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstLShr(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstAShr(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAShr(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstAShr(@Ptr long LHSConstant, @Ptr long RHSConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstGEP(LLVM35svnLibrary.LLVMValueRef ConstantVal, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantIndices, int NumIndices) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstGEP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ConstantIndices), NumIndices));
-  }
-  @Ptr 
-  protected native static long LLVMConstGEP(@Ptr long ConstantVal, @Ptr long ConstantIndices, int NumIndices);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstInBoundsGEP(LLVM35svnLibrary.LLVMValueRef ConstantVal, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantIndices, int NumIndices) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInBoundsGEP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ConstantIndices), NumIndices));
-  }
-  @Ptr 
-  protected native static long LLVMConstInBoundsGEP(@Ptr long ConstantVal, @Ptr long ConstantIndices, int NumIndices);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstTrunc(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstTrunc(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstTrunc(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstSExt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSExt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstSExt(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstZExt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstZExt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstZExt(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPTrunc(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPTrunc(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFPTrunc(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPExt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPExt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFPExt(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstUIToFP(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstUIToFP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstUIToFP(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstSIToFP(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSIToFP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstSIToFP(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPToUI(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPToUI(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFPToUI(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPToSI(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPToSI(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFPToSI(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstPtrToInt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstPtrToInt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstPtrToInt(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntToPtr(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntToPtr(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstIntToPtr(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstBitCast(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstAddrSpaceCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAddrSpaceCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstAddrSpaceCast(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstZExtOrBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstZExtOrBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstZExtOrBitCast(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstSExtOrBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSExtOrBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstSExtOrBitCast(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstTruncOrBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstTruncOrBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstTruncOrBitCast(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstPointerCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstPointerCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstPointerCast(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType, int isSigned) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType), isSigned));
-  }
-  @Ptr 
-  protected native static long LLVMConstIntCast(@Ptr long ConstantVal, @Ptr long ToType, int isSigned);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
-  }
-  @Ptr 
-  protected native static long LLVMConstFPCast(@Ptr long ConstantVal, @Ptr long ToType);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstSelect(LLVM35svnLibrary.LLVMValueRef ConstantCondition, LLVM35svnLibrary.LLVMValueRef ConstantIfTrue, LLVM35svnLibrary.LLVMValueRef ConstantIfFalse) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSelect(Pointer.getPeer(ConstantCondition), Pointer.getPeer(ConstantIfTrue), Pointer.getPeer(ConstantIfFalse)));
-  }
-  @Ptr 
-  protected native static long LLVMConstSelect(@Ptr long ConstantCondition, @Ptr long ConstantIfTrue, @Ptr long ConstantIfFalse);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstExtractElement(LLVM35svnLibrary.LLVMValueRef VectorConstant, LLVM35svnLibrary.LLVMValueRef IndexConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstExtractElement(Pointer.getPeer(VectorConstant), Pointer.getPeer(IndexConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstExtractElement(@Ptr long VectorConstant, @Ptr long IndexConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstInsertElement(LLVM35svnLibrary.LLVMValueRef VectorConstant, LLVM35svnLibrary.LLVMValueRef ElementValueConstant, LLVM35svnLibrary.LLVMValueRef IndexConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInsertElement(Pointer.getPeer(VectorConstant), Pointer.getPeer(ElementValueConstant), Pointer.getPeer(IndexConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstInsertElement(@Ptr long VectorConstant, @Ptr long ElementValueConstant, @Ptr long IndexConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstShuffleVector(LLVM35svnLibrary.LLVMValueRef VectorAConstant, LLVM35svnLibrary.LLVMValueRef VectorBConstant, LLVM35svnLibrary.LLVMValueRef MaskConstant) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstShuffleVector(Pointer.getPeer(VectorAConstant), Pointer.getPeer(VectorBConstant), Pointer.getPeer(MaskConstant)));
-  }
-  @Ptr 
-  protected native static long LLVMConstShuffleVector(@Ptr long VectorAConstant, @Ptr long VectorBConstant, @Ptr long MaskConstant);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstExtractValue(LLVM35svnLibrary.LLVMValueRef AggConstant, Pointer<Integer > IdxList, int NumIdx) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstExtractValue(Pointer.getPeer(AggConstant), Pointer.getPeer(IdxList), NumIdx));
-  }
-  @Ptr 
-  protected native static long LLVMConstExtractValue(@Ptr long AggConstant, @Ptr long IdxList, int NumIdx);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstInsertValue(LLVM35svnLibrary.LLVMValueRef AggConstant, LLVM35svnLibrary.LLVMValueRef ElementValueConstant, Pointer<Integer > IdxList, int NumIdx) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInsertValue(Pointer.getPeer(AggConstant), Pointer.getPeer(ElementValueConstant), Pointer.getPeer(IdxList), NumIdx));
-  }
-  @Ptr 
-  protected native static long LLVMConstInsertValue(@Ptr long AggConstant, @Ptr long ElementValueConstant, @Ptr long IdxList, int NumIdx);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMConstInlineAsm(LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > AsmString, Pointer<Byte > Constraints, int HasSideEffects, int IsAlignStack) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInlineAsm(Pointer.getPeer(Ty), Pointer.getPeer(AsmString), Pointer.getPeer(Constraints), HasSideEffects, IsAlignStack));
-  }
-  @Ptr 
-  protected native static long LLVMConstInlineAsm(@Ptr long Ty, @Ptr long AsmString, @Ptr long Constraints, int HasSideEffects, int IsAlignStack);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBlockAddress(LLVM35svnLibrary.LLVMValueRef F, LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBlockAddress(Pointer.getPeer(F), Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMBlockAddress(@Ptr long F, @Ptr long BB);
-  public static LLVM35svnLibrary.LLVMModuleRef LLVMGetGlobalParent(LLVM35svnLibrary.LLVMValueRef Global) {
-    return new LLVM35svnLibrary.LLVMModuleRef(LLVMGetGlobalParent(Pointer.getPeer(Global)));
-  }
-  @Ptr 
-  protected native static long LLVMGetGlobalParent(@Ptr long Global);
-  public static int LLVMIsDeclaration(LLVM35svnLibrary.LLVMValueRef Global) {
-    return LLVMIsDeclaration(Pointer.getPeer(Global));
-  }
-  protected native static int LLVMIsDeclaration(@Ptr long Global);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMLinkage > LLVMGetLinkage(LLVM35svnLibrary.LLVMValueRef Global) {
-    return FlagSet.fromValue(LLVMGetLinkage(Pointer.getPeer(Global)), LLVM35svnLibrary.LLVMLinkage.class);
-  }
-  protected native static int LLVMGetLinkage(@Ptr long Global);
-  public static void LLVMSetLinkage(LLVM35svnLibrary.LLVMValueRef Global, IntValuedEnum<LLVM35svnLibrary.LLVMLinkage > Linkage) {
-    LLVMSetLinkage(Pointer.getPeer(Global), (int)Linkage.value());
-  }
-  protected native static void LLVMSetLinkage(@Ptr long Global, int Linkage);
-  public static Pointer<Byte > LLVMGetSection(LLVM35svnLibrary.LLVMValueRef Global) {
-    return Pointer.pointerToAddress(LLVMGetSection(Pointer.getPeer(Global)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetSection(@Ptr long Global);
-  public static void LLVMSetSection(LLVM35svnLibrary.LLVMValueRef Global, Pointer<Byte > Section) {
-    LLVMSetSection(Pointer.getPeer(Global), Pointer.getPeer(Section));
-  }
-  protected native static void LLVMSetSection(@Ptr long Global, @Ptr long Section);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMVisibility > LLVMGetVisibility(LLVM35svnLibrary.LLVMValueRef Global) {
-    return FlagSet.fromValue(LLVMGetVisibility(Pointer.getPeer(Global)), LLVM35svnLibrary.LLVMVisibility.class);
-  }
-  protected native static int LLVMGetVisibility(@Ptr long Global);
-  public static void LLVMSetVisibility(LLVM35svnLibrary.LLVMValueRef Global, IntValuedEnum<LLVM35svnLibrary.LLVMVisibility > Viz) {
-    LLVMSetVisibility(Pointer.getPeer(Global), (int)Viz.value());
-  }
-  protected native static void LLVMSetVisibility(@Ptr long Global, int Viz);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMDLLStorageClass > LLVMGetDLLStorageClass(LLVM35svnLibrary.LLVMValueRef Global) {
-    return FlagSet.fromValue(LLVMGetDLLStorageClass(Pointer.getPeer(Global)), LLVM35svnLibrary.LLVMDLLStorageClass.class);
-  }
-  protected native static int LLVMGetDLLStorageClass(@Ptr long Global);
-  public static void LLVMSetDLLStorageClass(LLVM35svnLibrary.LLVMValueRef Global, IntValuedEnum<LLVM35svnLibrary.LLVMDLLStorageClass > Class) {
-    LLVMSetDLLStorageClass(Pointer.getPeer(Global), (int)Class.value());
-  }
-  protected native static void LLVMSetDLLStorageClass(@Ptr long Global, int Class);
-  public static int LLVMHasUnnamedAddr(LLVM35svnLibrary.LLVMValueRef Global) {
-    return LLVMHasUnnamedAddr(Pointer.getPeer(Global));
-  }
-  protected native static int LLVMHasUnnamedAddr(@Ptr long Global);
-  public static void LLVMSetUnnamedAddr(LLVM35svnLibrary.LLVMValueRef Global, int HasUnnamedAddr) {
-    LLVMSetUnnamedAddr(Pointer.getPeer(Global), HasUnnamedAddr);
-  }
-  protected native static void LLVMSetUnnamedAddr(@Ptr long Global, int HasUnnamedAddr);
-  public static int LLVMGetAlignment(LLVM35svnLibrary.LLVMValueRef V) {
-    return LLVMGetAlignment(Pointer.getPeer(V));
-  }
-  protected native static int LLVMGetAlignment(@Ptr long V);
-  public static void LLVMSetAlignment(LLVM35svnLibrary.LLVMValueRef V, int Bytes) {
-    LLVMSetAlignment(Pointer.getPeer(V), Bytes);
-  }
-  protected native static void LLVMSetAlignment(@Ptr long V, int Bytes);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMAddGlobal(LLVM35svnLibrary.LLVMModuleRef M, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMAddGlobal(Pointer.getPeer(M), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMAddGlobal(@Ptr long M, @Ptr long Ty, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMAddGlobalInAddressSpace(LLVM35svnLibrary.LLVMModuleRef M, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name, int AddressSpace) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMAddGlobalInAddressSpace(Pointer.getPeer(M), Pointer.getPeer(Ty), Pointer.getPeer(Name), AddressSpace));
-  }
-  @Ptr 
-  protected native static long LLVMAddGlobalInAddressSpace(@Ptr long M, @Ptr long Ty, @Ptr long Name, int AddressSpace);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetNamedGlobal(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNamedGlobal(Pointer.getPeer(M), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNamedGlobal(@Ptr long M, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstGlobal(LLVM35svnLibrary.LLVMModuleRef M) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstGlobal(Pointer.getPeer(M)));
-  }
-  @Ptr 
-  protected native static long LLVMGetFirstGlobal(@Ptr long M);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastGlobal(LLVM35svnLibrary.LLVMModuleRef M) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastGlobal(Pointer.getPeer(M)));
-  }
-  @Ptr 
-  protected native static long LLVMGetLastGlobal(@Ptr long M);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextGlobal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextGlobal(Pointer.getPeer(GlobalVar)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNextGlobal(@Ptr long GlobalVar);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousGlobal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousGlobal(Pointer.getPeer(GlobalVar)));
-  }
-  @Ptr 
-  protected native static long LLVMGetPreviousGlobal(@Ptr long GlobalVar);
-  public static void LLVMDeleteGlobal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    LLVMDeleteGlobal(Pointer.getPeer(GlobalVar));
-  }
-  protected native static void LLVMDeleteGlobal(@Ptr long GlobalVar);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetInitializer(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetInitializer(Pointer.getPeer(GlobalVar)));
-  }
-  @Ptr 
-  protected native static long LLVMGetInitializer(@Ptr long GlobalVar);
-  public static void LLVMSetInitializer(LLVM35svnLibrary.LLVMValueRef GlobalVar, LLVM35svnLibrary.LLVMValueRef ConstantVal) {
-    LLVMSetInitializer(Pointer.getPeer(GlobalVar), Pointer.getPeer(ConstantVal));
-  }
-  protected native static void LLVMSetInitializer(@Ptr long GlobalVar, @Ptr long ConstantVal);
-  public static int LLVMIsThreadLocal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return LLVMIsThreadLocal(Pointer.getPeer(GlobalVar));
-  }
-  protected native static int LLVMIsThreadLocal(@Ptr long GlobalVar);
-  public static void LLVMSetThreadLocal(LLVM35svnLibrary.LLVMValueRef GlobalVar, int IsThreadLocal) {
-    LLVMSetThreadLocal(Pointer.getPeer(GlobalVar), IsThreadLocal);
-  }
-  protected native static void LLVMSetThreadLocal(@Ptr long GlobalVar, int IsThreadLocal);
-  public static int LLVMIsGlobalConstant(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return LLVMIsGlobalConstant(Pointer.getPeer(GlobalVar));
-  }
-  protected native static int LLVMIsGlobalConstant(@Ptr long GlobalVar);
-  public static void LLVMSetGlobalConstant(LLVM35svnLibrary.LLVMValueRef GlobalVar, int IsConstant) {
-    LLVMSetGlobalConstant(Pointer.getPeer(GlobalVar), IsConstant);
-  }
-  protected native static void LLVMSetGlobalConstant(@Ptr long GlobalVar, int IsConstant);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMThreadLocalMode > LLVMGetThreadLocalMode(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return FlagSet.fromValue(LLVMGetThreadLocalMode(Pointer.getPeer(GlobalVar)), LLVM35svnLibrary.LLVMThreadLocalMode.class);
-  }
-  protected native static int LLVMGetThreadLocalMode(@Ptr long GlobalVar);
-  public static void LLVMSetThreadLocalMode(LLVM35svnLibrary.LLVMValueRef GlobalVar, IntValuedEnum<LLVM35svnLibrary.LLVMThreadLocalMode > Mode) {
-    LLVMSetThreadLocalMode(Pointer.getPeer(GlobalVar), (int)Mode.value());
-  }
-  protected native static void LLVMSetThreadLocalMode(@Ptr long GlobalVar, int Mode);
-  public static int LLVMIsExternallyInitialized(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return LLVMIsExternallyInitialized(Pointer.getPeer(GlobalVar));
-  }
-  protected native static int LLVMIsExternallyInitialized(@Ptr long GlobalVar);
-  public static void LLVMSetExternallyInitialized(LLVM35svnLibrary.LLVMValueRef GlobalVar, int IsExtInit) {
-    LLVMSetExternallyInitialized(Pointer.getPeer(GlobalVar), IsExtInit);
-  }
-  protected native static void LLVMSetExternallyInitialized(@Ptr long GlobalVar, int IsExtInit);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMAddAlias(LLVM35svnLibrary.LLVMModuleRef M, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef Aliasee, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMAddAlias(Pointer.getPeer(M), Pointer.getPeer(Ty), Pointer.getPeer(Aliasee), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMAddAlias(@Ptr long M, @Ptr long Ty, @Ptr long Aliasee, @Ptr long Name);
-  public static void LLVMDeleteFunction(LLVM35svnLibrary.LLVMValueRef Fn) {
-    LLVMDeleteFunction(Pointer.getPeer(Fn));
-  }
-  protected native static void LLVMDeleteFunction(@Ptr long Fn);
-  public static int LLVMGetIntrinsicID(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return LLVMGetIntrinsicID(Pointer.getPeer(Fn));
-  }
-  protected native static int LLVMGetIntrinsicID(@Ptr long Fn);
-  public static int LLVMGetFunctionCallConv(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return LLVMGetFunctionCallConv(Pointer.getPeer(Fn));
-  }
-  protected native static int LLVMGetFunctionCallConv(@Ptr long Fn);
-  public static void LLVMSetFunctionCallConv(LLVM35svnLibrary.LLVMValueRef Fn, int CC) {
-    LLVMSetFunctionCallConv(Pointer.getPeer(Fn), CC);
-  }
-  protected native static void LLVMSetFunctionCallConv(@Ptr long Fn, int CC);
-  public static Pointer<Byte > LLVMGetGC(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return Pointer.pointerToAddress(LLVMGetGC(Pointer.getPeer(Fn)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetGC(@Ptr long Fn);
-  public static void LLVMSetGC(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > Name) {
-    LLVMSetGC(Pointer.getPeer(Fn), Pointer.getPeer(Name));
-  }
-  protected native static void LLVMSetGC(@Ptr long Fn, @Ptr long Name);
-  public static void LLVMAddFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
-    LLVMAddFunctionAttr(Pointer.getPeer(Fn), (int)PA.value());
-  }
-  protected native static void LLVMAddFunctionAttr(@Ptr long Fn, int PA);
-  public static void LLVMAddTargetDependentFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > A, Pointer<Byte > V) {
-    LLVMAddTargetDependentFunctionAttr(Pointer.getPeer(Fn), Pointer.getPeer(A), Pointer.getPeer(V));
-  }
-  protected native static void LLVMAddTargetDependentFunctionAttr(@Ptr long Fn, @Ptr long A, @Ptr long V);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMGetFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return FlagSet.fromValue(LLVMGetFunctionAttr(Pointer.getPeer(Fn)), LLVM35svnLibrary.LLVMAttribute.class);
-  }
-  protected native static int LLVMGetFunctionAttr(@Ptr long Fn);
-  public static void LLVMRemoveFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
-    LLVMRemoveFunctionAttr(Pointer.getPeer(Fn), (int)PA.value());
-  }
-  protected native static void LLVMRemoveFunctionAttr(@Ptr long Fn, int PA);
-  public static int LLVMCountParams(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return LLVMCountParams(Pointer.getPeer(Fn));
-  }
-  protected native static int LLVMCountParams(@Ptr long Fn);
-  public static void LLVMGetParams(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMValueRef > Params) {
-    LLVMGetParams(Pointer.getPeer(Fn), Pointer.getPeer(Params));
-  }
-  protected native static void LLVMGetParams(@Ptr long Fn, @Ptr long Params);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetParam(LLVM35svnLibrary.LLVMValueRef Fn, int Index) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetParam(Pointer.getPeer(Fn), Index));
-  }
-  @Ptr 
-  protected native static long LLVMGetParam(@Ptr long Fn, int Index);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetParamParent(LLVM35svnLibrary.LLVMValueRef Inst) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetParamParent(Pointer.getPeer(Inst)));
-  }
-  @Ptr 
-  protected native static long LLVMGetParamParent(@Ptr long Inst);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstParam(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstParam(Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMGetFirstParam(@Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastParam(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastParam(Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMGetLastParam(@Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextParam(LLVM35svnLibrary.LLVMValueRef Arg) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextParam(Pointer.getPeer(Arg)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNextParam(@Ptr long Arg);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousParam(LLVM35svnLibrary.LLVMValueRef Arg) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousParam(Pointer.getPeer(Arg)));
-  }
-  @Ptr 
-  protected native static long LLVMGetPreviousParam(@Ptr long Arg);
-  public static void LLVMAddAttribute(LLVM35svnLibrary.LLVMValueRef Arg, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
-    LLVMAddAttribute(Pointer.getPeer(Arg), (int)PA.value());
-  }
-  protected native static void LLVMAddAttribute(@Ptr long Arg, int PA);
-  public static void LLVMRemoveAttribute(LLVM35svnLibrary.LLVMValueRef Arg, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
-    LLVMRemoveAttribute(Pointer.getPeer(Arg), (int)PA.value());
-  }
-  protected native static void LLVMRemoveAttribute(@Ptr long Arg, int PA);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMGetAttribute(LLVM35svnLibrary.LLVMValueRef Arg) {
-    return FlagSet.fromValue(LLVMGetAttribute(Pointer.getPeer(Arg)), LLVM35svnLibrary.LLVMAttribute.class);
-  }
-  protected native static int LLVMGetAttribute(@Ptr long Arg);
-  public static void LLVMSetParamAlignment(LLVM35svnLibrary.LLVMValueRef Arg, int align) {
-    LLVMSetParamAlignment(Pointer.getPeer(Arg), align);
-  }
-  protected native static void LLVMSetParamAlignment(@Ptr long Arg, int align);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMMDStringInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Str, int SLen) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMMDStringInContext(Pointer.getPeer(C), Pointer.getPeer(Str), SLen));
-  }
-  @Ptr 
-  protected native static long LLVMMDStringInContext(@Ptr long C, @Ptr long Str, int SLen);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMMDString(Pointer<Byte > Str, int SLen) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMMDString(Pointer.getPeer(Str), SLen));
-  }
-  @Ptr 
-  protected native static long LLVMMDString(@Ptr long Str, int SLen);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMMDNodeInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<LLVM35svnLibrary.LLVMValueRef > Vals, int Count) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMMDNodeInContext(Pointer.getPeer(C), Pointer.getPeer(Vals), Count));
-  }
-  @Ptr 
-  protected native static long LLVMMDNodeInContext(@Ptr long C, @Ptr long Vals, int Count);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMMDNode(Pointer<LLVM35svnLibrary.LLVMValueRef > Vals, int Count) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMMDNode(Pointer.getPeer(Vals), Count));
-  }
-  @Ptr 
-  protected native static long LLVMMDNode(@Ptr long Vals, int Count);
-  public static Pointer<Byte > LLVMGetMDString(LLVM35svnLibrary.LLVMValueRef V, Pointer<Integer > Len) {
-    return Pointer.pointerToAddress(LLVMGetMDString(Pointer.getPeer(V), Pointer.getPeer(Len)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetMDString(@Ptr long V, @Ptr long Len);
-  public static int LLVMGetMDNodeNumOperands(LLVM35svnLibrary.LLVMValueRef V) {
-    return LLVMGetMDNodeNumOperands(Pointer.getPeer(V));
-  }
-  protected native static int LLVMGetMDNodeNumOperands(@Ptr long V);
-  public static void LLVMGetMDNodeOperands(LLVM35svnLibrary.LLVMValueRef V, Pointer<LLVM35svnLibrary.LLVMValueRef > Dest) {
-    LLVMGetMDNodeOperands(Pointer.getPeer(V), Pointer.getPeer(Dest));
-  }
-  protected native static void LLVMGetMDNodeOperands(@Ptr long V, @Ptr long Dest);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBasicBlockAsValue(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBasicBlockAsValue(Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMBasicBlockAsValue(@Ptr long BB);
-  public static int LLVMValueIsBasicBlock(LLVM35svnLibrary.LLVMValueRef Val) {
-    return LLVMValueIsBasicBlock(Pointer.getPeer(Val));
-  }
-  protected native static int LLVMValueIsBasicBlock(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMValueAsBasicBlock(LLVM35svnLibrary.LLVMValueRef Val) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMValueAsBasicBlock(Pointer.getPeer(Val)));
-  }
-  @Ptr 
-  protected native static long LLVMValueAsBasicBlock(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetBasicBlockParent(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetBasicBlockParent(Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMGetBasicBlockParent(@Ptr long BB);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetBasicBlockTerminator(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetBasicBlockTerminator(Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMGetBasicBlockTerminator(@Ptr long BB);
-  public static int LLVMCountBasicBlocks(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return LLVMCountBasicBlocks(Pointer.getPeer(Fn));
-  }
-  protected native static int LLVMCountBasicBlocks(@Ptr long Fn);
-  public static void LLVMGetBasicBlocks(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMBasicBlockRef > BasicBlocks) {
-    LLVMGetBasicBlocks(Pointer.getPeer(Fn), Pointer.getPeer(BasicBlocks));
-  }
-  protected native static void LLVMGetBasicBlocks(@Ptr long Fn, @Ptr long BasicBlocks);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetFirstBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetFirstBasicBlock(Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMGetFirstBasicBlock(@Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetLastBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetLastBasicBlock(Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMGetLastBasicBlock(@Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetNextBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetNextBasicBlock(Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNextBasicBlock(@Ptr long BB);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetPreviousBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetPreviousBasicBlock(Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMGetPreviousBasicBlock(@Ptr long BB);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetEntryBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetEntryBasicBlock(Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMGetEntryBasicBlock(@Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMAppendBasicBlockInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMAppendBasicBlockInContext(Pointer.getPeer(C), Pointer.getPeer(Fn), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMAppendBasicBlockInContext(@Ptr long C, @Ptr long Fn, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMAppendBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMAppendBasicBlock(Pointer.getPeer(Fn), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMAppendBasicBlock(@Ptr long Fn, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMInsertBasicBlockInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMBasicBlockRef BB, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMInsertBasicBlockInContext(Pointer.getPeer(C), Pointer.getPeer(BB), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMInsertBasicBlockInContext(@Ptr long C, @Ptr long BB, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMInsertBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef InsertBeforeBB, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMInsertBasicBlock(Pointer.getPeer(InsertBeforeBB), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMInsertBasicBlock(@Ptr long InsertBeforeBB, @Ptr long Name);
-  public static void LLVMDeleteBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    LLVMDeleteBasicBlock(Pointer.getPeer(BB));
-  }
-  protected native static void LLVMDeleteBasicBlock(@Ptr long BB);
-  public static void LLVMRemoveBasicBlockFromParent(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    LLVMRemoveBasicBlockFromParent(Pointer.getPeer(BB));
-  }
-  protected native static void LLVMRemoveBasicBlockFromParent(@Ptr long BB);
-  public static void LLVMMoveBasicBlockBefore(LLVM35svnLibrary.LLVMBasicBlockRef BB, LLVM35svnLibrary.LLVMBasicBlockRef MovePos) {
-    LLVMMoveBasicBlockBefore(Pointer.getPeer(BB), Pointer.getPeer(MovePos));
-  }
-  protected native static void LLVMMoveBasicBlockBefore(@Ptr long BB, @Ptr long MovePos);
-  public static void LLVMMoveBasicBlockAfter(LLVM35svnLibrary.LLVMBasicBlockRef BB, LLVM35svnLibrary.LLVMBasicBlockRef MovePos) {
-    LLVMMoveBasicBlockAfter(Pointer.getPeer(BB), Pointer.getPeer(MovePos));
-  }
-  protected native static void LLVMMoveBasicBlockAfter(@Ptr long BB, @Ptr long MovePos);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstInstruction(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstInstruction(Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMGetFirstInstruction(@Ptr long BB);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastInstruction(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastInstruction(Pointer.getPeer(BB)));
-  }
-  @Ptr 
-  protected native static long LLVMGetLastInstruction(@Ptr long BB);
-  public static int LLVMHasMetadata(LLVM35svnLibrary.LLVMValueRef Val) {
-    return LLVMHasMetadata(Pointer.getPeer(Val));
-  }
-  protected native static int LLVMHasMetadata(@Ptr long Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetMetadata(LLVM35svnLibrary.LLVMValueRef Val, int KindID) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetMetadata(Pointer.getPeer(Val), KindID));
-  }
-  @Ptr 
-  protected native static long LLVMGetMetadata(@Ptr long Val, int KindID);
-  public static void LLVMSetMetadata(LLVM35svnLibrary.LLVMValueRef Val, int KindID, LLVM35svnLibrary.LLVMValueRef Node) {
-    LLVMSetMetadata(Pointer.getPeer(Val), KindID, Pointer.getPeer(Node));
-  }
-  protected native static void LLVMSetMetadata(@Ptr long Val, int KindID, @Ptr long Node);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetInstructionParent(LLVM35svnLibrary.LLVMValueRef Inst) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetInstructionParent(Pointer.getPeer(Inst)));
-  }
-  @Ptr 
-  protected native static long LLVMGetInstructionParent(@Ptr long Inst);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextInstruction(LLVM35svnLibrary.LLVMValueRef Inst) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextInstruction(Pointer.getPeer(Inst)));
-  }
-  @Ptr 
-  protected native static long LLVMGetNextInstruction(@Ptr long Inst);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousInstruction(LLVM35svnLibrary.LLVMValueRef Inst) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousInstruction(Pointer.getPeer(Inst)));
-  }
-  @Ptr 
-  protected native static long LLVMGetPreviousInstruction(@Ptr long Inst);
-  public static void LLVMInstructionEraseFromParent(LLVM35svnLibrary.LLVMValueRef Inst) {
-    LLVMInstructionEraseFromParent(Pointer.getPeer(Inst));
-  }
-  protected native static void LLVMInstructionEraseFromParent(@Ptr long Inst);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > LLVMGetInstructionOpcode(LLVM35svnLibrary.LLVMValueRef Inst) {
-    return FlagSet.fromValue(LLVMGetInstructionOpcode(Pointer.getPeer(Inst)), LLVM35svnLibrary.LLVMOpcode.class);
-  }
-  protected native static int LLVMGetInstructionOpcode(@Ptr long Inst);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMIntPredicate > LLVMGetICmpPredicate(LLVM35svnLibrary.LLVMValueRef Inst) {
-    return FlagSet.fromValue(LLVMGetICmpPredicate(Pointer.getPeer(Inst)), LLVM35svnLibrary.LLVMIntPredicate.class);
-  }
-  protected native static int LLVMGetICmpPredicate(@Ptr long Inst);
-  public static void LLVMSetInstructionCallConv(LLVM35svnLibrary.LLVMValueRef Instr, int CC) {
-    LLVMSetInstructionCallConv(Pointer.getPeer(Instr), CC);
-  }
-  protected native static void LLVMSetInstructionCallConv(@Ptr long Instr, int CC);
-  public static int LLVMGetInstructionCallConv(LLVM35svnLibrary.LLVMValueRef Instr) {
-    return LLVMGetInstructionCallConv(Pointer.getPeer(Instr));
-  }
-  protected native static int LLVMGetInstructionCallConv(@Ptr long Instr);
-  public static void LLVMAddInstrAttribute(LLVM35svnLibrary.LLVMValueRef Instr, int index, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMAttribute1) {
-    LLVMAddInstrAttribute(Pointer.getPeer(Instr), index, (int)LLVMAttribute1.value());
-  }
-  protected native static void LLVMAddInstrAttribute(@Ptr long Instr, int index, int LLVMAttribute1);
-  public static void LLVMRemoveInstrAttribute(LLVM35svnLibrary.LLVMValueRef Instr, int index, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMAttribute1) {
-    LLVMRemoveInstrAttribute(Pointer.getPeer(Instr), index, (int)LLVMAttribute1.value());
-  }
-  protected native static void LLVMRemoveInstrAttribute(@Ptr long Instr, int index, int LLVMAttribute1);
-  public static void LLVMSetInstrParamAlignment(LLVM35svnLibrary.LLVMValueRef Instr, int index, int align) {
-    LLVMSetInstrParamAlignment(Pointer.getPeer(Instr), index, align);
-  }
-  protected native static void LLVMSetInstrParamAlignment(@Ptr long Instr, int index, int align);
-  public static int LLVMIsTailCall(LLVM35svnLibrary.LLVMValueRef CallInst) {
-    return LLVMIsTailCall(Pointer.getPeer(CallInst));
-  }
-  protected native static int LLVMIsTailCall(@Ptr long CallInst);
-  public static void LLVMSetTailCall(LLVM35svnLibrary.LLVMValueRef CallInst, int IsTailCall) {
-    LLVMSetTailCall(Pointer.getPeer(CallInst), IsTailCall);
-  }
-  protected native static void LLVMSetTailCall(@Ptr long CallInst, int IsTailCall);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetSwitchDefaultDest(LLVM35svnLibrary.LLVMValueRef SwitchInstr) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetSwitchDefaultDest(Pointer.getPeer(SwitchInstr)));
-  }
-  @Ptr 
-  protected native static long LLVMGetSwitchDefaultDest(@Ptr long SwitchInstr);
-  public static void LLVMAddIncoming(LLVM35svnLibrary.LLVMValueRef PhiNode, Pointer<LLVM35svnLibrary.LLVMValueRef > IncomingValues, Pointer<LLVM35svnLibrary.LLVMBasicBlockRef > IncomingBlocks, int Count) {
-    LLVMAddIncoming(Pointer.getPeer(PhiNode), Pointer.getPeer(IncomingValues), Pointer.getPeer(IncomingBlocks), Count);
-  }
-  protected native static void LLVMAddIncoming(@Ptr long PhiNode, @Ptr long IncomingValues, @Ptr long IncomingBlocks, int Count);
-  public static int LLVMCountIncoming(LLVM35svnLibrary.LLVMValueRef PhiNode) {
-    return LLVMCountIncoming(Pointer.getPeer(PhiNode));
-  }
-  protected native static int LLVMCountIncoming(@Ptr long PhiNode);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetIncomingValue(LLVM35svnLibrary.LLVMValueRef PhiNode, int Index) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetIncomingValue(Pointer.getPeer(PhiNode), Index));
-  }
-  @Ptr 
-  protected native static long LLVMGetIncomingValue(@Ptr long PhiNode, int Index);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetIncomingBlock(LLVM35svnLibrary.LLVMValueRef PhiNode, int Index) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetIncomingBlock(Pointer.getPeer(PhiNode), Index));
-  }
-  @Ptr 
-  protected native static long LLVMGetIncomingBlock(@Ptr long PhiNode, int Index);
-  public static LLVM35svnLibrary.LLVMBuilderRef LLVMCreateBuilderInContext(LLVM35svnLibrary.LLVMContextRef C) {
-    return new LLVM35svnLibrary.LLVMBuilderRef(LLVMCreateBuilderInContext(Pointer.getPeer(C)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateBuilderInContext(@Ptr long C);
-  public static LLVM35svnLibrary.LLVMBuilderRef LLVMCreateBuilder() {
-    return new LLVM35svnLibrary.LLVMBuilderRef(LLVMCreateBuilder$2());
-  }
-  @Ptr 
-  protected native static long LLVMCreateBuilder$2();
-  public static void LLVMPositionBuilder(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMBasicBlockRef Block, LLVM35svnLibrary.LLVMValueRef Instr) {
-    LLVMPositionBuilder(Pointer.getPeer(Builder), Pointer.getPeer(Block), Pointer.getPeer(Instr));
-  }
-  protected native static void LLVMPositionBuilder(@Ptr long Builder, @Ptr long Block, @Ptr long Instr);
-  public static void LLVMPositionBuilderBefore(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Instr) {
-    LLVMPositionBuilderBefore(Pointer.getPeer(Builder), Pointer.getPeer(Instr));
-  }
-  protected native static void LLVMPositionBuilderBefore(@Ptr long Builder, @Ptr long Instr);
-  public static void LLVMPositionBuilderAtEnd(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMBasicBlockRef Block) {
-    LLVMPositionBuilderAtEnd(Pointer.getPeer(Builder), Pointer.getPeer(Block));
-  }
-  protected native static void LLVMPositionBuilderAtEnd(@Ptr long Builder, @Ptr long Block);
-  public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetInsertBlock(LLVM35svnLibrary.LLVMBuilderRef Builder) {
-    return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetInsertBlock(Pointer.getPeer(Builder)));
-  }
-  @Ptr 
-  protected native static long LLVMGetInsertBlock(@Ptr long Builder);
-  public static void LLVMClearInsertionPosition(LLVM35svnLibrary.LLVMBuilderRef Builder) {
-    LLVMClearInsertionPosition(Pointer.getPeer(Builder));
-  }
-  protected native static void LLVMClearInsertionPosition(@Ptr long Builder);
-  public static void LLVMInsertIntoBuilder(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Instr) {
-    LLVMInsertIntoBuilder(Pointer.getPeer(Builder), Pointer.getPeer(Instr));
-  }
-  protected native static void LLVMInsertIntoBuilder(@Ptr long Builder, @Ptr long Instr);
-  public static void LLVMInsertIntoBuilderWithName(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Instr, Pointer<Byte > Name) {
-    LLVMInsertIntoBuilderWithName(Pointer.getPeer(Builder), Pointer.getPeer(Instr), Pointer.getPeer(Name));
-  }
-  protected native static void LLVMInsertIntoBuilderWithName(@Ptr long Builder, @Ptr long Instr, @Ptr long Name);
-  public static void LLVMDisposeBuilder(LLVM35svnLibrary.LLVMBuilderRef Builder) {
-    LLVMDisposeBuilder(Pointer.getPeer(Builder));
-  }
-  protected native static void LLVMDisposeBuilder(@Ptr long Builder);
-  public static void LLVMSetCurrentDebugLocation(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef L) {
-    LLVMSetCurrentDebugLocation(Pointer.getPeer(Builder), Pointer.getPeer(L));
-  }
-  protected native static void LLVMSetCurrentDebugLocation(@Ptr long Builder, @Ptr long L);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMGetCurrentDebugLocation(LLVM35svnLibrary.LLVMBuilderRef Builder) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMGetCurrentDebugLocation(Pointer.getPeer(Builder)));
-  }
-  @Ptr 
-  protected native static long LLVMGetCurrentDebugLocation(@Ptr long Builder);
-  public static void LLVMSetInstDebugLocation(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Inst) {
-    LLVMSetInstDebugLocation(Pointer.getPeer(Builder), Pointer.getPeer(Inst));
-  }
-  protected native static void LLVMSetInstDebugLocation(@Ptr long Builder, @Ptr long Inst);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildRetVoid(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildRetVoid(Pointer.getPeer(LLVMBuilderRef1)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildRetVoid(@Ptr long LLVMBuilderRef1);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildRet(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildRet(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildRet(@Ptr long LLVMBuilderRef1, @Ptr long V);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAggregateRet(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, Pointer<LLVM35svnLibrary.LLVMValueRef > RetVals, int N) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAggregateRet(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(RetVals), N));
-  }
-  @Ptr 
-  protected native static long LLVMBuildAggregateRet(@Ptr long LLVMBuilderRef1, @Ptr long RetVals, int N);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildBr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMBasicBlockRef Dest) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildBr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Dest)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildBr(@Ptr long LLVMBuilderRef1, @Ptr long Dest);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildCondBr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef If, LLVM35svnLibrary.LLVMBasicBlockRef Then, LLVM35svnLibrary.LLVMBasicBlockRef Else) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildCondBr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(If), Pointer.getPeer(Then), Pointer.getPeer(Else)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildCondBr(@Ptr long LLVMBuilderRef1, @Ptr long If, @Ptr long Then, @Ptr long Else);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSwitch(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, LLVM35svnLibrary.LLVMBasicBlockRef Else, int NumCases) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSwitch(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Else), NumCases));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSwitch(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Else, int NumCases);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIndirectBr(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Addr, int NumDests) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIndirectBr(Pointer.getPeer(B), Pointer.getPeer(Addr), NumDests));
-  }
-  @Ptr 
-  protected native static long LLVMBuildIndirectBr(@Ptr long B, @Ptr long Addr, int NumDests);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInvoke(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMValueRef > Args, int NumArgs, LLVM35svnLibrary.LLVMBasicBlockRef Then, LLVM35svnLibrary.LLVMBasicBlockRef Catch, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInvoke(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Fn), Pointer.getPeer(Args), NumArgs, Pointer.getPeer(Then), Pointer.getPeer(Catch), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildInvoke(@Ptr long LLVMBuilderRef1, @Ptr long Fn, @Ptr long Args, int NumArgs, @Ptr long Then, @Ptr long Catch, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildLandingPad(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef PersFn, int NumClauses, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildLandingPad(Pointer.getPeer(B), Pointer.getPeer(Ty), Pointer.getPeer(PersFn), NumClauses, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildLandingPad(@Ptr long B, @Ptr long Ty, @Ptr long PersFn, int NumClauses, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildResume(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Exn) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildResume(Pointer.getPeer(B), Pointer.getPeer(Exn)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildResume(@Ptr long B, @Ptr long Exn);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildUnreachable(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildUnreachable(Pointer.getPeer(LLVMBuilderRef1)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildUnreachable(@Ptr long LLVMBuilderRef1);
-  public static void LLVMAddCase(LLVM35svnLibrary.LLVMValueRef Switch, LLVM35svnLibrary.LLVMValueRef OnVal, LLVM35svnLibrary.LLVMBasicBlockRef Dest) {
-    LLVMAddCase(Pointer.getPeer(Switch), Pointer.getPeer(OnVal), Pointer.getPeer(Dest));
-  }
-  protected native static void LLVMAddCase(@Ptr long Switch, @Ptr long OnVal, @Ptr long Dest);
-  public static void LLVMAddDestination(LLVM35svnLibrary.LLVMValueRef IndirectBr, LLVM35svnLibrary.LLVMBasicBlockRef Dest) {
-    LLVMAddDestination(Pointer.getPeer(IndirectBr), Pointer.getPeer(Dest));
-  }
-  protected native static void LLVMAddDestination(@Ptr long IndirectBr, @Ptr long Dest);
-  public static void LLVMAddClause(LLVM35svnLibrary.LLVMValueRef LandingPad, LLVM35svnLibrary.LLVMValueRef ClauseVal) {
-    LLVMAddClause(Pointer.getPeer(LandingPad), Pointer.getPeer(ClauseVal));
-  }
-  protected native static void LLVMAddClause(@Ptr long LandingPad, @Ptr long ClauseVal);
-  public static void LLVMSetCleanup(LLVM35svnLibrary.LLVMValueRef LandingPad, int Val) {
-    LLVMSetCleanup(Pointer.getPeer(LandingPad), Val);
-  }
-  protected native static void LLVMSetCleanup(@Ptr long LandingPad, int Val);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNSWAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNUWAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNSWSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNUWSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNSWMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNUWMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildUDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildUDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildUDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildExactSDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildExactSDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildExactSDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildURem(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildURem(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildURem(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSRem(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSRem(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSRem(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFRem(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFRem(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFRem(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildShl(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildShl(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildShl(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildLShr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildLShr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildLShr(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAShr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAShr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildAShr(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAnd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAnd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildAnd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildOr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildOr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildOr(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildXor(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildXor(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildXor(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildBinOp(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > Op, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildBinOp(Pointer.getPeer(B), (int)Op.value(), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildBinOp(@Ptr long B, int Op, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNeg(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNeg(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNeg(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWNeg(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWNeg(Pointer.getPeer(B), Pointer.getPeer(V), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNSWNeg(@Ptr long B, @Ptr long V, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWNeg(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWNeg(Pointer.getPeer(B), Pointer.getPeer(V), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNUWNeg(@Ptr long B, @Ptr long V, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFNeg(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFNeg(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFNeg(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNot(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNot(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildNot(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildMalloc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildMalloc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildMalloc(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildArrayMalloc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildArrayMalloc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Val), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildArrayMalloc(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Val, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAlloca(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAlloca(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildAlloca(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildArrayAlloca(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildArrayAlloca(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Val), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildArrayAlloca(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Val, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFree(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef PointerVal) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFree(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(PointerVal)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFree(@Ptr long LLVMBuilderRef1, @Ptr long PointerVal);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildLoad(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef PointerVal, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildLoad(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(PointerVal), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildLoad(@Ptr long LLVMBuilderRef1, @Ptr long PointerVal, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildStore(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMValueRef Ptr) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildStore(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(Ptr)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildStore(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long Ptr);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildGEP(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Pointer, Pointer<LLVM35svnLibrary.LLVMValueRef > Indices, int NumIndices, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildGEP(Pointer.getPeer(B), Pointer.getPeer(Pointer), Pointer.getPeer(Indices), NumIndices, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildGEP(@Ptr long B, @Ptr long Pointer, @Ptr long Indices, int NumIndices, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInBoundsGEP(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Pointer, Pointer<LLVM35svnLibrary.LLVMValueRef > Indices, int NumIndices, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInBoundsGEP(Pointer.getPeer(B), Pointer.getPeer(Pointer), Pointer.getPeer(Indices), NumIndices, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildInBoundsGEP(@Ptr long B, @Ptr long Pointer, @Ptr long Indices, int NumIndices, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildStructGEP(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Pointer, int Idx, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildStructGEP(Pointer.getPeer(B), Pointer.getPeer(Pointer), Idx, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildStructGEP(@Ptr long B, @Ptr long Pointer, int Idx, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildGlobalString(LLVM35svnLibrary.LLVMBuilderRef B, Pointer<Byte > Str, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildGlobalString(Pointer.getPeer(B), Pointer.getPeer(Str), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildGlobalString(@Ptr long B, @Ptr long Str, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildGlobalStringPtr(LLVM35svnLibrary.LLVMBuilderRef B, Pointer<Byte > Str, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildGlobalStringPtr(Pointer.getPeer(B), Pointer.getPeer(Str), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildGlobalStringPtr(@Ptr long B, @Ptr long Str, @Ptr long Name);
-  public static int LLVMGetVolatile(LLVM35svnLibrary.LLVMValueRef MemoryAccessInst) {
-    return LLVMGetVolatile(Pointer.getPeer(MemoryAccessInst));
-  }
-  protected native static int LLVMGetVolatile(@Ptr long MemoryAccessInst);
-  public static void LLVMSetVolatile(LLVM35svnLibrary.LLVMValueRef MemoryAccessInst, int IsVolatile) {
-    LLVMSetVolatile(Pointer.getPeer(MemoryAccessInst), IsVolatile);
-  }
-  protected native static void LLVMSetVolatile(@Ptr long MemoryAccessInst, int IsVolatile);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildTrunc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildTrunc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildTrunc(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildZExt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildZExt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildZExt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSExt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSExt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSExt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPToUI(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPToUI(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFPToUI(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPToSI(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPToSI(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFPToSI(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildUIToFP(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildUIToFP(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildUIToFP(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSIToFP(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSIToFP(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSIToFP(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPTrunc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPTrunc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFPTrunc(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPExt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPExt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFPExt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPtrToInt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPtrToInt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildPtrToInt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIntToPtr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIntToPtr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildIntToPtr(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAddrSpaceCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAddrSpaceCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildAddrSpaceCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildZExtOrBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildZExtOrBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildZExtOrBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSExtOrBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSExtOrBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSExtOrBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildTruncOrBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildTruncOrBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildTruncOrBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildCast(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > Op, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildCast(Pointer.getPeer(B), (int)Op.value(), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildCast(@Ptr long B, int Op, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPointerCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPointerCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildPointerCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIntCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIntCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildIntCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFPCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildICmp(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, IntValuedEnum<LLVM35svnLibrary.LLVMIntPredicate > Op, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildICmp(Pointer.getPeer(LLVMBuilderRef1), (int)Op.value(), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildICmp(@Ptr long LLVMBuilderRef1, int Op, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFCmp(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, IntValuedEnum<LLVM35svnLibrary.LLVMRealPredicate > Op, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFCmp(Pointer.getPeer(LLVMBuilderRef1), (int)Op.value(), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFCmp(@Ptr long LLVMBuilderRef1, int Op, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPhi(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPhi(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildPhi(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildCall(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMValueRef > Args, int NumArgs, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildCall(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Fn), Pointer.getPeer(Args), NumArgs, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildCall(@Ptr long LLVMBuilderRef1, @Ptr long Fn, @Ptr long Args, int NumArgs, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSelect(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef If, LLVM35svnLibrary.LLVMValueRef Then, LLVM35svnLibrary.LLVMValueRef Else, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSelect(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(If), Pointer.getPeer(Then), Pointer.getPeer(Else), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildSelect(@Ptr long LLVMBuilderRef1, @Ptr long If, @Ptr long Then, @Ptr long Else, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildVAArg(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef List, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildVAArg(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(List), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildVAArg(@Ptr long LLVMBuilderRef1, @Ptr long List, @Ptr long Ty, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildExtractElement(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef VecVal, LLVM35svnLibrary.LLVMValueRef Index, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildExtractElement(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(VecVal), Pointer.getPeer(Index), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildExtractElement(@Ptr long LLVMBuilderRef1, @Ptr long VecVal, @Ptr long Index, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInsertElement(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef VecVal, LLVM35svnLibrary.LLVMValueRef EltVal, LLVM35svnLibrary.LLVMValueRef Index, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInsertElement(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(VecVal), Pointer.getPeer(EltVal), Pointer.getPeer(Index), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildInsertElement(@Ptr long LLVMBuilderRef1, @Ptr long VecVal, @Ptr long EltVal, @Ptr long Index, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildShuffleVector(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V1, LLVM35svnLibrary.LLVMValueRef V2, LLVM35svnLibrary.LLVMValueRef Mask, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildShuffleVector(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V1), Pointer.getPeer(V2), Pointer.getPeer(Mask), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildShuffleVector(@Ptr long LLVMBuilderRef1, @Ptr long V1, @Ptr long V2, @Ptr long Mask, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildExtractValue(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef AggVal, int Index, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildExtractValue(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(AggVal), Index, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildExtractValue(@Ptr long LLVMBuilderRef1, @Ptr long AggVal, int Index, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInsertValue(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef AggVal, LLVM35svnLibrary.LLVMValueRef EltVal, int Index, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInsertValue(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(AggVal), Pointer.getPeer(EltVal), Index, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildInsertValue(@Ptr long LLVMBuilderRef1, @Ptr long AggVal, @Ptr long EltVal, int Index, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIsNull(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIsNull(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildIsNull(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIsNotNull(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIsNotNull(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildIsNotNull(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPtrDiff(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPtrDiff(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildPtrDiff(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFence(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMAtomicOrdering > ordering, int singleThread, Pointer<Byte > Name) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFence(Pointer.getPeer(B), (int)ordering.value(), singleThread, Pointer.getPeer(Name)));
-  }
-  @Ptr 
-  protected native static long LLVMBuildFence(@Ptr long B, int ordering, int singleThread, @Ptr long Name);
-  public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAtomicRMW(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMAtomicRMWBinOp > op, LLVM35svnLibrary.LLVMValueRef PTR, LLVM35svnLibrary.LLVMValueRef Val, IntValuedEnum<LLVM35svnLibrary.LLVMAtomicOrdering > ordering, int singleThread) {
-    return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAtomicRMW(Pointer.getPeer(B), (int)op.value(), Pointer.getPeer(PTR), Pointer.getPeer(Val), (int)ordering.value(), singleThread));
-  }
-  @Ptr 
-  protected native static long LLVMBuildAtomicRMW(@Ptr long B, int op, @Ptr long PTR, @Ptr long Val, int ordering, int singleThread);
-  public static LLVM35svnLibrary.LLVMModuleProviderRef LLVMCreateModuleProviderForExistingModule(LLVM35svnLibrary.LLVMModuleRef M) {
-    return new LLVM35svnLibrary.LLVMModuleProviderRef(LLVMCreateModuleProviderForExistingModule(Pointer.getPeer(M)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateModuleProviderForExistingModule(@Ptr long M);
-  public static void LLVMDisposeModuleProvider(LLVM35svnLibrary.LLVMModuleProviderRef M) {
-    LLVMDisposeModuleProvider(Pointer.getPeer(M));
-  }
-  protected native static void LLVMDisposeModuleProvider(@Ptr long M);
-  public static int LLVMCreateMemoryBufferWithContentsOfFile(Pointer<Byte > Path, Pointer<LLVM35svnLibrary.LLVMMemoryBufferRef > OutMemBuf, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMCreateMemoryBufferWithContentsOfFile(Pointer.getPeer(Path), Pointer.getPeer(OutMemBuf), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMCreateMemoryBufferWithContentsOfFile(@Ptr long Path, @Ptr long OutMemBuf, @Ptr long OutMessage);
-  public static int LLVMCreateMemoryBufferWithSTDIN(Pointer<LLVM35svnLibrary.LLVMMemoryBufferRef > OutMemBuf, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMCreateMemoryBufferWithSTDIN(Pointer.getPeer(OutMemBuf), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMCreateMemoryBufferWithSTDIN(@Ptr long OutMemBuf, @Ptr long OutMessage);
-  public static LLVM35svnLibrary.LLVMMemoryBufferRef LLVMCreateMemoryBufferWithMemoryRange(Pointer<Byte > InputData, @Ptr long InputDataLength, Pointer<Byte > BufferName, int RequiresNullTerminator) {
-    return new LLVM35svnLibrary.LLVMMemoryBufferRef(LLVMCreateMemoryBufferWithMemoryRange(Pointer.getPeer(InputData), InputDataLength, Pointer.getPeer(BufferName), RequiresNullTerminator));
-  }
-  @Ptr 
-  protected native static long LLVMCreateMemoryBufferWithMemoryRange(@Ptr long InputData, @Ptr long InputDataLength, @Ptr long BufferName, int RequiresNullTerminator);
-  public static LLVM35svnLibrary.LLVMMemoryBufferRef LLVMCreateMemoryBufferWithMemoryRangeCopy(Pointer<Byte > InputData, @Ptr long InputDataLength, Pointer<Byte > BufferName) {
-    return new LLVM35svnLibrary.LLVMMemoryBufferRef(LLVMCreateMemoryBufferWithMemoryRangeCopy(Pointer.getPeer(InputData), InputDataLength, Pointer.getPeer(BufferName)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateMemoryBufferWithMemoryRangeCopy(@Ptr long InputData, @Ptr long InputDataLength, @Ptr long BufferName);
-  public static Pointer<Byte > LLVMGetBufferStart(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
-    return Pointer.pointerToAddress(LLVMGetBufferStart(Pointer.getPeer(MemBuf)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMGetBufferStart(@Ptr long MemBuf);
-  @Ptr 
-  public static long LLVMGetBufferSize(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
-    return LLVMGetBufferSize(Pointer.getPeer(MemBuf));
-  }
-  @Ptr 
-  protected native static long LLVMGetBufferSize(@Ptr long MemBuf);
-  public static void LLVMDisposeMemoryBuffer(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
-    LLVMDisposeMemoryBuffer(Pointer.getPeer(MemBuf));
-  }
-  protected native static void LLVMDisposeMemoryBuffer(@Ptr long MemBuf);
-  public static LLVM35svnLibrary.LLVMPassRegistryRef LLVMGetGlobalPassRegistry() {
-    return new LLVM35svnLibrary.LLVMPassRegistryRef(LLVMGetGlobalPassRegistry$2());
-  }
-  @Ptr 
-  protected native static long LLVMGetGlobalPassRegistry$2();
-  public static LLVM35svnLibrary.LLVMPassManagerRef LLVMCreatePassManager() {
-    return new LLVM35svnLibrary.LLVMPassManagerRef(LLVMCreatePassManager$2());
-  }
-  @Ptr 
-  protected native static long LLVMCreatePassManager$2();
-  public static LLVM35svnLibrary.LLVMPassManagerRef LLVMCreateFunctionPassManagerForModule(LLVM35svnLibrary.LLVMModuleRef M) {
-    return new LLVM35svnLibrary.LLVMPassManagerRef(LLVMCreateFunctionPassManagerForModule(Pointer.getPeer(M)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateFunctionPassManagerForModule(@Ptr long M);
-  public static LLVM35svnLibrary.LLVMPassManagerRef LLVMCreateFunctionPassManager(LLVM35svnLibrary.LLVMModuleProviderRef MP) {
-    return new LLVM35svnLibrary.LLVMPassManagerRef(LLVMCreateFunctionPassManager(Pointer.getPeer(MP)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateFunctionPassManager(@Ptr long MP);
-  public static int LLVMRunPassManager(LLVM35svnLibrary.LLVMPassManagerRef PM, LLVM35svnLibrary.LLVMModuleRef M) {
-    return LLVMRunPassManager(Pointer.getPeer(PM), Pointer.getPeer(M));
-  }
-  protected native static int LLVMRunPassManager(@Ptr long PM, @Ptr long M);
-  public static int LLVMInitializeFunctionPassManager(LLVM35svnLibrary.LLVMPassManagerRef FPM) {
-    return LLVMInitializeFunctionPassManager(Pointer.getPeer(FPM));
-  }
-  protected native static int LLVMInitializeFunctionPassManager(@Ptr long FPM);
-  public static int LLVMRunFunctionPassManager(LLVM35svnLibrary.LLVMPassManagerRef FPM, LLVM35svnLibrary.LLVMValueRef F) {
-    return LLVMRunFunctionPassManager(Pointer.getPeer(FPM), Pointer.getPeer(F));
-  }
-  protected native static int LLVMRunFunctionPassManager(@Ptr long FPM, @Ptr long F);
-  public static int LLVMFinalizeFunctionPassManager(LLVM35svnLibrary.LLVMPassManagerRef FPM) {
-    return LLVMFinalizeFunctionPassManager(Pointer.getPeer(FPM));
-  }
-  protected native static int LLVMFinalizeFunctionPassManager(@Ptr long FPM);
-  public static void LLVMDisposePassManager(LLVM35svnLibrary.LLVMPassManagerRef PM) {
-    LLVMDisposePassManager(Pointer.getPeer(PM));
-  }
-  protected native static void LLVMDisposePassManager(@Ptr long PM);
-  public static native int LLVMStartMultithreaded();
-  public static native void LLVMStopMultithreaded();
-  public static native int LLVMIsMultithreaded();
-  public static int LLVMVerifyModule(LLVM35svnLibrary.LLVMModuleRef M, IntValuedEnum<LLVM35svnLibrary.LLVMVerifierFailureAction > Action, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMVerifyModule(Pointer.getPeer(M), (int)Action.value(), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMVerifyModule(@Ptr long M, int Action, @Ptr long OutMessage);
-  public static int LLVMVerifyFunction(LLVM35svnLibrary.LLVMValueRef Fn, IntValuedEnum<LLVM35svnLibrary.LLVMVerifierFailureAction > Action) {
-    return LLVMVerifyFunction(Pointer.getPeer(Fn), (int)Action.value());
-  }
-  protected native static int LLVMVerifyFunction(@Ptr long Fn, int Action);
-  public static void LLVMViewFunctionCFG(LLVM35svnLibrary.LLVMValueRef Fn) {
-    LLVMViewFunctionCFG(Pointer.getPeer(Fn));
-  }
-  protected native static void LLVMViewFunctionCFG(@Ptr long Fn);
-  public static void LLVMViewFunctionCFGOnly(LLVM35svnLibrary.LLVMValueRef Fn) {
-    LLVMViewFunctionCFGOnly(Pointer.getPeer(Fn));
-  }
-  protected native static void LLVMViewFunctionCFGOnly(@Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMTargetDataRef LLVMCreateTargetData(Pointer<Byte > StringRep) {
-    return new LLVM35svnLibrary.LLVMTargetDataRef(LLVMCreateTargetData(Pointer.getPeer(StringRep)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateTargetData(@Ptr long StringRep);
-  public static void LLVMAddTargetData(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMPassManagerRef PM) {
-    LLVMAddTargetData(Pointer.getPeer(TD), Pointer.getPeer(PM));
-  }
-  protected native static void LLVMAddTargetData(@Ptr long TD, @Ptr long PM);
-  public static void LLVMAddTargetLibraryInfo(LLVM35svnLibrary.LLVMTargetLibraryInfoRef TLI, LLVM35svnLibrary.LLVMPassManagerRef PM) {
-    LLVMAddTargetLibraryInfo(Pointer.getPeer(TLI), Pointer.getPeer(PM));
-  }
-  protected native static void LLVMAddTargetLibraryInfo(@Ptr long TLI, @Ptr long PM);
-  public static Pointer<Byte > LLVMCopyStringRepOfTargetData(LLVM35svnLibrary.LLVMTargetDataRef TD) {
-    return Pointer.pointerToAddress(LLVMCopyStringRepOfTargetData(Pointer.getPeer(TD)), Byte.class);
-  }
-  @Ptr 
-  protected native static long LLVMCopyStringRepOfTargetData(@Ptr long TD);
-  public static IntValuedEnum<LLVM35svnLibrary.LLVMByteOrdering > LLVMByteOrder(LLVM35svnLibrary.LLVMTargetDataRef TD) {
-    return FlagSet.fromValue(LLVMByteOrder(Pointer.getPeer(TD)), LLVM35svnLibrary.LLVMByteOrdering.class);
-  }
-  protected native static int LLVMByteOrder(@Ptr long TD);
-  public static int LLVMPointerSize(LLVM35svnLibrary.LLVMTargetDataRef TD) {
-    return LLVMPointerSize(Pointer.getPeer(TD));
-  }
-  protected native static int LLVMPointerSize(@Ptr long TD);
-  public static int LLVMPointerSizeForAS(LLVM35svnLibrary.LLVMTargetDataRef TD, int AS) {
-    return LLVMPointerSizeForAS(Pointer.getPeer(TD), AS);
-  }
-  protected native static int LLVMPointerSizeForAS(@Ptr long TD, int AS);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrType(LLVM35svnLibrary.LLVMTargetDataRef TD) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrType(Pointer.getPeer(TD)));
-  }
-  @Ptr 
-  protected native static long LLVMIntPtrType(@Ptr long TD);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrTypeForAS(LLVM35svnLibrary.LLVMTargetDataRef TD, int AS) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrTypeForAS(Pointer.getPeer(TD), AS));
-  }
-  @Ptr 
-  protected native static long LLVMIntPtrTypeForAS(@Ptr long TD, int AS);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrTypeInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMTargetDataRef TD) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrTypeInContext(Pointer.getPeer(C), Pointer.getPeer(TD)));
-  }
-  @Ptr 
-  protected native static long LLVMIntPtrTypeInContext(@Ptr long C, @Ptr long TD);
-  public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrTypeForASInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMTargetDataRef TD, int AS) {
-    return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrTypeForASInContext(Pointer.getPeer(C), Pointer.getPeer(TD), AS));
-  }
-  @Ptr 
-  protected native static long LLVMIntPtrTypeForASInContext(@Ptr long C, @Ptr long TD, int AS);
-  public static long LLVMSizeOfTypeInBits(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return LLVMSizeOfTypeInBits(Pointer.getPeer(TD), Pointer.getPeer(Ty));
-  }
-  protected native static long LLVMSizeOfTypeInBits(@Ptr long TD, @Ptr long Ty);
-  public static long LLVMStoreSizeOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return LLVMStoreSizeOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
-  }
-  protected native static long LLVMStoreSizeOfType(@Ptr long TD, @Ptr long Ty);
-  public static long LLVMABISizeOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return LLVMABISizeOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
-  }
-  protected native static long LLVMABISizeOfType(@Ptr long TD, @Ptr long Ty);
-  public static int LLVMABIAlignmentOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return LLVMABIAlignmentOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
-  }
-  protected native static int LLVMABIAlignmentOfType(@Ptr long TD, @Ptr long Ty);
-  public static int LLVMCallFrameAlignmentOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return LLVMCallFrameAlignmentOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
-  }
-  protected native static int LLVMCallFrameAlignmentOfType(@Ptr long TD, @Ptr long Ty);
-  public static int LLVMPreferredAlignmentOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
-    return LLVMPreferredAlignmentOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
-  }
-  protected native static int LLVMPreferredAlignmentOfType(@Ptr long TD, @Ptr long Ty);
-  public static int LLVMPreferredAlignmentOfGlobal(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMValueRef GlobalVar) {
-    return LLVMPreferredAlignmentOfGlobal(Pointer.getPeer(TD), Pointer.getPeer(GlobalVar));
-  }
-  protected native static int LLVMPreferredAlignmentOfGlobal(@Ptr long TD, @Ptr long GlobalVar);
-  public static int LLVMElementAtOffset(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef StructTy, long Offset) {
-    return LLVMElementAtOffset(Pointer.getPeer(TD), Pointer.getPeer(StructTy), Offset);
-  }
-  protected native static int LLVMElementAtOffset(@Ptr long TD, @Ptr long StructTy, long Offset);
-  public static long LLVMOffsetOfElement(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef StructTy, int Element) {
-    return LLVMOffsetOfElement(Pointer.getPeer(TD), Pointer.getPeer(StructTy), Element);
-  }
-  protected native static long LLVMOffsetOfElement(@Ptr long TD, @Ptr long StructTy, int Element);
-  public static void LLVMDisposeTargetData(LLVM35svnLibrary.LLVMTargetDataRef TD) {
-    LLVMDisposeTargetData(Pointer.getPeer(TD));
-  }
-  protected native static void LLVMDisposeTargetData(@Ptr long TD);
-  public static Pointer<? > llvm_create_optimizer() {
-    return Pointer.pointerToAddress(llvm_create_optimizer$2());
-  }
-  @Ptr 
-  protected native static long llvm_create_optimizer$2();
-  public static void llvm_destroy_optimizer(Pointer<? > lto) {
-    llvm_destroy_optimizer(Pointer.getPeer(lto));
-  }
-  protected native static void llvm_destroy_optimizer(@Ptr long lto);
-  public static IntValuedEnum<LLVM35svnLibrary.llvm_lto_status > llvm_read_object_file(Pointer<? > lto, Pointer<Byte > input_filename) {
-    return FlagSet.fromValue(llvm_read_object_file(Pointer.getPeer(lto), Pointer.getPeer(input_filename)), LLVM35svnLibrary.llvm_lto_status.class);
-  }
-  protected native static int llvm_read_object_file(@Ptr long lto, @Ptr long input_filename);
-  public static IntValuedEnum<LLVM35svnLibrary.llvm_lto_status > llvm_optimize_modules(Pointer<? > lto, Pointer<Byte > output_filename) {
-    return FlagSet.fromValue(llvm_optimize_modules(Pointer.getPeer(lto), Pointer.getPeer(output_filename)), LLVM35svnLibrary.llvm_lto_status.class);
-  }
-  protected native static int llvm_optimize_modules(@Ptr long lto, @Ptr long output_filename);
-  public static native void LLVMLinkInJIT();
-  public static native void LLVMLinkInMCJIT();
-  public static native void LLVMLinkInInterpreter();
-  public static LLVM35svnLibrary.LLVMGenericValueRef LLVMCreateGenericValueOfInt(LLVM35svnLibrary.LLVMTypeRef Ty, long N, int IsSigned) {
-    return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMCreateGenericValueOfInt(Pointer.getPeer(Ty), N, IsSigned));
-  }
-  @Ptr 
-  protected native static long LLVMCreateGenericValueOfInt(@Ptr long Ty, long N, int IsSigned);
-  public static LLVM35svnLibrary.LLVMGenericValueRef LLVMCreateGenericValueOfPointer(Pointer<? > P) {
-    return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMCreateGenericValueOfPointer(Pointer.getPeer(P)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateGenericValueOfPointer(@Ptr long P);
-  public static LLVM35svnLibrary.LLVMGenericValueRef LLVMCreateGenericValueOfFloat(LLVM35svnLibrary.LLVMTypeRef Ty, double N) {
-    return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMCreateGenericValueOfFloat(Pointer.getPeer(Ty), N));
-  }
-  @Ptr 
-  protected native static long LLVMCreateGenericValueOfFloat(@Ptr long Ty, double N);
-  public static int LLVMGenericValueIntWidth(LLVM35svnLibrary.LLVMGenericValueRef GenValRef) {
-    return LLVMGenericValueIntWidth(Pointer.getPeer(GenValRef));
-  }
-  protected native static int LLVMGenericValueIntWidth(@Ptr long GenValRef);
-  public static long LLVMGenericValueToInt(LLVM35svnLibrary.LLVMGenericValueRef GenVal, int IsSigned) {
-    return LLVMGenericValueToInt(Pointer.getPeer(GenVal), IsSigned);
-  }
-  protected native static long LLVMGenericValueToInt(@Ptr long GenVal, int IsSigned);
-  public static Pointer<? > LLVMGenericValueToPointer(LLVM35svnLibrary.LLVMGenericValueRef GenVal) {
-    return Pointer.pointerToAddress(LLVMGenericValueToPointer(Pointer.getPeer(GenVal)));
-  }
-  @Ptr 
-  protected native static long LLVMGenericValueToPointer(@Ptr long GenVal);
-  public static double LLVMGenericValueToFloat(LLVM35svnLibrary.LLVMTypeRef TyRef, LLVM35svnLibrary.LLVMGenericValueRef GenVal) {
-    return LLVMGenericValueToFloat(Pointer.getPeer(TyRef), Pointer.getPeer(GenVal));
-  }
-  protected native static double LLVMGenericValueToFloat(@Ptr long TyRef, @Ptr long GenVal);
-  public static void LLVMDisposeGenericValue(LLVM35svnLibrary.LLVMGenericValueRef GenVal) {
-    LLVMDisposeGenericValue(Pointer.getPeer(GenVal));
-  }
-  protected native static void LLVMDisposeGenericValue(@Ptr long GenVal);
-  public static int LLVMCreateExecutionEngineForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutEE, LLVM35svnLibrary.LLVMModuleRef M, Pointer<Pointer<Byte > > OutError) {
-    return LLVMCreateExecutionEngineForModule(Pointer.getPeer(OutEE), Pointer.getPeer(M), Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMCreateExecutionEngineForModule(@Ptr long OutEE, @Ptr long M, @Ptr long OutError);
-  public static int LLVMCreateInterpreterForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutInterp, LLVM35svnLibrary.LLVMModuleRef M, Pointer<Pointer<Byte > > OutError) {
-    return LLVMCreateInterpreterForModule(Pointer.getPeer(OutInterp), Pointer.getPeer(M), Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMCreateInterpreterForModule(@Ptr long OutInterp, @Ptr long M, @Ptr long OutError);
-  public static int LLVMCreateJITCompilerForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutJIT, LLVM35svnLibrary.LLVMModuleRef M, int OptLevel, Pointer<Pointer<Byte > > OutError) {
-    return LLVMCreateJITCompilerForModule(Pointer.getPeer(OutJIT), Pointer.getPeer(M), OptLevel, Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMCreateJITCompilerForModule(@Ptr long OutJIT, @Ptr long M, int OptLevel, @Ptr long OutError);
-  public static void LLVMInitializeMCJITCompilerOptions(Pointer<LLVMMCJITCompilerOptions > Options, @Ptr long SizeOfOptions) {
-    LLVMInitializeMCJITCompilerOptions(Pointer.getPeer(Options), SizeOfOptions);
-  }
-  protected native static void LLVMInitializeMCJITCompilerOptions(@Ptr long Options, @Ptr long SizeOfOptions);
-  public static int LLVMCreateMCJITCompilerForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutJIT, LLVM35svnLibrary.LLVMModuleRef M, Pointer<LLVMMCJITCompilerOptions > Options, @Ptr long SizeOfOptions, Pointer<Pointer<Byte > > OutError) {
-    return LLVMCreateMCJITCompilerForModule(Pointer.getPeer(OutJIT), Pointer.getPeer(M), Pointer.getPeer(Options), SizeOfOptions, Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMCreateMCJITCompilerForModule(@Ptr long OutJIT, @Ptr long M, @Ptr long Options, @Ptr long SizeOfOptions, @Ptr long OutError);
-  public static int LLVMCreateExecutionEngine(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutEE, LLVM35svnLibrary.LLVMModuleProviderRef MP, Pointer<Pointer<Byte > > OutError) {
-    return LLVMCreateExecutionEngine(Pointer.getPeer(OutEE), Pointer.getPeer(MP), Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMCreateExecutionEngine(@Ptr long OutEE, @Ptr long MP, @Ptr long OutError);
-  public static int LLVMCreateInterpreter(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutInterp, LLVM35svnLibrary.LLVMModuleProviderRef MP, Pointer<Pointer<Byte > > OutError) {
-    return LLVMCreateInterpreter(Pointer.getPeer(OutInterp), Pointer.getPeer(MP), Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMCreateInterpreter(@Ptr long OutInterp, @Ptr long MP, @Ptr long OutError);
-  public static int LLVMCreateJITCompiler(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutJIT, LLVM35svnLibrary.LLVMModuleProviderRef MP, int OptLevel, Pointer<Pointer<Byte > > OutError) {
-    return LLVMCreateJITCompiler(Pointer.getPeer(OutJIT), Pointer.getPeer(MP), OptLevel, Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMCreateJITCompiler(@Ptr long OutJIT, @Ptr long MP, int OptLevel, @Ptr long OutError);
-  public static void LLVMDisposeExecutionEngine(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
-    LLVMDisposeExecutionEngine(Pointer.getPeer(EE));
-  }
-  protected native static void LLVMDisposeExecutionEngine(@Ptr long EE);
-  public static void LLVMRunStaticConstructors(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
-    LLVMRunStaticConstructors(Pointer.getPeer(EE));
-  }
-  protected native static void LLVMRunStaticConstructors(@Ptr long EE);
-  public static void LLVMRunStaticDestructors(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
-    LLVMRunStaticDestructors(Pointer.getPeer(EE));
-  }
-  protected native static void LLVMRunStaticDestructors(@Ptr long EE);
-  public static int LLVMRunFunctionAsMain(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef F, int ArgC, Pointer<Pointer<Byte > > ArgV, Pointer<Pointer<Byte > > EnvP) {
-    return LLVMRunFunctionAsMain(Pointer.getPeer(EE), Pointer.getPeer(F), ArgC, Pointer.getPeer(ArgV), Pointer.getPeer(EnvP));
-  }
-  protected native static int LLVMRunFunctionAsMain(@Ptr long EE, @Ptr long F, int ArgC, @Ptr long ArgV, @Ptr long EnvP);
-  public static LLVM35svnLibrary.LLVMGenericValueRef LLVMRunFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef F, int NumArgs, Pointer<LLVM35svnLibrary.LLVMGenericValueRef > Args) {
-    return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMRunFunction(Pointer.getPeer(EE), Pointer.getPeer(F), NumArgs, Pointer.getPeer(Args)));
-  }
-  @Ptr 
-  protected native static long LLVMRunFunction(@Ptr long EE, @Ptr long F, int NumArgs, @Ptr long Args);
-  public static void LLVMFreeMachineCodeForFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef F) {
-    LLVMFreeMachineCodeForFunction(Pointer.getPeer(EE), Pointer.getPeer(F));
-  }
-  protected native static void LLVMFreeMachineCodeForFunction(@Ptr long EE, @Ptr long F);
-  public static void LLVMAddModule(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleRef M) {
-    LLVMAddModule(Pointer.getPeer(EE), Pointer.getPeer(M));
-  }
-  protected native static void LLVMAddModule(@Ptr long EE, @Ptr long M);
-  public static void LLVMAddModuleProvider(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleProviderRef MP) {
-    LLVMAddModuleProvider(Pointer.getPeer(EE), Pointer.getPeer(MP));
-  }
-  protected native static void LLVMAddModuleProvider(@Ptr long EE, @Ptr long MP);
-  public static int LLVMRemoveModule(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleRef M, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutMod, Pointer<Pointer<Byte > > OutError) {
-    return LLVMRemoveModule(Pointer.getPeer(EE), Pointer.getPeer(M), Pointer.getPeer(OutMod), Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMRemoveModule(@Ptr long EE, @Ptr long M, @Ptr long OutMod, @Ptr long OutError);
-  public static int LLVMRemoveModuleProvider(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleProviderRef MP, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutMod, Pointer<Pointer<Byte > > OutError) {
-    return LLVMRemoveModuleProvider(Pointer.getPeer(EE), Pointer.getPeer(MP), Pointer.getPeer(OutMod), Pointer.getPeer(OutError));
-  }
-  protected native static int LLVMRemoveModuleProvider(@Ptr long EE, @Ptr long MP, @Ptr long OutMod, @Ptr long OutError);
-  public static int LLVMFindFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, Pointer<Byte > Name, Pointer<LLVM35svnLibrary.LLVMValueRef > OutFn) {
-    return LLVMFindFunction(Pointer.getPeer(EE), Pointer.getPeer(Name), Pointer.getPeer(OutFn));
-  }
-  protected native static int LLVMFindFunction(@Ptr long EE, @Ptr long Name, @Ptr long OutFn);
-  public static Pointer<? > LLVMRecompileAndRelinkFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef Fn) {
-    return Pointer.pointerToAddress(LLVMRecompileAndRelinkFunction(Pointer.getPeer(EE), Pointer.getPeer(Fn)));
-  }
-  @Ptr 
-  protected native static long LLVMRecompileAndRelinkFunction(@Ptr long EE, @Ptr long Fn);
-  public static LLVM35svnLibrary.LLVMTargetDataRef LLVMGetExecutionEngineTargetData(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
-    return new LLVM35svnLibrary.LLVMTargetDataRef(LLVMGetExecutionEngineTargetData(Pointer.getPeer(EE)));
-  }
-  @Ptr 
-  protected native static long LLVMGetExecutionEngineTargetData(@Ptr long EE);
-  public static LLVM35svnLibrary.LLVMTargetMachineRef LLVMGetExecutionEngineTargetMachine(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
-    return new LLVM35svnLibrary.LLVMTargetMachineRef(LLVMGetExecutionEngineTargetMachine(Pointer.getPeer(EE)));
-  }
-  @Ptr 
-  protected native static long LLVMGetExecutionEngineTargetMachine(@Ptr long EE);
-  public static void LLVMAddGlobalMapping(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef Global, Pointer<? > Addr) {
-    LLVMAddGlobalMapping(Pointer.getPeer(EE), Pointer.getPeer(Global), Pointer.getPeer(Addr));
-  }
-  protected native static void LLVMAddGlobalMapping(@Ptr long EE, @Ptr long Global, @Ptr long Addr);
-  public static Pointer<? > LLVMGetPointerToGlobal(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef Global) {
-    return Pointer.pointerToAddress(LLVMGetPointerToGlobal(Pointer.getPeer(EE), Pointer.getPeer(Global)));
-  }
-  @Ptr 
-  protected native static long LLVMGetPointerToGlobal(@Ptr long EE, @Ptr long Global);
-  public static LLVM35svnLibrary.LLVMMCJITMemoryManagerRef LLVMCreateSimpleMCJITMemoryManager(Pointer<? > Opaque, Pointer<LLVM35svnLibrary.LLVMMemoryManagerAllocateCodeSectionCallback > AllocateCodeSection, Pointer<LLVM35svnLibrary.LLVMMemoryManagerAllocateDataSectionCallback > AllocateDataSection, Pointer<LLVM35svnLibrary.LLVMMemoryManagerFinalizeMemoryCallback > FinalizeMemory, Pointer<LLVM35svnLibrary.LLVMMemoryManagerDestroyCallback > Destroy) {
-    return new LLVM35svnLibrary.LLVMMCJITMemoryManagerRef(LLVMCreateSimpleMCJITMemoryManager(Pointer.getPeer(Opaque), Pointer.getPeer(AllocateCodeSection), Pointer.getPeer(AllocateDataSection), Pointer.getPeer(FinalizeMemory), Pointer.getPeer(Destroy)));
-  }
-  @Ptr 
-  protected native static long LLVMCreateSimpleMCJITMemoryManager(@Ptr long Opaque, @Ptr long AllocateCodeSection, @Ptr long AllocateDataSection, @Ptr long FinalizeMemory, @Ptr long Destroy);
-  public static void LLVMDisposeMCJITMemoryManager(LLVM35svnLibrary.LLVMMCJITMemoryManagerRef MM) {
-    LLVMDisposeMCJITMemoryManager(Pointer.getPeer(MM));
-  }
-  protected native static void LLVMDisposeMCJITMemoryManager(@Ptr long MM);
-  public static int LLVMLinkModules(LLVM35svnLibrary.LLVMModuleRef Dest, LLVM35svnLibrary.LLVMModuleRef Src, IntValuedEnum<LLVM35svnLibrary.LLVMLinkerMode > Mode, Pointer<Pointer<Byte > > OutMessage) {
-    return LLVMLinkModules(Pointer.getPeer(Dest), Pointer.getPeer(Src), (int)Mode.value(), Pointer.getPeer(OutMessage));
-  }
-  protected native static int LLVMLinkModules(@Ptr long Dest, @Ptr long Src, int Mode, @Ptr long OutMessage);
-  /** Pointer to unknown (opaque) type */
-  public static class lto_code_gen_t extends TypedPointer {
-    public lto_code_gen_t(long address) {
-      super(address);
-    }
-    public lto_code_gen_t(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMContextRef extends TypedPointer {
-    public LLVMContextRef(long address) {
-      super(address);
-    }
-    public LLVMContextRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMObjectFileRef extends TypedPointer {
-    public LLVMObjectFileRef(long address) {
-      super(address);
-    }
-    public LLVMObjectFileRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMSymbolIteratorRef extends TypedPointer {
-    public LLVMSymbolIteratorRef(long address) {
-      super(address);
-    }
-    public LLVMSymbolIteratorRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMTargetRef extends TypedPointer {
-    public LLVMTargetRef(long address) {
-      super(address);
-    }
-    public LLVMTargetRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMValueRef extends TypedPointer {
-    public LLVMValueRef(long address) {
-      super(address);
-    }
-    public LLVMValueRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMRelocationIteratorRef extends TypedPointer {
-    public LLVMRelocationIteratorRef(long address) {
-      super(address);
-    }
-    public LLVMRelocationIteratorRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMPassManagerRef extends TypedPointer {
-    public LLVMPassManagerRef(long address) {
-      super(address);
-    }
-    public LLVMPassManagerRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMTypeRef extends TypedPointer {
-    public LLVMTypeRef(long address) {
-      super(address);
-    }
-    public LLVMTypeRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMTargetMachineRef extends TypedPointer {
-    public LLVMTargetMachineRef(long address) {
-      super(address);
-    }
-    public LLVMTargetMachineRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMModuleProviderRef extends TypedPointer {
-    public LLVMModuleProviderRef(long address) {
-      super(address);
-    }
-    public LLVMModuleProviderRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMModuleRef extends TypedPointer {
-    public LLVMModuleRef(long address) {
-      super(address);
-    }
-    public LLVMModuleRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMGenericValueRef extends TypedPointer {
-    public LLVMGenericValueRef(long address) {
-      super(address);
-    }
-    public LLVMGenericValueRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMUseRef extends TypedPointer {
-    public LLVMUseRef(long address) {
-      super(address);
-    }
-    public LLVMUseRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class lto_module_t extends TypedPointer {
-    public lto_module_t(long address) {
-      super(address);
-    }
-    public lto_module_t(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMExecutionEngineRef extends TypedPointer {
-    public LLVMExecutionEngineRef(long address) {
-      super(address);
-    }
-    public LLVMExecutionEngineRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMBasicBlockRef extends TypedPointer {
-    public LLVMBasicBlockRef(long address) {
-      super(address);
-    }
-    public LLVMBasicBlockRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMTargetLibraryInfoRef extends TypedPointer {
-    public LLVMTargetLibraryInfoRef(long address) {
-      super(address);
-    }
-    public LLVMTargetLibraryInfoRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMMemoryBufferRef extends TypedPointer {
-    public LLVMMemoryBufferRef(long address) {
-      super(address);
-    }
-    public LLVMMemoryBufferRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMSectionIteratorRef extends TypedPointer {
-    public LLVMSectionIteratorRef(long address) {
-      super(address);
-    }
-    public LLVMSectionIteratorRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMPassRegistryRef extends TypedPointer {
-    public LLVMPassRegistryRef(long address) {
-      super(address);
-    }
-    public LLVMPassRegistryRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMMCJITMemoryManagerRef extends TypedPointer {
-    public LLVMMCJITMemoryManagerRef(long address) {
-      super(address);
-    }
-    public LLVMMCJITMemoryManagerRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMTargetDataRef extends TypedPointer {
-    public LLVMTargetDataRef(long address) {
-      super(address);
-    }
-    public LLVMTargetDataRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Pointer to unknown (opaque) type */
-  public static class LLVMBuilderRef extends TypedPointer {
-    public LLVMBuilderRef(long address) {
-      super(address);
-    }
-    public LLVMBuilderRef(Pointer address) {
-      super(address);
-    }
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueRelocationIterator {
+	static {
+		BridJ.register();
+	}
+	public enum LLVMCodeGenOptLevel implements IntValuedEnum<LLVMCodeGenOptLevel > {
+		LLVMCodeGenLevelNone(0),
+		LLVMCodeGenLevelLess(1),
+		LLVMCodeGenLevelDefault(2),
+		LLVMCodeGenLevelAggressive(3);
+		LLVMCodeGenOptLevel(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMCodeGenOptLevel > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMCodeGenOptLevel > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMRelocMode implements IntValuedEnum<LLVMRelocMode > {
+		LLVMRelocDefault(0),
+		LLVMRelocStatic(1),
+		LLVMRelocPIC(2),
+		LLVMRelocDynamicNoPic(3);
+		LLVMRelocMode(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMRelocMode > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMRelocMode > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMCodeModel implements IntValuedEnum<LLVMCodeModel > {
+		LLVMCodeModelDefault(0),
+		LLVMCodeModelJITDefault(1),
+		LLVMCodeModelSmall(2),
+		LLVMCodeModelKernel(3),
+		LLVMCodeModelMedium(4),
+		LLVMCodeModelLarge(5);
+		LLVMCodeModel(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMCodeModel > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMCodeModel > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMCodeGenFileType implements IntValuedEnum<LLVMCodeGenFileType > {
+		LLVMAssemblyFile(0),
+		LLVMObjectFile(1);
+		LLVMCodeGenFileType(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMCodeGenFileType > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMCodeGenFileType > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum lto_symbol_attributes implements IntValuedEnum<lto_symbol_attributes > {
+		LTO_SYMBOL_ALIGNMENT_MASK(0x0000001F),
+		LTO_SYMBOL_PERMISSIONS_MASK(0x000000E0),
+		LTO_SYMBOL_PERMISSIONS_CODE(0x000000A0),
+		LTO_SYMBOL_PERMISSIONS_DATA(0x000000C0),
+		LTO_SYMBOL_PERMISSIONS_RODATA(0x00000080),
+		LTO_SYMBOL_DEFINITION_MASK(0x00000700),
+		LTO_SYMBOL_DEFINITION_REGULAR(0x00000100),
+		LTO_SYMBOL_DEFINITION_TENTATIVE(0x00000200),
+		LTO_SYMBOL_DEFINITION_WEAK(0x00000300),
+		LTO_SYMBOL_DEFINITION_UNDEFINED(0x00000400),
+		LTO_SYMBOL_DEFINITION_WEAKUNDEF(0x00000500),
+		LTO_SYMBOL_SCOPE_MASK(0x00003800),
+		LTO_SYMBOL_SCOPE_INTERNAL(0x00000800),
+		LTO_SYMBOL_SCOPE_HIDDEN(0x00001000),
+		LTO_SYMBOL_SCOPE_PROTECTED(0x00002000),
+		LTO_SYMBOL_SCOPE_DEFAULT(0x00001800),
+		LTO_SYMBOL_SCOPE_DEFAULT_CAN_BE_HIDDEN(0x00002800);
+		lto_symbol_attributes(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<lto_symbol_attributes > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<lto_symbol_attributes > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum lto_debug_model implements IntValuedEnum<lto_debug_model > {
+		LTO_DEBUG_MODEL_NONE(0),
+		LTO_DEBUG_MODEL_DWARF(1);
+		lto_debug_model(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<lto_debug_model > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<lto_debug_model > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum lto_codegen_model implements IntValuedEnum<lto_codegen_model > {
+		LTO_CODEGEN_PIC_MODEL_STATIC(0),
+		LTO_CODEGEN_PIC_MODEL_DYNAMIC(1),
+		LTO_CODEGEN_PIC_MODEL_DYNAMIC_NO_PIC(2);
+		lto_codegen_model(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<lto_codegen_model > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<lto_codegen_model > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum lto_internalize_strategy implements IntValuedEnum<lto_internalize_strategy > {
+		LTO_INTERNALIZE_FULL(0),
+		LTO_INTERNALIZE_NONE(1),
+		LTO_INTERNALIZE_HIDDEN(2);
+		lto_internalize_strategy(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<lto_internalize_strategy > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<lto_internalize_strategy > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum lto_codegen_diagnostic_severity_t implements IntValuedEnum<lto_codegen_diagnostic_severity_t > {
+		LTO_DS_ERROR(0),
+		LTO_DS_WARNING(1),
+		LTO_DS_REMARK(3),
+		LTO_DS_NOTE(2);
+		lto_codegen_diagnostic_severity_t(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<lto_codegen_diagnostic_severity_t > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<lto_codegen_diagnostic_severity_t > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMAttribute implements IntValuedEnum<LLVMAttribute > {
+		LLVMZExtAttribute(1 << 0),
+		LLVMSExtAttribute(1 << 1),
+		LLVMNoReturnAttribute(1 << 2),
+		LLVMInRegAttribute(1 << 3),
+		LLVMStructRetAttribute(1 << 4),
+		LLVMNoUnwindAttribute(1 << 5),
+		LLVMNoAliasAttribute(1 << 6),
+		LLVMByValAttribute(1 << 7),
+		LLVMNestAttribute(1 << 8),
+		LLVMReadNoneAttribute(1 << 9),
+		LLVMReadOnlyAttribute(1 << 10),
+		LLVMNoInlineAttribute(1 << 11),
+		LLVMAlwaysInlineAttribute(1 << 12),
+		LLVMOptimizeForSizeAttribute(1 << 13),
+		LLVMStackProtectAttribute(1 << 14),
+		LLVMStackProtectReqAttribute(1 << 15),
+		LLVMAlignment(31 << 16),
+		LLVMNoCaptureAttribute(1 << 21),
+		LLVMNoRedZoneAttribute(1 << 22),
+		LLVMNoImplicitFloatAttribute(1 << 23),
+		LLVMNakedAttribute(1 << 24),
+		LLVMInlineHintAttribute(1 << 25),
+		LLVMStackAlignment(7 << 26),
+		LLVMReturnsTwice(1 << 29),
+		LLVMUWTable(1 << 30),
+		LLVMNonLazyBind(1 << 31);
+		LLVMAttribute(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMAttribute > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMAttribute > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMOpcode implements IntValuedEnum<LLVMOpcode > {
+		LLVMRet(1),
+		LLVMBr(2),
+		LLVMSwitch(3),
+		LLVMIndirectBr(4),
+		LLVMInvoke(5),
+		LLVMUnreachable(7),
+		LLVMAdd(8),
+		LLVMFAdd(9),
+		LLVMSub(10),
+		LLVMFSub(11),
+		LLVMMul(12),
+		LLVMFMul(13),
+		LLVMUDiv(14),
+		LLVMSDiv(15),
+		LLVMFDiv(16),
+		LLVMURem(17),
+		LLVMSRem(18),
+		LLVMFRem(19),
+		LLVMShl(20),
+		LLVMLShr(21),
+		LLVMAShr(22),
+		LLVMAnd(23),
+		LLVMOr(24),
+		LLVMXor(25),
+		LLVMAlloca(26),
+		LLVMLoad(27),
+		LLVMStore(28),
+		LLVMGetElementPtr(29),
+		LLVMTrunc(30),
+		LLVMZExt(31),
+		LLVMSExt(32),
+		LLVMFPToUI(33),
+		LLVMFPToSI(34),
+		LLVMUIToFP(35),
+		LLVMSIToFP(36),
+		LLVMFPTrunc(37),
+		LLVMFPExt(38),
+		LLVMPtrToInt(39),
+		LLVMIntToPtr(40),
+		LLVMBitCast(41),
+		LLVMAddrSpaceCast(60),
+		LLVMICmp(42),
+		LLVMFCmp(43),
+		LLVMPHI(44),
+		LLVMCall(45),
+		LLVMSelect(46),
+		LLVMUserOp1(47),
+		LLVMUserOp2(48),
+		LLVMVAArg(49),
+		LLVMExtractElement(50),
+		LLVMInsertElement(51),
+		LLVMShuffleVector(52),
+		LLVMExtractValue(53),
+		LLVMInsertValue(54),
+		LLVMFence(55),
+		LLVMAtomicCmpXchg(56),
+		LLVMAtomicRMW(57),
+		LLVMResume(58),
+		LLVMLandingPad(59);
+		LLVMOpcode(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMOpcode > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMOpcode > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMTypeKind implements IntValuedEnum<LLVMTypeKind > {
+		LLVMVoidTypeKind(0),
+		LLVMHalfTypeKind(1),
+		LLVMFloatTypeKind(2),
+		LLVMDoubleTypeKind(3),
+		LLVMX86_FP80TypeKind(4),
+		LLVMFP128TypeKind(5),
+		LLVMPPC_FP128TypeKind(6),
+		LLVMLabelTypeKind(7),
+		LLVMIntegerTypeKind(8),
+		LLVMFunctionTypeKind(9),
+		LLVMStructTypeKind(10),
+		LLVMArrayTypeKind(11),
+		LLVMPointerTypeKind(12),
+		LLVMVectorTypeKind(13),
+		LLVMMetadataTypeKind(14),
+		LLVMX86_MMXTypeKind(15);
+		LLVMTypeKind(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMTypeKind > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMTypeKind > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMLinkage implements IntValuedEnum<LLVMLinkage > {
+		LLVMExternalLinkage(0),
+		LLVMAvailableExternallyLinkage(1),
+		LLVMLinkOnceAnyLinkage(2),
+		LLVMLinkOnceODRLinkage(3),
+		LLVMLinkOnceODRAutoHideLinkage(4),
+		LLVMWeakAnyLinkage(5),
+		LLVMWeakODRLinkage(6),
+		LLVMAppendingLinkage(7),
+		LLVMInternalLinkage(8),
+		LLVMPrivateLinkage(9),
+		LLVMDLLImportLinkage(10),
+		LLVMDLLExportLinkage(11),
+		LLVMExternalWeakLinkage(12),
+		LLVMGhostLinkage(13),
+		LLVMCommonLinkage(14),
+		LLVMLinkerPrivateLinkage(15),
+		LLVMLinkerPrivateWeakLinkage(16);
+		LLVMLinkage(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMLinkage > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMLinkage > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMVisibility implements IntValuedEnum<LLVMVisibility > {
+		LLVMDefaultVisibility(0),
+		LLVMHiddenVisibility(1),
+		LLVMProtectedVisibility(2);
+		LLVMVisibility(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMVisibility > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMVisibility > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMDLLStorageClass implements IntValuedEnum<LLVMDLLStorageClass > {
+		LLVMDefaultStorageClass(0),
+		LLVMDLLImportStorageClass(1),
+		LLVMDLLExportStorageClass(2);
+		LLVMDLLStorageClass(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMDLLStorageClass > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMDLLStorageClass > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMCallConv implements IntValuedEnum<LLVMCallConv > {
+		LLVMCCallConv(0),
+		LLVMFastCallConv(8),
+		LLVMColdCallConv(9),
+		LLVMWebKitJSCallConv(12),
+		LLVMAnyRegCallConv(13),
+		LLVMX86StdcallCallConv(64),
+		LLVMX86FastcallCallConv(65);
+		LLVMCallConv(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMCallConv > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMCallConv > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMIntPredicate implements IntValuedEnum<LLVMIntPredicate > {
+		LLVMIntEQ(32),
+		LLVMIntNE(33),
+		LLVMIntUGT(34),
+		LLVMIntUGE(35),
+		LLVMIntULT(36),
+		LLVMIntULE(37),
+		LLVMIntSGT(38),
+		LLVMIntSGE(39),
+		LLVMIntSLT(40),
+		LLVMIntSLE(41);
+		LLVMIntPredicate(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMIntPredicate > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMIntPredicate > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMRealPredicate implements IntValuedEnum<LLVMRealPredicate > {
+		LLVMRealPredicateFalse(0),
+		LLVMRealOEQ(1),
+		LLVMRealOGT(2),
+		LLVMRealOGE(3),
+		LLVMRealOLT(4),
+		LLVMRealOLE(5),
+		LLVMRealONE(6),
+		LLVMRealORD(7),
+		LLVMRealUNO(8),
+		LLVMRealUEQ(9),
+		LLVMRealUGT(10),
+		LLVMRealUGE(11),
+		LLVMRealULT(12),
+		LLVMRealULE(13),
+		LLVMRealUNE(14),
+		LLVMRealPredicateTrue(15);
+		LLVMRealPredicate(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMRealPredicate > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMRealPredicate > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMLandingPadClauseTy implements IntValuedEnum<LLVMLandingPadClauseTy > {
+		LLVMLandingPadCatch(0),
+		LLVMLandingPadFilter(1);
+		LLVMLandingPadClauseTy(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMLandingPadClauseTy > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMLandingPadClauseTy > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMThreadLocalMode implements IntValuedEnum<LLVMThreadLocalMode > {
+		LLVMNotThreadLocal(0),
+		LLVMGeneralDynamicTLSModel(1),
+		LLVMLocalDynamicTLSModel(2),
+		LLVMInitialExecTLSModel(3),
+		LLVMLocalExecTLSModel(4);
+		LLVMThreadLocalMode(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMThreadLocalMode > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMThreadLocalMode > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMAtomicOrdering implements IntValuedEnum<LLVMAtomicOrdering > {
+		LLVMAtomicOrderingNotAtomic(0),
+		LLVMAtomicOrderingUnordered(1),
+		LLVMAtomicOrderingMonotonic(2),
+		LLVMAtomicOrderingAcquire(4),
+		LLVMAtomicOrderingRelease(5),
+		LLVMAtomicOrderingAcquireRelease(6),
+		LLVMAtomicOrderingSequentiallyConsistent(7);
+		LLVMAtomicOrdering(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMAtomicOrdering > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMAtomicOrdering > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMAtomicRMWBinOp implements IntValuedEnum<LLVMAtomicRMWBinOp > {
+		LLVMAtomicRMWBinOpXchg(0),
+		LLVMAtomicRMWBinOpAdd(1),
+		LLVMAtomicRMWBinOpSub(2),
+		LLVMAtomicRMWBinOpAnd(3),
+		LLVMAtomicRMWBinOpNand(4),
+		LLVMAtomicRMWBinOpOr(5),
+		LLVMAtomicRMWBinOpXor(6),
+		LLVMAtomicRMWBinOpMax(7),
+		LLVMAtomicRMWBinOpMin(8),
+		LLVMAtomicRMWBinOpUMax(9),
+		LLVMAtomicRMWBinOpUMin(10);
+		LLVMAtomicRMWBinOp(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMAtomicRMWBinOp > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMAtomicRMWBinOp > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMVerifierFailureAction implements IntValuedEnum<LLVMVerifierFailureAction > {
+		LLVMAbortProcessAction(0),
+		LLVMPrintMessageAction(1),
+		LLVMReturnStatusAction(2);
+		LLVMVerifierFailureAction(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMVerifierFailureAction > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMVerifierFailureAction > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMByteOrdering implements IntValuedEnum<LLVMByteOrdering > {
+		LLVMBigEndian(0),
+		LLVMLittleEndian(1);
+		LLVMByteOrdering(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMByteOrdering > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMByteOrdering > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum llvm_lto_status implements IntValuedEnum<llvm_lto_status > {
+		LLVM_LTO_UNKNOWN(0),
+		LLVM_LTO_OPT_SUCCESS(1),
+		LLVM_LTO_READ_SUCCESS(2),
+		LLVM_LTO_READ_FAILURE(3),
+		LLVM_LTO_WRITE_FAILURE(4),
+		LLVM_LTO_NO_TARGET(5),
+		LLVM_LTO_NO_WORK(6),
+		LLVM_LTO_MODULE_MERGE_FAILURE(7),
+		LLVM_LTO_ASM_FAILURE(8),
+		LLVM_LTO_NULL_OBJECT(9);
+		llvm_lto_status(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<llvm_lto_status > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<llvm_lto_status > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public enum LLVMLinkerMode implements IntValuedEnum<LLVMLinkerMode > {
+		LLVMLinkerDestroySource(0),
+		LLVMLinkerPreserveSource(1);
+		LLVMLinkerMode(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<LLVMLinkerMode > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<LLVMLinkerMode > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	public static final int LLVMDisassembler_Option_AsmPrinterVariant = (int)4;
+	public static final int LLVMDisassembler_Option_PrintLatency = (int)16;
+	public static final int LLVMDisassembler_ReferenceType_Out_Objc_Message = (int)5;
+	public static final int LLVMDisassembler_Option_UseMarkup = (int)1;
+	public static final int LLVMDisassembler_ReferenceType_Out_Objc_Class_Ref = (int)8;
+	public static final int LLVMDisassembler_ReferenceType_Out_Objc_Selector_Ref = (int)7;
+	public static final int LLVMDisassembler_Option_PrintImmHex = (int)2;
+	public static final int LTO_API_VERSION = (int)10;
+	public static final int LLVMDisassembler_ReferenceType_Out_Objc_CFString_Ref = (int)4;
+	public static final int LLVMDisassembler_ReferenceType_Out_Objc_Message_Ref = (int)6;
+	public static final int LLVMDisassembler_ReferenceType_InOut_None = (int)0;
+	public static final int LLVMDisassembler_ReferenceType_Out_SymbolStub = (int)1;
+	public static final int LLVMDisassembler_VariantKind_ARM_HI16 = (int)1;
+	public static final int LLVMDisassembler_VariantKind_ARM_LO16 = (int)2;
+	public static final int LLVMDisassembler_Option_SetInstrComments = (int)8;
+	public static final int LLVMDisassembler_VariantKind_None = (int)0;
+	public static final int LLVMDisassembler_ReferenceType_DeMangled_Name = (int)9;
+	public static final int LLVMDisassembler_ReferenceType_Out_LitPool_SymAddr = (int)2;
+	public static final int LLVMDisassembler_ReferenceType_In_PCrel_Load = (int)2;
+	public static final int LLVMDisassembler_ReferenceType_Out_LitPool_CstrAddr = (int)3;
+	public static final int LLVMDisassembler_ReferenceType_In_Branch = (int)1;
+	public static abstract class lto_diagnostic_handler_t extends Callback<lto_diagnostic_handler_t > {
+		public void apply(IntValuedEnum<LLVM35svnLibrary.lto_codegen_diagnostic_severity_t > severity, Pointer<Byte > diag, Pointer<? > ctxt) {
+			apply((int)severity.value(), Pointer.getPeer(diag), Pointer.getPeer(ctxt));
+		}
+		public void apply(int severity, @Ptr long diag, @Ptr long ctxt) {
+			apply(FlagSet.fromValue(severity, LLVM35svnLibrary.lto_codegen_diagnostic_severity_t.class), Pointer.pointerToAddress(diag, Byte.class), Pointer.pointerToAddress(ctxt));
+		}
+	};
+	public static abstract class LLVMOpInfoCallback extends Callback<LLVMOpInfoCallback > {
+		public int apply(Pointer<? > DisInfo, long PC, long Offset, long Size, int TagType, Pointer<? > TagBuf) {
+			return apply(Pointer.getPeer(DisInfo), PC, Offset, Size, TagType, Pointer.getPeer(TagBuf));
+		}
+		public int apply(@Ptr long DisInfo, long PC, long Offset, long Size, int TagType, @Ptr long TagBuf) {
+			return apply(Pointer.pointerToAddress(DisInfo), PC, Offset, Size, TagType, Pointer.pointerToAddress(TagBuf));
+		}
+	};
+	public static abstract class LLVMSymbolLookupCallback extends Callback<LLVMSymbolLookupCallback > {
+		public Pointer<Byte > apply(Pointer<? > DisInfo, long ReferenceValue, Pointer<Long > ReferenceType, long ReferencePC, Pointer<Pointer<Byte > > ReferenceName) {
+			return Pointer.pointerToAddress(apply(Pointer.getPeer(DisInfo), ReferenceValue, Pointer.getPeer(ReferenceType), ReferencePC, Pointer.getPeer(ReferenceName)), Byte.class);
+		}
+		@Ptr 
+		public long apply(@Ptr long DisInfo, long ReferenceValue, @Ptr long ReferenceType, long ReferencePC, @Ptr long ReferenceName) {
+			return Pointer.getPeer(apply(Pointer.pointerToAddress(DisInfo), ReferenceValue, Pointer.pointerToAddress(ReferenceType, Long.class), ReferencePC, Pointer.pointerToAddress(ReferenceName, DefaultParameterizedType.paramType(Pointer.class, Byte.class))));
+		}
+	};
+	public static abstract class LLVMFatalErrorHandler extends Callback<LLVMFatalErrorHandler > {
+		public void apply(Pointer<Byte > Reason) {
+			apply(Pointer.getPeer(Reason));
+		}
+		public void apply(@Ptr long Reason) {
+			apply(Pointer.pointerToAddress(Reason, Byte.class));
+		}
+	};
+	public static abstract class LLVMMemoryManagerAllocateCodeSectionCallback extends Callback<LLVMMemoryManagerAllocateCodeSectionCallback > {
+		public Pointer<Byte > apply(Pointer<? > Opaque, @CLong long Size, int Alignment, int SectionID, Pointer<Byte > SectionName) {
+			return Pointer.pointerToAddress(apply(Pointer.getPeer(Opaque), Size, Alignment, SectionID, Pointer.getPeer(SectionName)), Byte.class);
+		}
+		@Ptr 
+		public long apply(@Ptr long Opaque, @CLong long Size, int Alignment, int SectionID, @Ptr long SectionName) {
+			return Pointer.getPeer(apply(Pointer.pointerToAddress(Opaque), Size, Alignment, SectionID, Pointer.pointerToAddress(SectionName, Byte.class)));
+		}
+	};
+	public static abstract class LLVMMemoryManagerAllocateDataSectionCallback extends Callback<LLVMMemoryManagerAllocateDataSectionCallback > {
+		public Pointer<Byte > apply(Pointer<? > Opaque, @CLong long Size, int Alignment, int SectionID, Pointer<Byte > SectionName, int IsReadOnly) {
+			return Pointer.pointerToAddress(apply(Pointer.getPeer(Opaque), Size, Alignment, SectionID, Pointer.getPeer(SectionName), IsReadOnly), Byte.class);
+		}
+		@Ptr 
+		public long apply(@Ptr long Opaque, @CLong long Size, int Alignment, int SectionID, @Ptr long SectionName, int IsReadOnly) {
+			return Pointer.getPeer(apply(Pointer.pointerToAddress(Opaque), Size, Alignment, SectionID, Pointer.pointerToAddress(SectionName, Byte.class), IsReadOnly));
+		}
+	};
+	public static abstract class LLVMMemoryManagerFinalizeMemoryCallback extends Callback<LLVMMemoryManagerFinalizeMemoryCallback > {
+		public int apply(Pointer<? > Opaque, Pointer<Pointer<Byte > > ErrMsg) {
+			return apply(Pointer.getPeer(Opaque), Pointer.getPeer(ErrMsg));
+		}
+		public int apply(@Ptr long Opaque, @Ptr long ErrMsg) {
+			return apply(Pointer.pointerToAddress(Opaque), Pointer.pointerToAddress(ErrMsg, DefaultParameterizedType.paramType(Pointer.class, Byte.class)));
+		}
+	};
+	public static abstract class LLVMMemoryManagerDestroyCallback extends Callback<LLVMMemoryManagerDestroyCallback > {
+		public void apply(Pointer<? > Opaque) {
+			apply(Pointer.getPeer(Opaque));
+		}
+		public void apply(@Ptr long Opaque) {
+			apply(Pointer.pointerToAddress(Opaque));
+		}
+	};
+	public static int LLVMWriteBitcodeToFile(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Path) {
+		return LLVMWriteBitcodeToFile(Pointer.getPeer(M), Pointer.getPeer(Path));
+	}
+	protected native static int LLVMWriteBitcodeToFile(@Ptr long M, @Ptr long Path);
+	public static int LLVMWriteBitcodeToFD(LLVM35svnLibrary.LLVMModuleRef M, int FD, int ShouldClose, int Unbuffered) {
+		return LLVMWriteBitcodeToFD(Pointer.getPeer(M), FD, ShouldClose, Unbuffered);
+	}
+	protected native static int LLVMWriteBitcodeToFD(@Ptr long M, int FD, int ShouldClose, int Unbuffered);
+	public static int LLVMWriteBitcodeToFileHandle(LLVM35svnLibrary.LLVMModuleRef M, int Handle) {
+		return LLVMWriteBitcodeToFileHandle(Pointer.getPeer(M), Handle);
+	}
+	protected native static int LLVMWriteBitcodeToFileHandle(@Ptr long M, int Handle);
+	public static int LLVMParseIRInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutM, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMParseIRInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutM), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMParseIRInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutM, @Ptr long OutMessage);
+	public static LLVM35svnLibrary.LLVMObjectFileRef LLVMCreateObjectFile(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
+		return new LLVM35svnLibrary.LLVMObjectFileRef(LLVMCreateObjectFile(Pointer.getPeer(MemBuf)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateObjectFile(@Ptr long MemBuf);
+	public static void LLVMDisposeObjectFile(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile) {
+		LLVMDisposeObjectFile(Pointer.getPeer(ObjectFile));
+	}
+	protected native static void LLVMDisposeObjectFile(@Ptr long ObjectFile);
+	public static LLVM35svnLibrary.LLVMSectionIteratorRef LLVMGetSections(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile) {
+		return new LLVM35svnLibrary.LLVMSectionIteratorRef(LLVMGetSections(Pointer.getPeer(ObjectFile)));
+	}
+	@Ptr 
+	protected native static long LLVMGetSections(@Ptr long ObjectFile);
+	public static void LLVMDisposeSectionIterator(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
+		LLVMDisposeSectionIterator(Pointer.getPeer(SI));
+	}
+	protected native static void LLVMDisposeSectionIterator(@Ptr long SI);
+	public static int LLVMIsSectionIteratorAtEnd(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile, LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
+		return LLVMIsSectionIteratorAtEnd(Pointer.getPeer(ObjectFile), Pointer.getPeer(SI));
+	}
+	protected native static int LLVMIsSectionIteratorAtEnd(@Ptr long ObjectFile, @Ptr long SI);
+	public static void LLVMMoveToNextSection(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
+		LLVMMoveToNextSection(Pointer.getPeer(SI));
+	}
+	protected native static void LLVMMoveToNextSection(@Ptr long SI);
+	public static void LLVMMoveToContainingSection(LLVM35svnLibrary.LLVMSectionIteratorRef Sect, LLVM35svnLibrary.LLVMSymbolIteratorRef Sym) {
+		LLVMMoveToContainingSection(Pointer.getPeer(Sect), Pointer.getPeer(Sym));
+	}
+	protected native static void LLVMMoveToContainingSection(@Ptr long Sect, @Ptr long Sym);
+	public static LLVM35svnLibrary.LLVMSymbolIteratorRef LLVMGetSymbols(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile) {
+		return new LLVM35svnLibrary.LLVMSymbolIteratorRef(LLVMGetSymbols(Pointer.getPeer(ObjectFile)));
+	}
+	@Ptr 
+	protected native static long LLVMGetSymbols(@Ptr long ObjectFile);
+	public static void LLVMDisposeSymbolIterator(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
+		LLVMDisposeSymbolIterator(Pointer.getPeer(SI));
+	}
+	protected native static void LLVMDisposeSymbolIterator(@Ptr long SI);
+	public static int LLVMIsSymbolIteratorAtEnd(LLVM35svnLibrary.LLVMObjectFileRef ObjectFile, LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
+		return LLVMIsSymbolIteratorAtEnd(Pointer.getPeer(ObjectFile), Pointer.getPeer(SI));
+	}
+	protected native static int LLVMIsSymbolIteratorAtEnd(@Ptr long ObjectFile, @Ptr long SI);
+	public static void LLVMMoveToNextSymbol(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
+		LLVMMoveToNextSymbol(Pointer.getPeer(SI));
+	}
+	protected native static void LLVMMoveToNextSymbol(@Ptr long SI);
+	public static Pointer<Byte > LLVMGetSectionName(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
+		return Pointer.pointerToAddress(LLVMGetSectionName(Pointer.getPeer(SI)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetSectionName(@Ptr long SI);
+	public static long LLVMGetSectionSize(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
+		return LLVMGetSectionSize(Pointer.getPeer(SI));
+	}
+	protected native static long LLVMGetSectionSize(@Ptr long SI);
+	public static Pointer<Byte > LLVMGetSectionContents(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
+		return Pointer.pointerToAddress(LLVMGetSectionContents(Pointer.getPeer(SI)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetSectionContents(@Ptr long SI);
+	public static long LLVMGetSectionAddress(LLVM35svnLibrary.LLVMSectionIteratorRef SI) {
+		return LLVMGetSectionAddress(Pointer.getPeer(SI));
+	}
+	protected native static long LLVMGetSectionAddress(@Ptr long SI);
+	public static int LLVMGetSectionContainsSymbol(LLVM35svnLibrary.LLVMSectionIteratorRef SI, LLVM35svnLibrary.LLVMSymbolIteratorRef Sym) {
+		return LLVMGetSectionContainsSymbol(Pointer.getPeer(SI), Pointer.getPeer(Sym));
+	}
+	protected native static int LLVMGetSectionContainsSymbol(@Ptr long SI, @Ptr long Sym);
+	public static LLVM35svnLibrary.LLVMRelocationIteratorRef LLVMGetRelocations(LLVM35svnLibrary.LLVMSectionIteratorRef Section) {
+		return new LLVM35svnLibrary.LLVMRelocationIteratorRef(LLVMGetRelocations(Pointer.getPeer(Section)));
+	}
+	@Ptr 
+	protected native static long LLVMGetRelocations(@Ptr long Section);
+	public static void LLVMDisposeRelocationIterator(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		LLVMDisposeRelocationIterator(Pointer.getPeer(RI));
+	}
+	protected native static void LLVMDisposeRelocationIterator(@Ptr long RI);
+	public static int LLVMIsRelocationIteratorAtEnd(LLVM35svnLibrary.LLVMSectionIteratorRef Section, LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		return LLVMIsRelocationIteratorAtEnd(Pointer.getPeer(Section), Pointer.getPeer(RI));
+	}
+	protected native static int LLVMIsRelocationIteratorAtEnd(@Ptr long Section, @Ptr long RI);
+	public static void LLVMMoveToNextRelocation(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		LLVMMoveToNextRelocation(Pointer.getPeer(RI));
+	}
+	protected native static void LLVMMoveToNextRelocation(@Ptr long RI);
+	public static Pointer<Byte > LLVMGetSymbolName(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
+		return Pointer.pointerToAddress(LLVMGetSymbolName(Pointer.getPeer(SI)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetSymbolName(@Ptr long SI);
+	public static long LLVMGetSymbolAddress(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
+		return LLVMGetSymbolAddress(Pointer.getPeer(SI));
+	}
+	protected native static long LLVMGetSymbolAddress(@Ptr long SI);
+	public static long LLVMGetSymbolFileOffset(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
+		return LLVMGetSymbolFileOffset(Pointer.getPeer(SI));
+	}
+	protected native static long LLVMGetSymbolFileOffset(@Ptr long SI);
+	public static long LLVMGetSymbolSize(LLVM35svnLibrary.LLVMSymbolIteratorRef SI) {
+		return LLVMGetSymbolSize(Pointer.getPeer(SI));
+	}
+	protected native static long LLVMGetSymbolSize(@Ptr long SI);
+	public static long LLVMGetRelocationAddress(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		return LLVMGetRelocationAddress(Pointer.getPeer(RI));
+	}
+	protected native static long LLVMGetRelocationAddress(@Ptr long RI);
+	public static long LLVMGetRelocationOffset(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		return LLVMGetRelocationOffset(Pointer.getPeer(RI));
+	}
+	protected native static long LLVMGetRelocationOffset(@Ptr long RI);
+	public static LLVM35svnLibrary.LLVMSymbolIteratorRef LLVMGetRelocationSymbol(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		return new LLVM35svnLibrary.LLVMSymbolIteratorRef(LLVMGetRelocationSymbol(Pointer.getPeer(RI)));
+	}
+	@Ptr 
+	protected native static long LLVMGetRelocationSymbol(@Ptr long RI);
+	public static long LLVMGetRelocationType(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		return LLVMGetRelocationType(Pointer.getPeer(RI));
+	}
+	protected native static long LLVMGetRelocationType(@Ptr long RI);
+	public static Pointer<Byte > LLVMGetRelocationTypeName(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		return Pointer.pointerToAddress(LLVMGetRelocationTypeName(Pointer.getPeer(RI)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetRelocationTypeName(@Ptr long RI);
+	public static Pointer<Byte > LLVMGetRelocationValueString(LLVM35svnLibrary.LLVMRelocationIteratorRef RI) {
+		return Pointer.pointerToAddress(LLVMGetRelocationValueString(Pointer.getPeer(RI)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetRelocationValueString(@Ptr long RI);
+	public static LLVM35svnLibrary.LLVMTargetRef LLVMGetFirstTarget() {
+		return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetFirstTarget$2());
+	}
+	@Ptr 
+	protected native static long LLVMGetFirstTarget$2();
+	public static LLVM35svnLibrary.LLVMTargetRef LLVMGetNextTarget(LLVM35svnLibrary.LLVMTargetRef T) {
+		return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetNextTarget(Pointer.getPeer(T)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNextTarget(@Ptr long T);
+	public static LLVM35svnLibrary.LLVMTargetRef LLVMGetTargetFromName(Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetTargetFromName(Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetFromName(@Ptr long Name);
+	public static int LLVMGetTargetFromTriple(Pointer<Byte > Triple, Pointer<LLVM35svnLibrary.LLVMTargetRef > T, Pointer<Pointer<Byte > > ErrorMessage) {
+		return LLVMGetTargetFromTriple(Pointer.getPeer(Triple), Pointer.getPeer(T), Pointer.getPeer(ErrorMessage));
+	}
+	protected native static int LLVMGetTargetFromTriple(@Ptr long Triple, @Ptr long T, @Ptr long ErrorMessage);
+	public static Pointer<Byte > LLVMGetTargetName(LLVM35svnLibrary.LLVMTargetRef T) {
+		return Pointer.pointerToAddress(LLVMGetTargetName(Pointer.getPeer(T)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetName(@Ptr long T);
+	public static Pointer<Byte > LLVMGetTargetDescription(LLVM35svnLibrary.LLVMTargetRef T) {
+		return Pointer.pointerToAddress(LLVMGetTargetDescription(Pointer.getPeer(T)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetDescription(@Ptr long T);
+	public static int LLVMTargetHasJIT(LLVM35svnLibrary.LLVMTargetRef T) {
+		return LLVMTargetHasJIT(Pointer.getPeer(T));
+	}
+	protected native static int LLVMTargetHasJIT(@Ptr long T);
+	public static int LLVMTargetHasTargetMachine(LLVM35svnLibrary.LLVMTargetRef T) {
+		return LLVMTargetHasTargetMachine(Pointer.getPeer(T));
+	}
+	protected native static int LLVMTargetHasTargetMachine(@Ptr long T);
+	public static int LLVMTargetHasAsmBackend(LLVM35svnLibrary.LLVMTargetRef T) {
+		return LLVMTargetHasAsmBackend(Pointer.getPeer(T));
+	}
+	protected native static int LLVMTargetHasAsmBackend(@Ptr long T);
+	public static LLVM35svnLibrary.LLVMTargetMachineRef LLVMCreateTargetMachine(LLVM35svnLibrary.LLVMTargetRef T, Pointer<Byte > Triple, Pointer<Byte > CPU, Pointer<Byte > Features, IntValuedEnum<LLVM35svnLibrary.LLVMCodeGenOptLevel > Level, IntValuedEnum<LLVM35svnLibrary.LLVMRelocMode > Reloc, IntValuedEnum<LLVM35svnLibrary.LLVMCodeModel > CodeModel) {
+		return new LLVM35svnLibrary.LLVMTargetMachineRef(LLVMCreateTargetMachine(Pointer.getPeer(T), Pointer.getPeer(Triple), Pointer.getPeer(CPU), Pointer.getPeer(Features), (int)Level.value(), (int)Reloc.value(), (int)CodeModel.value()));
+	}
+	@Ptr 
+	protected native static long LLVMCreateTargetMachine(@Ptr long T, @Ptr long Triple, @Ptr long CPU, @Ptr long Features, int Level, int Reloc, int CodeModel);
+	public static void LLVMDisposeTargetMachine(LLVM35svnLibrary.LLVMTargetMachineRef T) {
+		LLVMDisposeTargetMachine(Pointer.getPeer(T));
+	}
+	protected native static void LLVMDisposeTargetMachine(@Ptr long T);
+	public static LLVM35svnLibrary.LLVMTargetRef LLVMGetTargetMachineTarget(LLVM35svnLibrary.LLVMTargetMachineRef T) {
+		return new LLVM35svnLibrary.LLVMTargetRef(LLVMGetTargetMachineTarget(Pointer.getPeer(T)));
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetMachineTarget(@Ptr long T);
+	public static Pointer<Byte > LLVMGetTargetMachineTriple(LLVM35svnLibrary.LLVMTargetMachineRef T) {
+		return Pointer.pointerToAddress(LLVMGetTargetMachineTriple(Pointer.getPeer(T)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetMachineTriple(@Ptr long T);
+	public static Pointer<Byte > LLVMGetTargetMachineCPU(LLVM35svnLibrary.LLVMTargetMachineRef T) {
+		return Pointer.pointerToAddress(LLVMGetTargetMachineCPU(Pointer.getPeer(T)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetMachineCPU(@Ptr long T);
+	public static Pointer<Byte > LLVMGetTargetMachineFeatureString(LLVM35svnLibrary.LLVMTargetMachineRef T) {
+		return Pointer.pointerToAddress(LLVMGetTargetMachineFeatureString(Pointer.getPeer(T)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetMachineFeatureString(@Ptr long T);
+	public static LLVM35svnLibrary.LLVMTargetDataRef LLVMGetTargetMachineData(LLVM35svnLibrary.LLVMTargetMachineRef T) {
+		return new LLVM35svnLibrary.LLVMTargetDataRef(LLVMGetTargetMachineData(Pointer.getPeer(T)));
+	}
+	@Ptr 
+	protected native static long LLVMGetTargetMachineData(@Ptr long T);
+	public static void LLVMSetTargetMachineAsmVerbosity(LLVM35svnLibrary.LLVMTargetMachineRef T, int VerboseAsm) {
+		LLVMSetTargetMachineAsmVerbosity(Pointer.getPeer(T), VerboseAsm);
+	}
+	protected native static void LLVMSetTargetMachineAsmVerbosity(@Ptr long T, int VerboseAsm);
+	public static int LLVMTargetMachineEmitToFile(LLVM35svnLibrary.LLVMTargetMachineRef T, LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Filename, IntValuedEnum<LLVM35svnLibrary.LLVMCodeGenFileType > codegen, Pointer<Pointer<Byte > > ErrorMessage) {
+		return LLVMTargetMachineEmitToFile(Pointer.getPeer(T), Pointer.getPeer(M), Pointer.getPeer(Filename), (int)codegen.value(), Pointer.getPeer(ErrorMessage));
+	}
+	protected native static int LLVMTargetMachineEmitToFile(@Ptr long T, @Ptr long M, @Ptr long Filename, int codegen, @Ptr long ErrorMessage);
+	public static int LLVMTargetMachineEmitToMemoryBuffer(LLVM35svnLibrary.LLVMTargetMachineRef T, LLVM35svnLibrary.LLVMModuleRef M, IntValuedEnum<LLVM35svnLibrary.LLVMCodeGenFileType > codegen, Pointer<Pointer<Byte > > ErrorMessage, Pointer<LLVM35svnLibrary.LLVMMemoryBufferRef > OutMemBuf) {
+		return LLVMTargetMachineEmitToMemoryBuffer(Pointer.getPeer(T), Pointer.getPeer(M), (int)codegen.value(), Pointer.getPeer(ErrorMessage), Pointer.getPeer(OutMemBuf));
+	}
+	protected native static int LLVMTargetMachineEmitToMemoryBuffer(@Ptr long T, @Ptr long M, int codegen, @Ptr long ErrorMessage, @Ptr long OutMemBuf);
+	public static Pointer<Byte > LLVMGetDefaultTargetTriple() {
+		return Pointer.pointerToAddress(LLVMGetDefaultTargetTriple$2(), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetDefaultTargetTriple$2();
+	public static void LLVMAddAnalysisPasses(LLVM35svnLibrary.LLVMTargetMachineRef T, LLVM35svnLibrary.LLVMPassManagerRef PM) {
+		LLVMAddAnalysisPasses(Pointer.getPeer(T), Pointer.getPeer(PM));
+	}
+	protected native static void LLVMAddAnalysisPasses(@Ptr long T, @Ptr long PM);
+	public static int LLVMLoadLibraryPermanently(Pointer<Byte > Filename) {
+		return LLVMLoadLibraryPermanently(Pointer.getPeer(Filename));
+	}
+	protected native static int LLVMLoadLibraryPermanently(@Ptr long Filename);
+	public static void LLVMInitializeCore(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeCore(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeCore(@Ptr long R);
+	public static void LLVMInitializeTransformUtils(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeTransformUtils(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeTransformUtils(@Ptr long R);
+	public static void LLVMInitializeScalarOpts(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeScalarOpts(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeScalarOpts(@Ptr long R);
+	public static void LLVMInitializeObjCARCOpts(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeObjCARCOpts(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeObjCARCOpts(@Ptr long R);
+	public static void LLVMInitializeVectorization(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeVectorization(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeVectorization(@Ptr long R);
+	public static void LLVMInitializeInstCombine(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeInstCombine(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeInstCombine(@Ptr long R);
+	public static void LLVMInitializeIPO(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeIPO(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeIPO(@Ptr long R);
+	public static void LLVMInitializeInstrumentation(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeInstrumentation(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeInstrumentation(@Ptr long R);
+	public static void LLVMInitializeAnalysis(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeAnalysis(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeAnalysis(@Ptr long R);
+	public static void LLVMInitializeIPA(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeIPA(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeIPA(@Ptr long R);
+	public static void LLVMInitializeCodeGen(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeCodeGen(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeCodeGen(@Ptr long R);
+	public static void LLVMInitializeTarget(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeTarget(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeTarget(@Ptr long R);
+	public static Pointer<Byte > lto_get_version() {
+		return Pointer.pointerToAddress(lto_get_version$2(), Byte.class);
+	}
+	@Ptr 
+	protected native static long lto_get_version$2();
+	public static Pointer<Byte > lto_get_error_message() {
+		return Pointer.pointerToAddress(lto_get_error_message$2(), Byte.class);
+	}
+	@Ptr 
+	protected native static long lto_get_error_message$2();
+	public static boolean lto_module_is_object_file(Pointer<Byte > path) {
+		return lto_module_is_object_file(Pointer.getPeer(path));
+	}
+	protected native static boolean lto_module_is_object_file(@Ptr long path);
+	public static boolean lto_module_is_object_file_for_target(Pointer<Byte > path, Pointer<Byte > target_triple_prefix) {
+		return lto_module_is_object_file_for_target(Pointer.getPeer(path), Pointer.getPeer(target_triple_prefix));
+	}
+	protected native static boolean lto_module_is_object_file_for_target(@Ptr long path, @Ptr long target_triple_prefix);
+	public static boolean lto_module_is_object_file_in_memory(Pointer<? > mem, @Ptr long length) {
+		return lto_module_is_object_file_in_memory(Pointer.getPeer(mem), length);
+	}
+	protected native static boolean lto_module_is_object_file_in_memory(@Ptr long mem, @Ptr long length);
+	public static boolean lto_module_is_object_file_in_memory_for_target(Pointer<? > mem, @Ptr long length, Pointer<Byte > target_triple_prefix) {
+		return lto_module_is_object_file_in_memory_for_target(Pointer.getPeer(mem), length, Pointer.getPeer(target_triple_prefix));
+	}
+	protected native static boolean lto_module_is_object_file_in_memory_for_target(@Ptr long mem, @Ptr long length, @Ptr long target_triple_prefix);
+	public static LLVM35svnLibrary.lto_module_t lto_module_create(Pointer<Byte > path) {
+		return new LLVM35svnLibrary.lto_module_t(lto_module_create(Pointer.getPeer(path)));
+	}
+	@Ptr 
+	protected native static long lto_module_create(@Ptr long path);
+	public static LLVM35svnLibrary.lto_module_t lto_module_create_from_memory(Pointer<? > mem, @Ptr long length) {
+		return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_memory(Pointer.getPeer(mem), length));
+	}
+	@Ptr 
+	protected native static long lto_module_create_from_memory(@Ptr long mem, @Ptr long length);
+	public static LLVM35svnLibrary.lto_module_t lto_module_create_from_memory_with_path(Pointer<? > mem, @Ptr long length, Pointer<Byte > path) {
+		return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_memory_with_path(Pointer.getPeer(mem), length, Pointer.getPeer(path)));
+	}
+	@Ptr 
+	protected native static long lto_module_create_from_memory_with_path(@Ptr long mem, @Ptr long length, @Ptr long path);
+	public static LLVM35svnLibrary.lto_module_t lto_module_create_from_fd(int fd, Pointer<Byte > path, @Ptr long file_size) {
+		return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_fd(fd, Pointer.getPeer(path), file_size));
+	}
+	@Ptr 
+	protected native static long lto_module_create_from_fd(int fd, @Ptr long path, @Ptr long file_size);
+	public static LLVM35svnLibrary.lto_module_t lto_module_create_from_fd_at_offset(int fd, Pointer<Byte > path, @Ptr long file_size, @Ptr long map_size, long offset) {
+		return new LLVM35svnLibrary.lto_module_t(lto_module_create_from_fd_at_offset(fd, Pointer.getPeer(path), file_size, map_size, offset));
+	}
+	@Ptr 
+	protected native static long lto_module_create_from_fd_at_offset(int fd, @Ptr long path, @Ptr long file_size, @Ptr long map_size, long offset);
+	public static void lto_module_dispose(LLVM35svnLibrary.lto_module_t mod) {
+		lto_module_dispose(Pointer.getPeer(mod));
+	}
+	protected native static void lto_module_dispose(@Ptr long mod);
+	public static Pointer<Byte > lto_module_get_target_triple(LLVM35svnLibrary.lto_module_t mod) {
+		return Pointer.pointerToAddress(lto_module_get_target_triple(Pointer.getPeer(mod)), Byte.class);
+	}
+	@Ptr 
+	protected native static long lto_module_get_target_triple(@Ptr long mod);
+	public static void lto_module_set_target_triple(LLVM35svnLibrary.lto_module_t mod, Pointer<Byte > triple) {
+		lto_module_set_target_triple(Pointer.getPeer(mod), Pointer.getPeer(triple));
+	}
+	protected native static void lto_module_set_target_triple(@Ptr long mod, @Ptr long triple);
+	public static int lto_module_get_num_symbols(LLVM35svnLibrary.lto_module_t mod) {
+		return lto_module_get_num_symbols(Pointer.getPeer(mod));
+	}
+	protected native static int lto_module_get_num_symbols(@Ptr long mod);
+	public static Pointer<Byte > lto_module_get_symbol_name(LLVM35svnLibrary.lto_module_t mod, int index) {
+		return Pointer.pointerToAddress(lto_module_get_symbol_name(Pointer.getPeer(mod), index), Byte.class);
+	}
+	@Ptr 
+	protected native static long lto_module_get_symbol_name(@Ptr long mod, int index);
+	public static IntValuedEnum<LLVM35svnLibrary.lto_symbol_attributes > lto_module_get_symbol_attribute(LLVM35svnLibrary.lto_module_t mod, int index) {
+		return FlagSet.fromValue(lto_module_get_symbol_attribute(Pointer.getPeer(mod), index), LLVM35svnLibrary.lto_symbol_attributes.class);
+	}
+	protected native static int lto_module_get_symbol_attribute(@Ptr long mod, int index);
+	public static int lto_module_get_num_deplibs(LLVM35svnLibrary.lto_module_t mod) {
+		return lto_module_get_num_deplibs(Pointer.getPeer(mod));
+	}
+	protected native static int lto_module_get_num_deplibs(@Ptr long mod);
+	public static Pointer<Byte > lto_module_get_deplib(LLVM35svnLibrary.lto_module_t mod, int index) {
+		return Pointer.pointerToAddress(lto_module_get_deplib(Pointer.getPeer(mod), index), Byte.class);
+	}
+	@Ptr 
+	protected native static long lto_module_get_deplib(@Ptr long mod, int index);
+	public static int lto_module_get_num_linkeropts(LLVM35svnLibrary.lto_module_t mod) {
+		return lto_module_get_num_linkeropts(Pointer.getPeer(mod));
+	}
+	protected native static int lto_module_get_num_linkeropts(@Ptr long mod);
+	public static Pointer<Byte > lto_module_get_linkeropt(LLVM35svnLibrary.lto_module_t mod, int index) {
+		return Pointer.pointerToAddress(lto_module_get_linkeropt(Pointer.getPeer(mod), index), Byte.class);
+	}
+	@Ptr 
+	protected native static long lto_module_get_linkeropt(@Ptr long mod, int index);
+	public static void lto_codegen_set_diagnostic_handler(LLVM35svnLibrary.lto_code_gen_t lto_code_gen_t1, Pointer<LLVM35svnLibrary.lto_diagnostic_handler_t > lto_diagnostic_handler_t1, Pointer<? > voidPtr1) {
+		lto_codegen_set_diagnostic_handler(Pointer.getPeer(lto_code_gen_t1), Pointer.getPeer(lto_diagnostic_handler_t1), Pointer.getPeer(voidPtr1));
+	}
+	protected native static void lto_codegen_set_diagnostic_handler(@Ptr long lto_code_gen_t1, @Ptr long lto_diagnostic_handler_t1, @Ptr long voidPtr1);
+	public static LLVM35svnLibrary.lto_code_gen_t lto_codegen_create() {
+		return new LLVM35svnLibrary.lto_code_gen_t(lto_codegen_create$2());
+	}
+	@Ptr 
+	protected native static long lto_codegen_create$2();
+	public static void lto_codegen_dispose(LLVM35svnLibrary.lto_code_gen_t lto_code_gen_t1) {
+		lto_codegen_dispose(Pointer.getPeer(lto_code_gen_t1));
+	}
+	protected native static void lto_codegen_dispose(@Ptr long lto_code_gen_t1);
+	public static boolean lto_codegen_add_module(LLVM35svnLibrary.lto_code_gen_t cg, LLVM35svnLibrary.lto_module_t mod) {
+		return lto_codegen_add_module(Pointer.getPeer(cg), Pointer.getPeer(mod));
+	}
+	protected native static boolean lto_codegen_add_module(@Ptr long cg, @Ptr long mod);
+	public static boolean lto_codegen_set_debug_model(LLVM35svnLibrary.lto_code_gen_t cg, IntValuedEnum<LLVM35svnLibrary.lto_debug_model > lto_debug_model1) {
+		return lto_codegen_set_debug_model(Pointer.getPeer(cg), (int)lto_debug_model1.value());
+	}
+	protected native static boolean lto_codegen_set_debug_model(@Ptr long cg, int lto_debug_model1);
+	public static boolean lto_codegen_set_pic_model(LLVM35svnLibrary.lto_code_gen_t cg, IntValuedEnum<LLVM35svnLibrary.lto_codegen_model > lto_codegen_model1) {
+		return lto_codegen_set_pic_model(Pointer.getPeer(cg), (int)lto_codegen_model1.value());
+	}
+	protected native static boolean lto_codegen_set_pic_model(@Ptr long cg, int lto_codegen_model1);
+	public static void lto_codegen_set_cpu(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > cpu) {
+		lto_codegen_set_cpu(Pointer.getPeer(cg), Pointer.getPeer(cpu));
+	}
+	protected native static void lto_codegen_set_cpu(@Ptr long cg, @Ptr long cpu);
+	public static void lto_codegen_set_assembler_path(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > path) {
+		lto_codegen_set_assembler_path(Pointer.getPeer(cg), Pointer.getPeer(path));
+	}
+	protected native static void lto_codegen_set_assembler_path(@Ptr long cg, @Ptr long path);
+	public static void lto_codegen_set_assembler_args(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Pointer<Byte > > args, int nargs) {
+		lto_codegen_set_assembler_args(Pointer.getPeer(cg), Pointer.getPeer(args), nargs);
+	}
+	protected native static void lto_codegen_set_assembler_args(@Ptr long cg, @Ptr long args, int nargs);
+	public static void lto_codegen_set_internalize_strategy(LLVM35svnLibrary.lto_code_gen_t cg, IntValuedEnum<LLVM35svnLibrary.lto_internalize_strategy > lto_internalize_strategy1) {
+		lto_codegen_set_internalize_strategy(Pointer.getPeer(cg), (int)lto_internalize_strategy1.value());
+	}
+	protected native static void lto_codegen_set_internalize_strategy(@Ptr long cg, int lto_internalize_strategy1);
+	public static void lto_codegen_add_must_preserve_symbol(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > symbol) {
+		lto_codegen_add_must_preserve_symbol(Pointer.getPeer(cg), Pointer.getPeer(symbol));
+	}
+	protected native static void lto_codegen_add_must_preserve_symbol(@Ptr long cg, @Ptr long symbol);
+	public static boolean lto_codegen_write_merged_modules(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > path) {
+		return lto_codegen_write_merged_modules(Pointer.getPeer(cg), Pointer.getPeer(path));
+	}
+	protected native static boolean lto_codegen_write_merged_modules(@Ptr long cg, @Ptr long path);
+	public static Pointer<? > lto_codegen_compile(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<SizeT > length) {
+		return Pointer.pointerToAddress(lto_codegen_compile(Pointer.getPeer(cg), Pointer.getPeer(length)));
+	}
+	@Ptr 
+	protected native static long lto_codegen_compile(@Ptr long cg, @Ptr long length);
+	public static boolean lto_codegen_compile_to_file(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Pointer<Byte > > name) {
+		return lto_codegen_compile_to_file(Pointer.getPeer(cg), Pointer.getPeer(name));
+	}
+	protected native static boolean lto_codegen_compile_to_file(@Ptr long cg, @Ptr long name);
+	public static void lto_codegen_debug_options(LLVM35svnLibrary.lto_code_gen_t cg, Pointer<Byte > charPtr1) {
+		lto_codegen_debug_options(Pointer.getPeer(cg), Pointer.getPeer(charPtr1));
+	}
+	protected native static void lto_codegen_debug_options(@Ptr long cg, @Ptr long charPtr1);
+	public static native void lto_initialize_disassembler();
+	public static int LLVMParseBitcode(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutModule, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMParseBitcode(Pointer.getPeer(MemBuf), Pointer.getPeer(OutModule), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMParseBitcode(@Ptr long MemBuf, @Ptr long OutModule, @Ptr long OutMessage);
+	public static int LLVMParseBitcodeInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutModule, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMParseBitcodeInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutModule), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMParseBitcodeInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutModule, @Ptr long OutMessage);
+	public static int LLVMGetBitcodeModuleInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutM, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMGetBitcodeModuleInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutM), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMGetBitcodeModuleInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutM, @Ptr long OutMessage);
+	public static int LLVMGetBitcodeModule(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutM, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMGetBitcodeModule(Pointer.getPeer(MemBuf), Pointer.getPeer(OutM), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMGetBitcodeModule(@Ptr long MemBuf, @Ptr long OutM, @Ptr long OutMessage);
+	public static int LLVMGetBitcodeModuleProviderInContext(LLVM35svnLibrary.LLVMContextRef ContextRef, LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleProviderRef > OutMP, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMGetBitcodeModuleProviderInContext(Pointer.getPeer(ContextRef), Pointer.getPeer(MemBuf), Pointer.getPeer(OutMP), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMGetBitcodeModuleProviderInContext(@Ptr long ContextRef, @Ptr long MemBuf, @Ptr long OutMP, @Ptr long OutMessage);
+	public static int LLVMGetBitcodeModuleProvider(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf, Pointer<LLVM35svnLibrary.LLVMModuleProviderRef > OutMP, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMGetBitcodeModuleProvider(Pointer.getPeer(MemBuf), Pointer.getPeer(OutMP), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMGetBitcodeModuleProvider(@Ptr long MemBuf, @Ptr long OutMP, @Ptr long OutMessage);
+	public static Pointer<? > LLVMCreateDisasm(Pointer<Byte > TripleName, Pointer<? > DisInfo, int TagType, Pointer<LLVM35svnLibrary.LLVMOpInfoCallback > GetOpInfo, Pointer<LLVM35svnLibrary.LLVMSymbolLookupCallback > SymbolLookUp) {
+		return Pointer.pointerToAddress(LLVMCreateDisasm(Pointer.getPeer(TripleName), Pointer.getPeer(DisInfo), TagType, Pointer.getPeer(GetOpInfo), Pointer.getPeer(SymbolLookUp)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateDisasm(@Ptr long TripleName, @Ptr long DisInfo, int TagType, @Ptr long GetOpInfo, @Ptr long SymbolLookUp);
+	public static Pointer<? > LLVMCreateDisasmCPU(Pointer<Byte > Triple, Pointer<Byte > CPU, Pointer<? > DisInfo, int TagType, Pointer<LLVM35svnLibrary.LLVMOpInfoCallback > GetOpInfo, Pointer<LLVM35svnLibrary.LLVMSymbolLookupCallback > SymbolLookUp) {
+		return Pointer.pointerToAddress(LLVMCreateDisasmCPU(Pointer.getPeer(Triple), Pointer.getPeer(CPU), Pointer.getPeer(DisInfo), TagType, Pointer.getPeer(GetOpInfo), Pointer.getPeer(SymbolLookUp)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateDisasmCPU(@Ptr long Triple, @Ptr long CPU, @Ptr long DisInfo, int TagType, @Ptr long GetOpInfo, @Ptr long SymbolLookUp);
+	public static int LLVMSetDisasmOptions(Pointer<? > DC, long Options) {
+		return LLVMSetDisasmOptions(Pointer.getPeer(DC), Options);
+	}
+	protected native static int LLVMSetDisasmOptions(@Ptr long DC, long Options);
+	public static void LLVMDisasmDispose(Pointer<? > DC) {
+		LLVMDisasmDispose(Pointer.getPeer(DC));
+	}
+	protected native static void LLVMDisasmDispose(@Ptr long DC);
+	@Ptr 
+	public static long LLVMDisasmInstruction(Pointer<? > DC, Pointer<Byte > Bytes, long BytesSize, long PC, Pointer<Byte > OutString, @Ptr long OutStringSize) {
+		return LLVMDisasmInstruction(Pointer.getPeer(DC), Pointer.getPeer(Bytes), BytesSize, PC, Pointer.getPeer(OutString), OutStringSize);
+	}
+	@Ptr 
+	protected native static long LLVMDisasmInstruction(@Ptr long DC, @Ptr long Bytes, long BytesSize, long PC, @Ptr long OutString, @Ptr long OutStringSize);
+	public static void LLVMInitializeCore$2(LLVM35svnLibrary.LLVMPassRegistryRef R) {
+		LLVMInitializeCore$2(Pointer.getPeer(R));
+	}
+	protected native static void LLVMInitializeCore$2(@Ptr long R);
+	public static native void LLVMShutdown();
+	public static Pointer<Byte > LLVMCreateMessage(Pointer<Byte > Message) {
+		return Pointer.pointerToAddress(LLVMCreateMessage(Pointer.getPeer(Message)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMCreateMessage(@Ptr long Message);
+	public static void LLVMDisposeMessage(Pointer<Byte > Message) {
+		LLVMDisposeMessage(Pointer.getPeer(Message));
+	}
+	protected native static void LLVMDisposeMessage(@Ptr long Message);
+	public static void LLVMInstallFatalErrorHandler(Pointer<LLVM35svnLibrary.LLVMFatalErrorHandler > Handler) {
+		LLVMInstallFatalErrorHandler(Pointer.getPeer(Handler));
+	}
+	protected native static void LLVMInstallFatalErrorHandler(@Ptr long Handler);
+	public static native void LLVMResetFatalErrorHandler();
+	public static native void LLVMEnablePrettyStackTrace();
+	public static LLVM35svnLibrary.LLVMContextRef LLVMContextCreate() {
+		return new LLVM35svnLibrary.LLVMContextRef(LLVMContextCreate$2());
+	}
+	@Ptr 
+	protected native static long LLVMContextCreate$2();
+	public static LLVM35svnLibrary.LLVMContextRef LLVMGetGlobalContext() {
+		return new LLVM35svnLibrary.LLVMContextRef(LLVMGetGlobalContext$2());
+	}
+	@Ptr 
+	protected native static long LLVMGetGlobalContext$2();
+	public static void LLVMContextDispose(LLVM35svnLibrary.LLVMContextRef C) {
+		LLVMContextDispose(Pointer.getPeer(C));
+	}
+	protected native static void LLVMContextDispose(@Ptr long C);
+	public static int LLVMGetMDKindIDInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Name, int SLen) {
+		return LLVMGetMDKindIDInContext(Pointer.getPeer(C), Pointer.getPeer(Name), SLen);
+	}
+	protected native static int LLVMGetMDKindIDInContext(@Ptr long C, @Ptr long Name, int SLen);
+	public static int LLVMGetMDKindID(Pointer<Byte > Name, int SLen) {
+		return LLVMGetMDKindID(Pointer.getPeer(Name), SLen);
+	}
+	protected native static int LLVMGetMDKindID(@Ptr long Name, int SLen);
+	public static LLVM35svnLibrary.LLVMModuleRef LLVMModuleCreateWithName(Pointer<Byte > ModuleID) {
+		return new LLVM35svnLibrary.LLVMModuleRef(LLVMModuleCreateWithName(Pointer.getPeer(ModuleID)));
+	}
+	@Ptr 
+	protected native static long LLVMModuleCreateWithName(@Ptr long ModuleID);
+	public static LLVM35svnLibrary.LLVMModuleRef LLVMModuleCreateWithNameInContext(Pointer<Byte > ModuleID, LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMModuleRef(LLVMModuleCreateWithNameInContext(Pointer.getPeer(ModuleID), Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMModuleCreateWithNameInContext(@Ptr long ModuleID, @Ptr long C);
+	public static void LLVMDisposeModule(LLVM35svnLibrary.LLVMModuleRef M) {
+		LLVMDisposeModule(Pointer.getPeer(M));
+	}
+	protected native static void LLVMDisposeModule(@Ptr long M);
+	public static Pointer<Byte > LLVMGetDataLayout(LLVM35svnLibrary.LLVMModuleRef M) {
+		return Pointer.pointerToAddress(LLVMGetDataLayout(Pointer.getPeer(M)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetDataLayout(@Ptr long M);
+	public static void LLVMSetDataLayout(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Triple) {
+		LLVMSetDataLayout(Pointer.getPeer(M), Pointer.getPeer(Triple));
+	}
+	protected native static void LLVMSetDataLayout(@Ptr long M, @Ptr long Triple);
+	public static Pointer<Byte > LLVMGetTarget(LLVM35svnLibrary.LLVMModuleRef M) {
+		return Pointer.pointerToAddress(LLVMGetTarget(Pointer.getPeer(M)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetTarget(@Ptr long M);
+	public static void LLVMSetTarget(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Triple) {
+		LLVMSetTarget(Pointer.getPeer(M), Pointer.getPeer(Triple));
+	}
+	protected native static void LLVMSetTarget(@Ptr long M, @Ptr long Triple);
+	public static void LLVMDumpModule(LLVM35svnLibrary.LLVMModuleRef M) {
+		LLVMDumpModule(Pointer.getPeer(M));
+	}
+	protected native static void LLVMDumpModule(@Ptr long M);
+	public static int LLVMPrintModuleToFile(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Filename, Pointer<Pointer<Byte > > ErrorMessage) {
+		return LLVMPrintModuleToFile(Pointer.getPeer(M), Pointer.getPeer(Filename), Pointer.getPeer(ErrorMessage));
+	}
+	protected native static int LLVMPrintModuleToFile(@Ptr long M, @Ptr long Filename, @Ptr long ErrorMessage);
+	public static Pointer<Byte > LLVMPrintModuleToString(LLVM35svnLibrary.LLVMModuleRef M) {
+		return Pointer.pointerToAddress(LLVMPrintModuleToString(Pointer.getPeer(M)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMPrintModuleToString(@Ptr long M);
+	public static void LLVMSetModuleInlineAsm(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Asm) {
+		LLVMSetModuleInlineAsm(Pointer.getPeer(M), Pointer.getPeer(Asm));
+	}
+	protected native static void LLVMSetModuleInlineAsm(@Ptr long M, @Ptr long Asm);
+	public static LLVM35svnLibrary.LLVMContextRef LLVMGetModuleContext(LLVM35svnLibrary.LLVMModuleRef M) {
+		return new LLVM35svnLibrary.LLVMContextRef(LLVMGetModuleContext(Pointer.getPeer(M)));
+	}
+	@Ptr 
+	protected native static long LLVMGetModuleContext(@Ptr long M);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMGetTypeByName(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMGetTypeByName(Pointer.getPeer(M), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMGetTypeByName(@Ptr long M, @Ptr long Name);
+	public static int LLVMGetNamedMetadataNumOperands(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > name) {
+		return LLVMGetNamedMetadataNumOperands(Pointer.getPeer(M), Pointer.getPeer(name));
+	}
+	protected native static int LLVMGetNamedMetadataNumOperands(@Ptr long M, @Ptr long name);
+	public static void LLVMGetNamedMetadataOperands(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > name, Pointer<LLVM35svnLibrary.LLVMValueRef > Dest) {
+		LLVMGetNamedMetadataOperands(Pointer.getPeer(M), Pointer.getPeer(name), Pointer.getPeer(Dest));
+	}
+	protected native static void LLVMGetNamedMetadataOperands(@Ptr long M, @Ptr long name, @Ptr long Dest);
+	public static void LLVMAddNamedMetadataOperand(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > name, LLVM35svnLibrary.LLVMValueRef Val) {
+		LLVMAddNamedMetadataOperand(Pointer.getPeer(M), Pointer.getPeer(name), Pointer.getPeer(Val));
+	}
+	protected native static void LLVMAddNamedMetadataOperand(@Ptr long M, @Ptr long name, @Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMAddFunction(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name, LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMAddFunction(Pointer.getPeer(M), Pointer.getPeer(Name), Pointer.getPeer(FunctionTy)));
+	}
+	@Ptr 
+	protected native static long LLVMAddFunction(@Ptr long M, @Ptr long Name, @Ptr long FunctionTy);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetNamedFunction(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNamedFunction(Pointer.getPeer(M), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNamedFunction(@Ptr long M, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstFunction(LLVM35svnLibrary.LLVMModuleRef M) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstFunction(Pointer.getPeer(M)));
+	}
+	@Ptr 
+	protected native static long LLVMGetFirstFunction(@Ptr long M);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastFunction(LLVM35svnLibrary.LLVMModuleRef M) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastFunction(Pointer.getPeer(M)));
+	}
+	@Ptr 
+	protected native static long LLVMGetLastFunction(@Ptr long M);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextFunction(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextFunction(Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNextFunction(@Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousFunction(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousFunction(Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMGetPreviousFunction(@Ptr long Fn);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMTypeKind > LLVMGetTypeKind(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return FlagSet.fromValue(LLVMGetTypeKind(Pointer.getPeer(Ty)), LLVM35svnLibrary.LLVMTypeKind.class);
+	}
+	protected native static int LLVMGetTypeKind(@Ptr long Ty);
+	public static int LLVMTypeIsSized(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return LLVMTypeIsSized(Pointer.getPeer(Ty));
+	}
+	protected native static int LLVMTypeIsSized(@Ptr long Ty);
+	public static LLVM35svnLibrary.LLVMContextRef LLVMGetTypeContext(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMContextRef(LLVMGetTypeContext(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMGetTypeContext(@Ptr long Ty);
+	public static void LLVMDumpType(LLVM35svnLibrary.LLVMTypeRef Val) {
+		LLVMDumpType(Pointer.getPeer(Val));
+	}
+	protected native static void LLVMDumpType(@Ptr long Val);
+	public static Pointer<Byte > LLVMPrintTypeToString(LLVM35svnLibrary.LLVMTypeRef Val) {
+		return Pointer.pointerToAddress(LLVMPrintTypeToString(Pointer.getPeer(Val)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMPrintTypeToString(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt1TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt1TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMInt1TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt8TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt8TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMInt8TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt16TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt16TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMInt16TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt32TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt32TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMInt32TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt64TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt64TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMInt64TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMIntTypeInContext(LLVM35svnLibrary.LLVMContextRef C, int NumBits) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntTypeInContext(Pointer.getPeer(C), NumBits));
+	}
+	@Ptr 
+	protected native static long LLVMIntTypeInContext(@Ptr long C, int NumBits);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt1Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt1Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMInt1Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt8Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt8Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMInt8Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt16Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt16Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMInt16Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt32Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt32Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMInt32Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMInt64Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMInt64Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMInt64Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMIntType(int NumBits) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntType$2(NumBits));
+	}
+	@Ptr 
+	protected native static long LLVMIntType$2(int NumBits);
+	public static int LLVMGetIntTypeWidth(LLVM35svnLibrary.LLVMTypeRef IntegerTy) {
+		return LLVMGetIntTypeWidth(Pointer.getPeer(IntegerTy));
+	}
+	protected native static int LLVMGetIntTypeWidth(@Ptr long IntegerTy);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMHalfTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMHalfTypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMHalfTypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMFloatTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMFloatTypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMFloatTypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMDoubleTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMDoubleTypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMDoubleTypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMX86FP80TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86FP80TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMX86FP80TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMFP128TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMFP128TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMFP128TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMPPCFP128TypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMPPCFP128TypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMPPCFP128TypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMHalfType() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMHalfType$2());
+	}
+	@Ptr 
+	protected native static long LLVMHalfType$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMFloatType() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMFloatType$2());
+	}
+	@Ptr 
+	protected native static long LLVMFloatType$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMDoubleType() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMDoubleType$2());
+	}
+	@Ptr 
+	protected native static long LLVMDoubleType$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMX86FP80Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86FP80Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMX86FP80Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMFP128Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMFP128Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMFP128Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMPPCFP128Type() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMPPCFP128Type$2());
+	}
+	@Ptr 
+	protected native static long LLVMPPCFP128Type$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMFunctionType(LLVM35svnLibrary.LLVMTypeRef ReturnType, Pointer<LLVM35svnLibrary.LLVMTypeRef > ParamTypes, int ParamCount, int IsVarArg) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMFunctionType(Pointer.getPeer(ReturnType), Pointer.getPeer(ParamTypes), ParamCount, IsVarArg));
+	}
+	@Ptr 
+	protected native static long LLVMFunctionType(@Ptr long ReturnType, @Ptr long ParamTypes, int ParamCount, int IsVarArg);
+	public static int LLVMIsFunctionVarArg(LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
+		return LLVMIsFunctionVarArg(Pointer.getPeer(FunctionTy));
+	}
+	protected native static int LLVMIsFunctionVarArg(@Ptr long FunctionTy);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMGetReturnType(LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMGetReturnType(Pointer.getPeer(FunctionTy)));
+	}
+	@Ptr 
+	protected native static long LLVMGetReturnType(@Ptr long FunctionTy);
+	public static int LLVMCountParamTypes(LLVM35svnLibrary.LLVMTypeRef FunctionTy) {
+		return LLVMCountParamTypes(Pointer.getPeer(FunctionTy));
+	}
+	protected native static int LLVMCountParamTypes(@Ptr long FunctionTy);
+	public static void LLVMGetParamTypes(LLVM35svnLibrary.LLVMTypeRef FunctionTy, Pointer<LLVM35svnLibrary.LLVMTypeRef > Dest) {
+		LLVMGetParamTypes(Pointer.getPeer(FunctionTy), Pointer.getPeer(Dest));
+	}
+	protected native static void LLVMGetParamTypes(@Ptr long FunctionTy, @Ptr long Dest);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMStructTypeInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<LLVM35svnLibrary.LLVMTypeRef > ElementTypes, int ElementCount, int Packed) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMStructTypeInContext(Pointer.getPeer(C), Pointer.getPeer(ElementTypes), ElementCount, Packed));
+	}
+	@Ptr 
+	protected native static long LLVMStructTypeInContext(@Ptr long C, @Ptr long ElementTypes, int ElementCount, int Packed);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMStructType(Pointer<LLVM35svnLibrary.LLVMTypeRef > ElementTypes, int ElementCount, int Packed) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMStructType(Pointer.getPeer(ElementTypes), ElementCount, Packed));
+	}
+	@Ptr 
+	protected native static long LLVMStructType(@Ptr long ElementTypes, int ElementCount, int Packed);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMStructCreateNamed(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMStructCreateNamed(Pointer.getPeer(C), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMStructCreateNamed(@Ptr long C, @Ptr long Name);
+	public static Pointer<Byte > LLVMGetStructName(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return Pointer.pointerToAddress(LLVMGetStructName(Pointer.getPeer(Ty)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetStructName(@Ptr long Ty);
+	public static void LLVMStructSetBody(LLVM35svnLibrary.LLVMTypeRef StructTy, Pointer<LLVM35svnLibrary.LLVMTypeRef > ElementTypes, int ElementCount, int Packed) {
+		LLVMStructSetBody(Pointer.getPeer(StructTy), Pointer.getPeer(ElementTypes), ElementCount, Packed);
+	}
+	protected native static void LLVMStructSetBody(@Ptr long StructTy, @Ptr long ElementTypes, int ElementCount, int Packed);
+	public static int LLVMCountStructElementTypes(LLVM35svnLibrary.LLVMTypeRef StructTy) {
+		return LLVMCountStructElementTypes(Pointer.getPeer(StructTy));
+	}
+	protected native static int LLVMCountStructElementTypes(@Ptr long StructTy);
+	public static void LLVMGetStructElementTypes(LLVM35svnLibrary.LLVMTypeRef StructTy, Pointer<LLVM35svnLibrary.LLVMTypeRef > Dest) {
+		LLVMGetStructElementTypes(Pointer.getPeer(StructTy), Pointer.getPeer(Dest));
+	}
+	protected native static void LLVMGetStructElementTypes(@Ptr long StructTy, @Ptr long Dest);
+	public static int LLVMIsPackedStruct(LLVM35svnLibrary.LLVMTypeRef StructTy) {
+		return LLVMIsPackedStruct(Pointer.getPeer(StructTy));
+	}
+	protected native static int LLVMIsPackedStruct(@Ptr long StructTy);
+	public static int LLVMIsOpaqueStruct(LLVM35svnLibrary.LLVMTypeRef StructTy) {
+		return LLVMIsOpaqueStruct(Pointer.getPeer(StructTy));
+	}
+	protected native static int LLVMIsOpaqueStruct(@Ptr long StructTy);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMGetElementType(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMGetElementType(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMGetElementType(@Ptr long Ty);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMArrayType(LLVM35svnLibrary.LLVMTypeRef ElementType, int ElementCount) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMArrayType(Pointer.getPeer(ElementType), ElementCount));
+	}
+	@Ptr 
+	protected native static long LLVMArrayType(@Ptr long ElementType, int ElementCount);
+	public static int LLVMGetArrayLength(LLVM35svnLibrary.LLVMTypeRef ArrayTy) {
+		return LLVMGetArrayLength(Pointer.getPeer(ArrayTy));
+	}
+	protected native static int LLVMGetArrayLength(@Ptr long ArrayTy);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMPointerType(LLVM35svnLibrary.LLVMTypeRef ElementType, int AddressSpace) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMPointerType(Pointer.getPeer(ElementType), AddressSpace));
+	}
+	@Ptr 
+	protected native static long LLVMPointerType(@Ptr long ElementType, int AddressSpace);
+	public static int LLVMGetPointerAddressSpace(LLVM35svnLibrary.LLVMTypeRef PointerTy) {
+		return LLVMGetPointerAddressSpace(Pointer.getPeer(PointerTy));
+	}
+	protected native static int LLVMGetPointerAddressSpace(@Ptr long PointerTy);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMVectorType(LLVM35svnLibrary.LLVMTypeRef ElementType, int ElementCount) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMVectorType(Pointer.getPeer(ElementType), ElementCount));
+	}
+	@Ptr 
+	protected native static long LLVMVectorType(@Ptr long ElementType, int ElementCount);
+	public static int LLVMGetVectorSize(LLVM35svnLibrary.LLVMTypeRef VectorTy) {
+		return LLVMGetVectorSize(Pointer.getPeer(VectorTy));
+	}
+	protected native static int LLVMGetVectorSize(@Ptr long VectorTy);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMVoidTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMVoidTypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMVoidTypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMLabelTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMLabelTypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMLabelTypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMX86MMXTypeInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86MMXTypeInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMX86MMXTypeInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMVoidType() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMVoidType$2());
+	}
+	@Ptr 
+	protected native static long LLVMVoidType$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMLabelType() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMLabelType$2());
+	}
+	@Ptr 
+	protected native static long LLVMLabelType$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMX86MMXType() {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMX86MMXType$2());
+	}
+	@Ptr 
+	protected native static long LLVMX86MMXType$2();
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMTypeOf(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMTypeOf(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMTypeOf(@Ptr long Val);
+	public static Pointer<Byte > LLVMGetValueName(LLVM35svnLibrary.LLVMValueRef Val) {
+		return Pointer.pointerToAddress(LLVMGetValueName(Pointer.getPeer(Val)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetValueName(@Ptr long Val);
+	public static void LLVMSetValueName(LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
+		LLVMSetValueName(Pointer.getPeer(Val), Pointer.getPeer(Name));
+	}
+	protected native static void LLVMSetValueName(@Ptr long Val, @Ptr long Name);
+	public static void LLVMDumpValue(LLVM35svnLibrary.LLVMValueRef Val) {
+		LLVMDumpValue(Pointer.getPeer(Val));
+	}
+	protected native static void LLVMDumpValue(@Ptr long Val);
+	public static Pointer<Byte > LLVMPrintValueToString(LLVM35svnLibrary.LLVMValueRef Val) {
+		return Pointer.pointerToAddress(LLVMPrintValueToString(Pointer.getPeer(Val)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMPrintValueToString(@Ptr long Val);
+	public static void LLVMReplaceAllUsesWith(LLVM35svnLibrary.LLVMValueRef OldVal, LLVM35svnLibrary.LLVMValueRef NewVal) {
+		LLVMReplaceAllUsesWith(Pointer.getPeer(OldVal), Pointer.getPeer(NewVal));
+	}
+	protected native static void LLVMReplaceAllUsesWith(@Ptr long OldVal, @Ptr long NewVal);
+	public static int LLVMIsConstant(LLVM35svnLibrary.LLVMValueRef Val) {
+		return LLVMIsConstant(Pointer.getPeer(Val));
+	}
+	protected native static int LLVMIsConstant(@Ptr long Val);
+	public static int LLVMIsUndef(LLVM35svnLibrary.LLVMValueRef Val) {
+		return LLVMIsUndef(Pointer.getPeer(Val));
+	}
+	protected native static int LLVMIsUndef(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAArgument(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAArgument(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAArgument(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsABasicBlock(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABasicBlock(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsABasicBlock(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInlineAsm(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInlineAsm(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAInlineAsm(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMDNode(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMDNode(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAMDNode(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMDString(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMDString(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAMDString(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUser(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUser(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAUser(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstant(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstant(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstant(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsABlockAddress(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABlockAddress(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsABlockAddress(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantAggregateZero(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantAggregateZero(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantAggregateZero(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantArray(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantArray(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantArray(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantDataSequential(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantDataSequential(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantDataSequential(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantDataArray(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantDataArray(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantDataArray(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantDataVector(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantDataVector(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantDataVector(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantExpr(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantExpr(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantExpr(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantFP(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantFP(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantFP(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantInt(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantInt(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantInt(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantPointerNull(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantPointerNull(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantPointerNull(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantStruct(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantStruct(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantStruct(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAConstantVector(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAConstantVector(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAConstantVector(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGlobalValue(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGlobalValue(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAGlobalValue(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFunction(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFunction(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAFunction(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGlobalAlias(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGlobalAlias(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAGlobalAlias(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGlobalVariable(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGlobalVariable(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAGlobalVariable(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUndefValue(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUndefValue(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAUndefValue(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInstruction(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInstruction(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAInstruction(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsABinaryOperator(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABinaryOperator(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsABinaryOperator(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsACallInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsACallInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsACallInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAIntrinsicInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAIntrinsicInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAIntrinsicInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsADbgInfoIntrinsic(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsADbgInfoIntrinsic(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsADbgInfoIntrinsic(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsADbgDeclareInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsADbgDeclareInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsADbgDeclareInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemIntrinsic(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemIntrinsic(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAMemIntrinsic(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemCpyInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemCpyInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAMemCpyInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemMoveInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemMoveInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAMemMoveInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAMemSetInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAMemSetInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAMemSetInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsACmpInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsACmpInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsACmpInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFCmpInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFCmpInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAFCmpInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAICmpInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAICmpInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAICmpInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAExtractElementInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAExtractElementInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAExtractElementInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAGetElementPtrInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAGetElementPtrInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAGetElementPtrInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInsertElementInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInsertElementInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAInsertElementInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInsertValueInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInsertValueInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAInsertValueInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsALandingPadInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsALandingPadInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsALandingPadInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAPHINode(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAPHINode(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAPHINode(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsASelectInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASelectInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsASelectInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAShuffleVectorInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAShuffleVectorInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAShuffleVectorInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAStoreInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAStoreInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAStoreInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsATerminatorInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsATerminatorInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsATerminatorInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsABranchInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABranchInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsABranchInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAIndirectBrInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAIndirectBrInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAIndirectBrInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAInvokeInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAInvokeInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAInvokeInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAReturnInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAReturnInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAReturnInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsASwitchInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASwitchInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsASwitchInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUnreachableInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUnreachableInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAUnreachableInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAResumeInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAResumeInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAResumeInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUnaryInstruction(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUnaryInstruction(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAUnaryInstruction(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAAllocaInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAAllocaInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAAllocaInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsACastInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsACastInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsACastInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAAddrSpaceCastInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAAddrSpaceCastInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAAddrSpaceCastInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsABitCastInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsABitCastInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsABitCastInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPExtInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPExtInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAFPExtInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPToSIInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPToSIInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAFPToSIInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPToUIInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPToUIInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAFPToUIInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAFPTruncInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAFPTruncInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAFPTruncInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAIntToPtrInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAIntToPtrInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAIntToPtrInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAPtrToIntInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAPtrToIntInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAPtrToIntInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsASExtInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASExtInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsASExtInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsASIToFPInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsASIToFPInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsASIToFPInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsATruncInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsATruncInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsATruncInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAUIToFPInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAUIToFPInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAUIToFPInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAZExtInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAZExtInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAZExtInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAExtractValueInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAExtractValueInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAExtractValueInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsALoadInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsALoadInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsALoadInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMIsAVAArgInst(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMIsAVAArgInst(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMIsAVAArgInst(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMUseRef LLVMGetFirstUse(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMUseRef(LLVMGetFirstUse(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMGetFirstUse(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMUseRef LLVMGetNextUse(LLVM35svnLibrary.LLVMUseRef U) {
+		return new LLVM35svnLibrary.LLVMUseRef(LLVMGetNextUse(Pointer.getPeer(U)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNextUse(@Ptr long U);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetUser(LLVM35svnLibrary.LLVMUseRef U) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetUser(Pointer.getPeer(U)));
+	}
+	@Ptr 
+	protected native static long LLVMGetUser(@Ptr long U);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetUsedValue(LLVM35svnLibrary.LLVMUseRef U) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetUsedValue(Pointer.getPeer(U)));
+	}
+	@Ptr 
+	protected native static long LLVMGetUsedValue(@Ptr long U);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetOperand(LLVM35svnLibrary.LLVMValueRef Val, int Index) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetOperand(Pointer.getPeer(Val), Index));
+	}
+	@Ptr 
+	protected native static long LLVMGetOperand(@Ptr long Val, int Index);
+	public static void LLVMSetOperand(LLVM35svnLibrary.LLVMValueRef User, int Index, LLVM35svnLibrary.LLVMValueRef Val) {
+		LLVMSetOperand(Pointer.getPeer(User), Index, Pointer.getPeer(Val));
+	}
+	protected native static void LLVMSetOperand(@Ptr long User, int Index, @Ptr long Val);
+	public static int LLVMGetNumOperands(LLVM35svnLibrary.LLVMValueRef Val) {
+		return LLVMGetNumOperands(Pointer.getPeer(Val));
+	}
+	protected native static int LLVMGetNumOperands(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNull(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNull(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNull(@Ptr long Ty);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstAllOnes(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAllOnes(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMConstAllOnes(@Ptr long Ty);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetUndef(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetUndef(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMGetUndef(@Ptr long Ty);
+	public static int LLVMIsNull(LLVM35svnLibrary.LLVMValueRef Val) {
+		return LLVMIsNull(Pointer.getPeer(Val));
+	}
+	protected native static int LLVMIsNull(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstPointerNull(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstPointerNull(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMConstPointerNull(@Ptr long Ty);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstInt(LLVM35svnLibrary.LLVMTypeRef IntTy, long N, int SignExtend) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInt(Pointer.getPeer(IntTy), N, SignExtend));
+	}
+	@Ptr 
+	protected native static long LLVMConstInt(@Ptr long IntTy, long N, int SignExtend);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntOfArbitraryPrecision(LLVM35svnLibrary.LLVMTypeRef IntTy, int NumWords, Pointer<Long > Words) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntOfArbitraryPrecision(Pointer.getPeer(IntTy), NumWords, Pointer.getPeer(Words)));
+	}
+	@Ptr 
+	protected native static long LLVMConstIntOfArbitraryPrecision(@Ptr long IntTy, int NumWords, @Ptr long Words);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntOfString(LLVM35svnLibrary.LLVMTypeRef IntTy, Pointer<Byte > Text, byte Radix) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntOfString(Pointer.getPeer(IntTy), Pointer.getPeer(Text), Radix));
+	}
+	@Ptr 
+	protected native static long LLVMConstIntOfString(@Ptr long IntTy, @Ptr long Text, byte Radix);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntOfStringAndSize(LLVM35svnLibrary.LLVMTypeRef IntTy, Pointer<Byte > Text, int SLen, byte Radix) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntOfStringAndSize(Pointer.getPeer(IntTy), Pointer.getPeer(Text), SLen, Radix));
+	}
+	@Ptr 
+	protected native static long LLVMConstIntOfStringAndSize(@Ptr long IntTy, @Ptr long Text, int SLen, byte Radix);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstReal(LLVM35svnLibrary.LLVMTypeRef RealTy, double N) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstReal(Pointer.getPeer(RealTy), N));
+	}
+	@Ptr 
+	protected native static long LLVMConstReal(@Ptr long RealTy, double N);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstRealOfString(LLVM35svnLibrary.LLVMTypeRef RealTy, Pointer<Byte > Text) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstRealOfString(Pointer.getPeer(RealTy), Pointer.getPeer(Text)));
+	}
+	@Ptr 
+	protected native static long LLVMConstRealOfString(@Ptr long RealTy, @Ptr long Text);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstRealOfStringAndSize(LLVM35svnLibrary.LLVMTypeRef RealTy, Pointer<Byte > Text, int SLen) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstRealOfStringAndSize(Pointer.getPeer(RealTy), Pointer.getPeer(Text), SLen));
+	}
+	@Ptr 
+	protected native static long LLVMConstRealOfStringAndSize(@Ptr long RealTy, @Ptr long Text, int SLen);
+	public static long LLVMConstIntGetZExtValue(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return LLVMConstIntGetZExtValue(Pointer.getPeer(ConstantVal));
+	}
+	protected native static long LLVMConstIntGetZExtValue(@Ptr long ConstantVal);
+	public static long LLVMConstIntGetSExtValue(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return LLVMConstIntGetSExtValue(Pointer.getPeer(ConstantVal));
+	}
+	protected native static long LLVMConstIntGetSExtValue(@Ptr long ConstantVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstStringInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Str, int Length, int DontNullTerminate) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstStringInContext(Pointer.getPeer(C), Pointer.getPeer(Str), Length, DontNullTerminate));
+	}
+	@Ptr 
+	protected native static long LLVMConstStringInContext(@Ptr long C, @Ptr long Str, int Length, int DontNullTerminate);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstString(Pointer<Byte > Str, int Length, int DontNullTerminate) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstString(Pointer.getPeer(Str), Length, DontNullTerminate));
+	}
+	@Ptr 
+	protected native static long LLVMConstString(@Ptr long Str, int Length, int DontNullTerminate);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstStructInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Count, int Packed) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstStructInContext(Pointer.getPeer(C), Pointer.getPeer(ConstantVals), Count, Packed));
+	}
+	@Ptr 
+	protected native static long LLVMConstStructInContext(@Ptr long C, @Ptr long ConstantVals, int Count, int Packed);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstStruct(Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Count, int Packed) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstStruct(Pointer.getPeer(ConstantVals), Count, Packed));
+	}
+	@Ptr 
+	protected native static long LLVMConstStruct(@Ptr long ConstantVals, int Count, int Packed);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstArray(LLVM35svnLibrary.LLVMTypeRef ElementTy, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Length) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstArray(Pointer.getPeer(ElementTy), Pointer.getPeer(ConstantVals), Length));
+	}
+	@Ptr 
+	protected native static long LLVMConstArray(@Ptr long ElementTy, @Ptr long ConstantVals, int Length);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNamedStruct(LLVM35svnLibrary.LLVMTypeRef StructTy, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantVals, int Count) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNamedStruct(Pointer.getPeer(StructTy), Pointer.getPeer(ConstantVals), Count));
+	}
+	@Ptr 
+	protected native static long LLVMConstNamedStruct(@Ptr long StructTy, @Ptr long ConstantVals, int Count);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstVector(Pointer<LLVM35svnLibrary.LLVMValueRef > ScalarConstantVals, int Size) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstVector(Pointer.getPeer(ScalarConstantVals), Size));
+	}
+	@Ptr 
+	protected native static long LLVMConstVector(@Ptr long ScalarConstantVals, int Size);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > LLVMGetConstOpcode(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return FlagSet.fromValue(LLVMGetConstOpcode(Pointer.getPeer(ConstantVal)), LLVM35svnLibrary.LLVMOpcode.class);
+	}
+	protected native static int LLVMGetConstOpcode(@Ptr long ConstantVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMAlignOf(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMAlignOf(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMAlignOf(@Ptr long Ty);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMSizeOf(LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMSizeOf(Pointer.getPeer(Ty)));
+	}
+	@Ptr 
+	protected native static long LLVMSizeOf(@Ptr long Ty);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNeg(Pointer.getPeer(ConstantVal)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNeg(@Ptr long ConstantVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWNeg(Pointer.getPeer(ConstantVal)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNSWNeg(@Ptr long ConstantVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWNeg(Pointer.getPeer(ConstantVal)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNUWNeg(@Ptr long ConstantVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFNeg(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFNeg(Pointer.getPeer(ConstantVal)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFNeg(@Ptr long ConstantVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNot(LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNot(Pointer.getPeer(ConstantVal)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNot(@Ptr long ConstantVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNSWAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNUWAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFAdd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFAdd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFAdd(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNSWSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNUWSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFSub(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFSub(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFSub(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNSWMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNSWMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNSWMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstNUWMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstNUWMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstNUWMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFMul(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFMul(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFMul(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstUDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstUDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstUDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstSDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstSDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstExactSDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstExactSDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstExactSDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFDiv(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFDiv(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFDiv(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstURem(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstURem(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstURem(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstSRem(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSRem(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstSRem(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFRem(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFRem(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFRem(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstAnd(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAnd(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstAnd(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstOr(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstOr(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstOr(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstXor(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstXor(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstXor(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstICmp(IntValuedEnum<LLVM35svnLibrary.LLVMIntPredicate > Predicate, LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstICmp((int)Predicate.value(), Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstICmp(int Predicate, @Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFCmp(IntValuedEnum<LLVM35svnLibrary.LLVMRealPredicate > Predicate, LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFCmp((int)Predicate.value(), Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFCmp(int Predicate, @Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstShl(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstShl(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstShl(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstLShr(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstLShr(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstLShr(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstAShr(LLVM35svnLibrary.LLVMValueRef LHSConstant, LLVM35svnLibrary.LLVMValueRef RHSConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAShr(Pointer.getPeer(LHSConstant), Pointer.getPeer(RHSConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstAShr(@Ptr long LHSConstant, @Ptr long RHSConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstGEP(LLVM35svnLibrary.LLVMValueRef ConstantVal, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantIndices, int NumIndices) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstGEP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ConstantIndices), NumIndices));
+	}
+	@Ptr 
+	protected native static long LLVMConstGEP(@Ptr long ConstantVal, @Ptr long ConstantIndices, int NumIndices);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstInBoundsGEP(LLVM35svnLibrary.LLVMValueRef ConstantVal, Pointer<LLVM35svnLibrary.LLVMValueRef > ConstantIndices, int NumIndices) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInBoundsGEP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ConstantIndices), NumIndices));
+	}
+	@Ptr 
+	protected native static long LLVMConstInBoundsGEP(@Ptr long ConstantVal, @Ptr long ConstantIndices, int NumIndices);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstTrunc(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstTrunc(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstTrunc(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstSExt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSExt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstSExt(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstZExt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstZExt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstZExt(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPTrunc(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPTrunc(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFPTrunc(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPExt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPExt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFPExt(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstUIToFP(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstUIToFP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstUIToFP(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstSIToFP(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSIToFP(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstSIToFP(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPToUI(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPToUI(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFPToUI(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPToSI(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPToSI(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFPToSI(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstPtrToInt(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstPtrToInt(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstPtrToInt(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntToPtr(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntToPtr(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstIntToPtr(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstBitCast(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstAddrSpaceCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstAddrSpaceCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstAddrSpaceCast(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstZExtOrBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstZExtOrBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstZExtOrBitCast(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstSExtOrBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSExtOrBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstSExtOrBitCast(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstTruncOrBitCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstTruncOrBitCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstTruncOrBitCast(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstPointerCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstPointerCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstPointerCast(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstIntCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType, int isSigned) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstIntCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType), isSigned));
+	}
+	@Ptr 
+	protected native static long LLVMConstIntCast(@Ptr long ConstantVal, @Ptr long ToType, int isSigned);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstFPCast(LLVM35svnLibrary.LLVMValueRef ConstantVal, LLVM35svnLibrary.LLVMTypeRef ToType) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstFPCast(Pointer.getPeer(ConstantVal), Pointer.getPeer(ToType)));
+	}
+	@Ptr 
+	protected native static long LLVMConstFPCast(@Ptr long ConstantVal, @Ptr long ToType);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstSelect(LLVM35svnLibrary.LLVMValueRef ConstantCondition, LLVM35svnLibrary.LLVMValueRef ConstantIfTrue, LLVM35svnLibrary.LLVMValueRef ConstantIfFalse) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstSelect(Pointer.getPeer(ConstantCondition), Pointer.getPeer(ConstantIfTrue), Pointer.getPeer(ConstantIfFalse)));
+	}
+	@Ptr 
+	protected native static long LLVMConstSelect(@Ptr long ConstantCondition, @Ptr long ConstantIfTrue, @Ptr long ConstantIfFalse);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstExtractElement(LLVM35svnLibrary.LLVMValueRef VectorConstant, LLVM35svnLibrary.LLVMValueRef IndexConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstExtractElement(Pointer.getPeer(VectorConstant), Pointer.getPeer(IndexConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstExtractElement(@Ptr long VectorConstant, @Ptr long IndexConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstInsertElement(LLVM35svnLibrary.LLVMValueRef VectorConstant, LLVM35svnLibrary.LLVMValueRef ElementValueConstant, LLVM35svnLibrary.LLVMValueRef IndexConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInsertElement(Pointer.getPeer(VectorConstant), Pointer.getPeer(ElementValueConstant), Pointer.getPeer(IndexConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstInsertElement(@Ptr long VectorConstant, @Ptr long ElementValueConstant, @Ptr long IndexConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstShuffleVector(LLVM35svnLibrary.LLVMValueRef VectorAConstant, LLVM35svnLibrary.LLVMValueRef VectorBConstant, LLVM35svnLibrary.LLVMValueRef MaskConstant) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstShuffleVector(Pointer.getPeer(VectorAConstant), Pointer.getPeer(VectorBConstant), Pointer.getPeer(MaskConstant)));
+	}
+	@Ptr 
+	protected native static long LLVMConstShuffleVector(@Ptr long VectorAConstant, @Ptr long VectorBConstant, @Ptr long MaskConstant);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstExtractValue(LLVM35svnLibrary.LLVMValueRef AggConstant, Pointer<Integer > IdxList, int NumIdx) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstExtractValue(Pointer.getPeer(AggConstant), Pointer.getPeer(IdxList), NumIdx));
+	}
+	@Ptr 
+	protected native static long LLVMConstExtractValue(@Ptr long AggConstant, @Ptr long IdxList, int NumIdx);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstInsertValue(LLVM35svnLibrary.LLVMValueRef AggConstant, LLVM35svnLibrary.LLVMValueRef ElementValueConstant, Pointer<Integer > IdxList, int NumIdx) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInsertValue(Pointer.getPeer(AggConstant), Pointer.getPeer(ElementValueConstant), Pointer.getPeer(IdxList), NumIdx));
+	}
+	@Ptr 
+	protected native static long LLVMConstInsertValue(@Ptr long AggConstant, @Ptr long ElementValueConstant, @Ptr long IdxList, int NumIdx);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMConstInlineAsm(LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > AsmString, Pointer<Byte > Constraints, int HasSideEffects, int IsAlignStack) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMConstInlineAsm(Pointer.getPeer(Ty), Pointer.getPeer(AsmString), Pointer.getPeer(Constraints), HasSideEffects, IsAlignStack));
+	}
+	@Ptr 
+	protected native static long LLVMConstInlineAsm(@Ptr long Ty, @Ptr long AsmString, @Ptr long Constraints, int HasSideEffects, int IsAlignStack);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBlockAddress(LLVM35svnLibrary.LLVMValueRef F, LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBlockAddress(Pointer.getPeer(F), Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMBlockAddress(@Ptr long F, @Ptr long BB);
+	public static LLVM35svnLibrary.LLVMModuleRef LLVMGetGlobalParent(LLVM35svnLibrary.LLVMValueRef Global) {
+		return new LLVM35svnLibrary.LLVMModuleRef(LLVMGetGlobalParent(Pointer.getPeer(Global)));
+	}
+	@Ptr 
+	protected native static long LLVMGetGlobalParent(@Ptr long Global);
+	public static int LLVMIsDeclaration(LLVM35svnLibrary.LLVMValueRef Global) {
+		return LLVMIsDeclaration(Pointer.getPeer(Global));
+	}
+	protected native static int LLVMIsDeclaration(@Ptr long Global);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMLinkage > LLVMGetLinkage(LLVM35svnLibrary.LLVMValueRef Global) {
+		return FlagSet.fromValue(LLVMGetLinkage(Pointer.getPeer(Global)), LLVM35svnLibrary.LLVMLinkage.class);
+	}
+	protected native static int LLVMGetLinkage(@Ptr long Global);
+	public static void LLVMSetLinkage(LLVM35svnLibrary.LLVMValueRef Global, IntValuedEnum<LLVM35svnLibrary.LLVMLinkage > Linkage) {
+		LLVMSetLinkage(Pointer.getPeer(Global), (int)Linkage.value());
+	}
+	protected native static void LLVMSetLinkage(@Ptr long Global, int Linkage);
+	public static Pointer<Byte > LLVMGetSection(LLVM35svnLibrary.LLVMValueRef Global) {
+		return Pointer.pointerToAddress(LLVMGetSection(Pointer.getPeer(Global)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetSection(@Ptr long Global);
+	public static void LLVMSetSection(LLVM35svnLibrary.LLVMValueRef Global, Pointer<Byte > Section) {
+		LLVMSetSection(Pointer.getPeer(Global), Pointer.getPeer(Section));
+	}
+	protected native static void LLVMSetSection(@Ptr long Global, @Ptr long Section);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMVisibility > LLVMGetVisibility(LLVM35svnLibrary.LLVMValueRef Global) {
+		return FlagSet.fromValue(LLVMGetVisibility(Pointer.getPeer(Global)), LLVM35svnLibrary.LLVMVisibility.class);
+	}
+	protected native static int LLVMGetVisibility(@Ptr long Global);
+	public static void LLVMSetVisibility(LLVM35svnLibrary.LLVMValueRef Global, IntValuedEnum<LLVM35svnLibrary.LLVMVisibility > Viz) {
+		LLVMSetVisibility(Pointer.getPeer(Global), (int)Viz.value());
+	}
+	protected native static void LLVMSetVisibility(@Ptr long Global, int Viz);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMDLLStorageClass > LLVMGetDLLStorageClass(LLVM35svnLibrary.LLVMValueRef Global) {
+		return FlagSet.fromValue(LLVMGetDLLStorageClass(Pointer.getPeer(Global)), LLVM35svnLibrary.LLVMDLLStorageClass.class);
+	}
+	protected native static int LLVMGetDLLStorageClass(@Ptr long Global);
+	public static void LLVMSetDLLStorageClass(LLVM35svnLibrary.LLVMValueRef Global, IntValuedEnum<LLVM35svnLibrary.LLVMDLLStorageClass > Class) {
+		LLVMSetDLLStorageClass(Pointer.getPeer(Global), (int)Class.value());
+	}
+	protected native static void LLVMSetDLLStorageClass(@Ptr long Global, int Class);
+	public static int LLVMHasUnnamedAddr(LLVM35svnLibrary.LLVMValueRef Global) {
+		return LLVMHasUnnamedAddr(Pointer.getPeer(Global));
+	}
+	protected native static int LLVMHasUnnamedAddr(@Ptr long Global);
+	public static void LLVMSetUnnamedAddr(LLVM35svnLibrary.LLVMValueRef Global, int HasUnnamedAddr) {
+		LLVMSetUnnamedAddr(Pointer.getPeer(Global), HasUnnamedAddr);
+	}
+	protected native static void LLVMSetUnnamedAddr(@Ptr long Global, int HasUnnamedAddr);
+	public static int LLVMGetAlignment(LLVM35svnLibrary.LLVMValueRef V) {
+		return LLVMGetAlignment(Pointer.getPeer(V));
+	}
+	protected native static int LLVMGetAlignment(@Ptr long V);
+	public static void LLVMSetAlignment(LLVM35svnLibrary.LLVMValueRef V, int Bytes) {
+		LLVMSetAlignment(Pointer.getPeer(V), Bytes);
+	}
+	protected native static void LLVMSetAlignment(@Ptr long V, int Bytes);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMAddGlobal(LLVM35svnLibrary.LLVMModuleRef M, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMAddGlobal(Pointer.getPeer(M), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMAddGlobal(@Ptr long M, @Ptr long Ty, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMAddGlobalInAddressSpace(LLVM35svnLibrary.LLVMModuleRef M, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name, int AddressSpace) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMAddGlobalInAddressSpace(Pointer.getPeer(M), Pointer.getPeer(Ty), Pointer.getPeer(Name), AddressSpace));
+	}
+	@Ptr 
+	protected native static long LLVMAddGlobalInAddressSpace(@Ptr long M, @Ptr long Ty, @Ptr long Name, int AddressSpace);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetNamedGlobal(LLVM35svnLibrary.LLVMModuleRef M, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNamedGlobal(Pointer.getPeer(M), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNamedGlobal(@Ptr long M, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstGlobal(LLVM35svnLibrary.LLVMModuleRef M) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstGlobal(Pointer.getPeer(M)));
+	}
+	@Ptr 
+	protected native static long LLVMGetFirstGlobal(@Ptr long M);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastGlobal(LLVM35svnLibrary.LLVMModuleRef M) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastGlobal(Pointer.getPeer(M)));
+	}
+	@Ptr 
+	protected native static long LLVMGetLastGlobal(@Ptr long M);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextGlobal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextGlobal(Pointer.getPeer(GlobalVar)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNextGlobal(@Ptr long GlobalVar);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousGlobal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousGlobal(Pointer.getPeer(GlobalVar)));
+	}
+	@Ptr 
+	protected native static long LLVMGetPreviousGlobal(@Ptr long GlobalVar);
+	public static void LLVMDeleteGlobal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		LLVMDeleteGlobal(Pointer.getPeer(GlobalVar));
+	}
+	protected native static void LLVMDeleteGlobal(@Ptr long GlobalVar);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetInitializer(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetInitializer(Pointer.getPeer(GlobalVar)));
+	}
+	@Ptr 
+	protected native static long LLVMGetInitializer(@Ptr long GlobalVar);
+	public static void LLVMSetInitializer(LLVM35svnLibrary.LLVMValueRef GlobalVar, LLVM35svnLibrary.LLVMValueRef ConstantVal) {
+		LLVMSetInitializer(Pointer.getPeer(GlobalVar), Pointer.getPeer(ConstantVal));
+	}
+	protected native static void LLVMSetInitializer(@Ptr long GlobalVar, @Ptr long ConstantVal);
+	public static int LLVMIsThreadLocal(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return LLVMIsThreadLocal(Pointer.getPeer(GlobalVar));
+	}
+	protected native static int LLVMIsThreadLocal(@Ptr long GlobalVar);
+	public static void LLVMSetThreadLocal(LLVM35svnLibrary.LLVMValueRef GlobalVar, int IsThreadLocal) {
+		LLVMSetThreadLocal(Pointer.getPeer(GlobalVar), IsThreadLocal);
+	}
+	protected native static void LLVMSetThreadLocal(@Ptr long GlobalVar, int IsThreadLocal);
+	public static int LLVMIsGlobalConstant(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return LLVMIsGlobalConstant(Pointer.getPeer(GlobalVar));
+	}
+	protected native static int LLVMIsGlobalConstant(@Ptr long GlobalVar);
+	public static void LLVMSetGlobalConstant(LLVM35svnLibrary.LLVMValueRef GlobalVar, int IsConstant) {
+		LLVMSetGlobalConstant(Pointer.getPeer(GlobalVar), IsConstant);
+	}
+	protected native static void LLVMSetGlobalConstant(@Ptr long GlobalVar, int IsConstant);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMThreadLocalMode > LLVMGetThreadLocalMode(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return FlagSet.fromValue(LLVMGetThreadLocalMode(Pointer.getPeer(GlobalVar)), LLVM35svnLibrary.LLVMThreadLocalMode.class);
+	}
+	protected native static int LLVMGetThreadLocalMode(@Ptr long GlobalVar);
+	public static void LLVMSetThreadLocalMode(LLVM35svnLibrary.LLVMValueRef GlobalVar, IntValuedEnum<LLVM35svnLibrary.LLVMThreadLocalMode > Mode) {
+		LLVMSetThreadLocalMode(Pointer.getPeer(GlobalVar), (int)Mode.value());
+	}
+	protected native static void LLVMSetThreadLocalMode(@Ptr long GlobalVar, int Mode);
+	public static int LLVMIsExternallyInitialized(LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return LLVMIsExternallyInitialized(Pointer.getPeer(GlobalVar));
+	}
+	protected native static int LLVMIsExternallyInitialized(@Ptr long GlobalVar);
+	public static void LLVMSetExternallyInitialized(LLVM35svnLibrary.LLVMValueRef GlobalVar, int IsExtInit) {
+		LLVMSetExternallyInitialized(Pointer.getPeer(GlobalVar), IsExtInit);
+	}
+	protected native static void LLVMSetExternallyInitialized(@Ptr long GlobalVar, int IsExtInit);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMAddAlias(LLVM35svnLibrary.LLVMModuleRef M, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef Aliasee, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMAddAlias(Pointer.getPeer(M), Pointer.getPeer(Ty), Pointer.getPeer(Aliasee), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMAddAlias(@Ptr long M, @Ptr long Ty, @Ptr long Aliasee, @Ptr long Name);
+	public static void LLVMDeleteFunction(LLVM35svnLibrary.LLVMValueRef Fn) {
+		LLVMDeleteFunction(Pointer.getPeer(Fn));
+	}
+	protected native static void LLVMDeleteFunction(@Ptr long Fn);
+	public static int LLVMGetIntrinsicID(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return LLVMGetIntrinsicID(Pointer.getPeer(Fn));
+	}
+	protected native static int LLVMGetIntrinsicID(@Ptr long Fn);
+	public static int LLVMGetFunctionCallConv(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return LLVMGetFunctionCallConv(Pointer.getPeer(Fn));
+	}
+	protected native static int LLVMGetFunctionCallConv(@Ptr long Fn);
+	public static void LLVMSetFunctionCallConv(LLVM35svnLibrary.LLVMValueRef Fn, int CC) {
+		LLVMSetFunctionCallConv(Pointer.getPeer(Fn), CC);
+	}
+	protected native static void LLVMSetFunctionCallConv(@Ptr long Fn, int CC);
+	public static Pointer<Byte > LLVMGetGC(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return Pointer.pointerToAddress(LLVMGetGC(Pointer.getPeer(Fn)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetGC(@Ptr long Fn);
+	public static void LLVMSetGC(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > Name) {
+		LLVMSetGC(Pointer.getPeer(Fn), Pointer.getPeer(Name));
+	}
+	protected native static void LLVMSetGC(@Ptr long Fn, @Ptr long Name);
+	public static void LLVMAddFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
+		LLVMAddFunctionAttr(Pointer.getPeer(Fn), (int)PA.value());
+	}
+	protected native static void LLVMAddFunctionAttr(@Ptr long Fn, int PA);
+	public static void LLVMAddTargetDependentFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > A, Pointer<Byte > V) {
+		LLVMAddTargetDependentFunctionAttr(Pointer.getPeer(Fn), Pointer.getPeer(A), Pointer.getPeer(V));
+	}
+	protected native static void LLVMAddTargetDependentFunctionAttr(@Ptr long Fn, @Ptr long A, @Ptr long V);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMGetFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return FlagSet.fromValue(LLVMGetFunctionAttr(Pointer.getPeer(Fn)), LLVM35svnLibrary.LLVMAttribute.class);
+	}
+	protected native static int LLVMGetFunctionAttr(@Ptr long Fn);
+	public static void LLVMRemoveFunctionAttr(LLVM35svnLibrary.LLVMValueRef Fn, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
+		LLVMRemoveFunctionAttr(Pointer.getPeer(Fn), (int)PA.value());
+	}
+	protected native static void LLVMRemoveFunctionAttr(@Ptr long Fn, int PA);
+	public static int LLVMCountParams(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return LLVMCountParams(Pointer.getPeer(Fn));
+	}
+	protected native static int LLVMCountParams(@Ptr long Fn);
+	public static void LLVMGetParams(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMValueRef > Params) {
+		LLVMGetParams(Pointer.getPeer(Fn), Pointer.getPeer(Params));
+	}
+	protected native static void LLVMGetParams(@Ptr long Fn, @Ptr long Params);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetParam(LLVM35svnLibrary.LLVMValueRef Fn, int Index) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetParam(Pointer.getPeer(Fn), Index));
+	}
+	@Ptr 
+	protected native static long LLVMGetParam(@Ptr long Fn, int Index);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetParamParent(LLVM35svnLibrary.LLVMValueRef Inst) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetParamParent(Pointer.getPeer(Inst)));
+	}
+	@Ptr 
+	protected native static long LLVMGetParamParent(@Ptr long Inst);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstParam(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstParam(Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMGetFirstParam(@Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastParam(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastParam(Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMGetLastParam(@Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextParam(LLVM35svnLibrary.LLVMValueRef Arg) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextParam(Pointer.getPeer(Arg)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNextParam(@Ptr long Arg);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousParam(LLVM35svnLibrary.LLVMValueRef Arg) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousParam(Pointer.getPeer(Arg)));
+	}
+	@Ptr 
+	protected native static long LLVMGetPreviousParam(@Ptr long Arg);
+	public static void LLVMAddAttribute(LLVM35svnLibrary.LLVMValueRef Arg, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
+		LLVMAddAttribute(Pointer.getPeer(Arg), (int)PA.value());
+	}
+	protected native static void LLVMAddAttribute(@Ptr long Arg, int PA);
+	public static void LLVMRemoveAttribute(LLVM35svnLibrary.LLVMValueRef Arg, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > PA) {
+		LLVMRemoveAttribute(Pointer.getPeer(Arg), (int)PA.value());
+	}
+	protected native static void LLVMRemoveAttribute(@Ptr long Arg, int PA);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMGetAttribute(LLVM35svnLibrary.LLVMValueRef Arg) {
+		return FlagSet.fromValue(LLVMGetAttribute(Pointer.getPeer(Arg)), LLVM35svnLibrary.LLVMAttribute.class);
+	}
+	protected native static int LLVMGetAttribute(@Ptr long Arg);
+	public static void LLVMSetParamAlignment(LLVM35svnLibrary.LLVMValueRef Arg, int align) {
+		LLVMSetParamAlignment(Pointer.getPeer(Arg), align);
+	}
+	protected native static void LLVMSetParamAlignment(@Ptr long Arg, int align);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMMDStringInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<Byte > Str, int SLen) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMMDStringInContext(Pointer.getPeer(C), Pointer.getPeer(Str), SLen));
+	}
+	@Ptr 
+	protected native static long LLVMMDStringInContext(@Ptr long C, @Ptr long Str, int SLen);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMMDString(Pointer<Byte > Str, int SLen) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMMDString(Pointer.getPeer(Str), SLen));
+	}
+	@Ptr 
+	protected native static long LLVMMDString(@Ptr long Str, int SLen);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMMDNodeInContext(LLVM35svnLibrary.LLVMContextRef C, Pointer<LLVM35svnLibrary.LLVMValueRef > Vals, int Count) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMMDNodeInContext(Pointer.getPeer(C), Pointer.getPeer(Vals), Count));
+	}
+	@Ptr 
+	protected native static long LLVMMDNodeInContext(@Ptr long C, @Ptr long Vals, int Count);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMMDNode(Pointer<LLVM35svnLibrary.LLVMValueRef > Vals, int Count) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMMDNode(Pointer.getPeer(Vals), Count));
+	}
+	@Ptr 
+	protected native static long LLVMMDNode(@Ptr long Vals, int Count);
+	public static Pointer<Byte > LLVMGetMDString(LLVM35svnLibrary.LLVMValueRef V, Pointer<Integer > Len) {
+		return Pointer.pointerToAddress(LLVMGetMDString(Pointer.getPeer(V), Pointer.getPeer(Len)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetMDString(@Ptr long V, @Ptr long Len);
+	public static int LLVMGetMDNodeNumOperands(LLVM35svnLibrary.LLVMValueRef V) {
+		return LLVMGetMDNodeNumOperands(Pointer.getPeer(V));
+	}
+	protected native static int LLVMGetMDNodeNumOperands(@Ptr long V);
+	public static void LLVMGetMDNodeOperands(LLVM35svnLibrary.LLVMValueRef V, Pointer<LLVM35svnLibrary.LLVMValueRef > Dest) {
+		LLVMGetMDNodeOperands(Pointer.getPeer(V), Pointer.getPeer(Dest));
+	}
+	protected native static void LLVMGetMDNodeOperands(@Ptr long V, @Ptr long Dest);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBasicBlockAsValue(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBasicBlockAsValue(Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMBasicBlockAsValue(@Ptr long BB);
+	public static int LLVMValueIsBasicBlock(LLVM35svnLibrary.LLVMValueRef Val) {
+		return LLVMValueIsBasicBlock(Pointer.getPeer(Val));
+	}
+	protected native static int LLVMValueIsBasicBlock(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMValueAsBasicBlock(LLVM35svnLibrary.LLVMValueRef Val) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMValueAsBasicBlock(Pointer.getPeer(Val)));
+	}
+	@Ptr 
+	protected native static long LLVMValueAsBasicBlock(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetBasicBlockParent(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetBasicBlockParent(Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMGetBasicBlockParent(@Ptr long BB);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetBasicBlockTerminator(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetBasicBlockTerminator(Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMGetBasicBlockTerminator(@Ptr long BB);
+	public static int LLVMCountBasicBlocks(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return LLVMCountBasicBlocks(Pointer.getPeer(Fn));
+	}
+	protected native static int LLVMCountBasicBlocks(@Ptr long Fn);
+	public static void LLVMGetBasicBlocks(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMBasicBlockRef > BasicBlocks) {
+		LLVMGetBasicBlocks(Pointer.getPeer(Fn), Pointer.getPeer(BasicBlocks));
+	}
+	protected native static void LLVMGetBasicBlocks(@Ptr long Fn, @Ptr long BasicBlocks);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetFirstBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetFirstBasicBlock(Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMGetFirstBasicBlock(@Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetLastBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetLastBasicBlock(Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMGetLastBasicBlock(@Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetNextBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetNextBasicBlock(Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNextBasicBlock(@Ptr long BB);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetPreviousBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetPreviousBasicBlock(Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMGetPreviousBasicBlock(@Ptr long BB);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetEntryBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetEntryBasicBlock(Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMGetEntryBasicBlock(@Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMAppendBasicBlockInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMAppendBasicBlockInContext(Pointer.getPeer(C), Pointer.getPeer(Fn), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMAppendBasicBlockInContext(@Ptr long C, @Ptr long Fn, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMAppendBasicBlock(LLVM35svnLibrary.LLVMValueRef Fn, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMAppendBasicBlock(Pointer.getPeer(Fn), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMAppendBasicBlock(@Ptr long Fn, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMInsertBasicBlockInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMBasicBlockRef BB, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMInsertBasicBlockInContext(Pointer.getPeer(C), Pointer.getPeer(BB), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMInsertBasicBlockInContext(@Ptr long C, @Ptr long BB, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMInsertBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef InsertBeforeBB, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMInsertBasicBlock(Pointer.getPeer(InsertBeforeBB), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMInsertBasicBlock(@Ptr long InsertBeforeBB, @Ptr long Name);
+	public static void LLVMDeleteBasicBlock(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		LLVMDeleteBasicBlock(Pointer.getPeer(BB));
+	}
+	protected native static void LLVMDeleteBasicBlock(@Ptr long BB);
+	public static void LLVMRemoveBasicBlockFromParent(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		LLVMRemoveBasicBlockFromParent(Pointer.getPeer(BB));
+	}
+	protected native static void LLVMRemoveBasicBlockFromParent(@Ptr long BB);
+	public static void LLVMMoveBasicBlockBefore(LLVM35svnLibrary.LLVMBasicBlockRef BB, LLVM35svnLibrary.LLVMBasicBlockRef MovePos) {
+		LLVMMoveBasicBlockBefore(Pointer.getPeer(BB), Pointer.getPeer(MovePos));
+	}
+	protected native static void LLVMMoveBasicBlockBefore(@Ptr long BB, @Ptr long MovePos);
+	public static void LLVMMoveBasicBlockAfter(LLVM35svnLibrary.LLVMBasicBlockRef BB, LLVM35svnLibrary.LLVMBasicBlockRef MovePos) {
+		LLVMMoveBasicBlockAfter(Pointer.getPeer(BB), Pointer.getPeer(MovePos));
+	}
+	protected native static void LLVMMoveBasicBlockAfter(@Ptr long BB, @Ptr long MovePos);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetFirstInstruction(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetFirstInstruction(Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMGetFirstInstruction(@Ptr long BB);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetLastInstruction(LLVM35svnLibrary.LLVMBasicBlockRef BB) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetLastInstruction(Pointer.getPeer(BB)));
+	}
+	@Ptr 
+	protected native static long LLVMGetLastInstruction(@Ptr long BB);
+	public static int LLVMHasMetadata(LLVM35svnLibrary.LLVMValueRef Val) {
+		return LLVMHasMetadata(Pointer.getPeer(Val));
+	}
+	protected native static int LLVMHasMetadata(@Ptr long Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetMetadata(LLVM35svnLibrary.LLVMValueRef Val, int KindID) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetMetadata(Pointer.getPeer(Val), KindID));
+	}
+	@Ptr 
+	protected native static long LLVMGetMetadata(@Ptr long Val, int KindID);
+	public static void LLVMSetMetadata(LLVM35svnLibrary.LLVMValueRef Val, int KindID, LLVM35svnLibrary.LLVMValueRef Node) {
+		LLVMSetMetadata(Pointer.getPeer(Val), KindID, Pointer.getPeer(Node));
+	}
+	protected native static void LLVMSetMetadata(@Ptr long Val, int KindID, @Ptr long Node);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetInstructionParent(LLVM35svnLibrary.LLVMValueRef Inst) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetInstructionParent(Pointer.getPeer(Inst)));
+	}
+	@Ptr 
+	protected native static long LLVMGetInstructionParent(@Ptr long Inst);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetNextInstruction(LLVM35svnLibrary.LLVMValueRef Inst) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetNextInstruction(Pointer.getPeer(Inst)));
+	}
+	@Ptr 
+	protected native static long LLVMGetNextInstruction(@Ptr long Inst);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetPreviousInstruction(LLVM35svnLibrary.LLVMValueRef Inst) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetPreviousInstruction(Pointer.getPeer(Inst)));
+	}
+	@Ptr 
+	protected native static long LLVMGetPreviousInstruction(@Ptr long Inst);
+	public static void LLVMInstructionEraseFromParent(LLVM35svnLibrary.LLVMValueRef Inst) {
+		LLVMInstructionEraseFromParent(Pointer.getPeer(Inst));
+	}
+	protected native static void LLVMInstructionEraseFromParent(@Ptr long Inst);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > LLVMGetInstructionOpcode(LLVM35svnLibrary.LLVMValueRef Inst) {
+		return FlagSet.fromValue(LLVMGetInstructionOpcode(Pointer.getPeer(Inst)), LLVM35svnLibrary.LLVMOpcode.class);
+	}
+	protected native static int LLVMGetInstructionOpcode(@Ptr long Inst);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMIntPredicate > LLVMGetICmpPredicate(LLVM35svnLibrary.LLVMValueRef Inst) {
+		return FlagSet.fromValue(LLVMGetICmpPredicate(Pointer.getPeer(Inst)), LLVM35svnLibrary.LLVMIntPredicate.class);
+	}
+	protected native static int LLVMGetICmpPredicate(@Ptr long Inst);
+	public static void LLVMSetInstructionCallConv(LLVM35svnLibrary.LLVMValueRef Instr, int CC) {
+		LLVMSetInstructionCallConv(Pointer.getPeer(Instr), CC);
+	}
+	protected native static void LLVMSetInstructionCallConv(@Ptr long Instr, int CC);
+	public static int LLVMGetInstructionCallConv(LLVM35svnLibrary.LLVMValueRef Instr) {
+		return LLVMGetInstructionCallConv(Pointer.getPeer(Instr));
+	}
+	protected native static int LLVMGetInstructionCallConv(@Ptr long Instr);
+	public static void LLVMAddInstrAttribute(LLVM35svnLibrary.LLVMValueRef Instr, int index, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMAttribute1) {
+		LLVMAddInstrAttribute(Pointer.getPeer(Instr), index, (int)LLVMAttribute1.value());
+	}
+	protected native static void LLVMAddInstrAttribute(@Ptr long Instr, int index, int LLVMAttribute1);
+	public static void LLVMRemoveInstrAttribute(LLVM35svnLibrary.LLVMValueRef Instr, int index, IntValuedEnum<LLVM35svnLibrary.LLVMAttribute > LLVMAttribute1) {
+		LLVMRemoveInstrAttribute(Pointer.getPeer(Instr), index, (int)LLVMAttribute1.value());
+	}
+	protected native static void LLVMRemoveInstrAttribute(@Ptr long Instr, int index, int LLVMAttribute1);
+	public static void LLVMSetInstrParamAlignment(LLVM35svnLibrary.LLVMValueRef Instr, int index, int align) {
+		LLVMSetInstrParamAlignment(Pointer.getPeer(Instr), index, align);
+	}
+	protected native static void LLVMSetInstrParamAlignment(@Ptr long Instr, int index, int align);
+	public static int LLVMIsTailCall(LLVM35svnLibrary.LLVMValueRef CallInst) {
+		return LLVMIsTailCall(Pointer.getPeer(CallInst));
+	}
+	protected native static int LLVMIsTailCall(@Ptr long CallInst);
+	public static void LLVMSetTailCall(LLVM35svnLibrary.LLVMValueRef CallInst, int IsTailCall) {
+		LLVMSetTailCall(Pointer.getPeer(CallInst), IsTailCall);
+	}
+	protected native static void LLVMSetTailCall(@Ptr long CallInst, int IsTailCall);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetSwitchDefaultDest(LLVM35svnLibrary.LLVMValueRef SwitchInstr) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetSwitchDefaultDest(Pointer.getPeer(SwitchInstr)));
+	}
+	@Ptr 
+	protected native static long LLVMGetSwitchDefaultDest(@Ptr long SwitchInstr);
+	public static void LLVMAddIncoming(LLVM35svnLibrary.LLVMValueRef PhiNode, Pointer<LLVM35svnLibrary.LLVMValueRef > IncomingValues, Pointer<LLVM35svnLibrary.LLVMBasicBlockRef > IncomingBlocks, int Count) {
+		LLVMAddIncoming(Pointer.getPeer(PhiNode), Pointer.getPeer(IncomingValues), Pointer.getPeer(IncomingBlocks), Count);
+	}
+	protected native static void LLVMAddIncoming(@Ptr long PhiNode, @Ptr long IncomingValues, @Ptr long IncomingBlocks, int Count);
+	public static int LLVMCountIncoming(LLVM35svnLibrary.LLVMValueRef PhiNode) {
+		return LLVMCountIncoming(Pointer.getPeer(PhiNode));
+	}
+	protected native static int LLVMCountIncoming(@Ptr long PhiNode);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetIncomingValue(LLVM35svnLibrary.LLVMValueRef PhiNode, int Index) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetIncomingValue(Pointer.getPeer(PhiNode), Index));
+	}
+	@Ptr 
+	protected native static long LLVMGetIncomingValue(@Ptr long PhiNode, int Index);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetIncomingBlock(LLVM35svnLibrary.LLVMValueRef PhiNode, int Index) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetIncomingBlock(Pointer.getPeer(PhiNode), Index));
+	}
+	@Ptr 
+	protected native static long LLVMGetIncomingBlock(@Ptr long PhiNode, int Index);
+	public static LLVM35svnLibrary.LLVMBuilderRef LLVMCreateBuilderInContext(LLVM35svnLibrary.LLVMContextRef C) {
+		return new LLVM35svnLibrary.LLVMBuilderRef(LLVMCreateBuilderInContext(Pointer.getPeer(C)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateBuilderInContext(@Ptr long C);
+	public static LLVM35svnLibrary.LLVMBuilderRef LLVMCreateBuilder() {
+		return new LLVM35svnLibrary.LLVMBuilderRef(LLVMCreateBuilder$2());
+	}
+	@Ptr 
+	protected native static long LLVMCreateBuilder$2();
+	public static void LLVMPositionBuilder(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMBasicBlockRef Block, LLVM35svnLibrary.LLVMValueRef Instr) {
+		LLVMPositionBuilder(Pointer.getPeer(Builder), Pointer.getPeer(Block), Pointer.getPeer(Instr));
+	}
+	protected native static void LLVMPositionBuilder(@Ptr long Builder, @Ptr long Block, @Ptr long Instr);
+	public static void LLVMPositionBuilderBefore(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Instr) {
+		LLVMPositionBuilderBefore(Pointer.getPeer(Builder), Pointer.getPeer(Instr));
+	}
+	protected native static void LLVMPositionBuilderBefore(@Ptr long Builder, @Ptr long Instr);
+	public static void LLVMPositionBuilderAtEnd(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMBasicBlockRef Block) {
+		LLVMPositionBuilderAtEnd(Pointer.getPeer(Builder), Pointer.getPeer(Block));
+	}
+	protected native static void LLVMPositionBuilderAtEnd(@Ptr long Builder, @Ptr long Block);
+	public static LLVM35svnLibrary.LLVMBasicBlockRef LLVMGetInsertBlock(LLVM35svnLibrary.LLVMBuilderRef Builder) {
+		return new LLVM35svnLibrary.LLVMBasicBlockRef(LLVMGetInsertBlock(Pointer.getPeer(Builder)));
+	}
+	@Ptr 
+	protected native static long LLVMGetInsertBlock(@Ptr long Builder);
+	public static void LLVMClearInsertionPosition(LLVM35svnLibrary.LLVMBuilderRef Builder) {
+		LLVMClearInsertionPosition(Pointer.getPeer(Builder));
+	}
+	protected native static void LLVMClearInsertionPosition(@Ptr long Builder);
+	public static void LLVMInsertIntoBuilder(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Instr) {
+		LLVMInsertIntoBuilder(Pointer.getPeer(Builder), Pointer.getPeer(Instr));
+	}
+	protected native static void LLVMInsertIntoBuilder(@Ptr long Builder, @Ptr long Instr);
+	public static void LLVMInsertIntoBuilderWithName(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Instr, Pointer<Byte > Name) {
+		LLVMInsertIntoBuilderWithName(Pointer.getPeer(Builder), Pointer.getPeer(Instr), Pointer.getPeer(Name));
+	}
+	protected native static void LLVMInsertIntoBuilderWithName(@Ptr long Builder, @Ptr long Instr, @Ptr long Name);
+	public static void LLVMDisposeBuilder(LLVM35svnLibrary.LLVMBuilderRef Builder) {
+		LLVMDisposeBuilder(Pointer.getPeer(Builder));
+	}
+	protected native static void LLVMDisposeBuilder(@Ptr long Builder);
+	public static void LLVMSetCurrentDebugLocation(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef L) {
+		LLVMSetCurrentDebugLocation(Pointer.getPeer(Builder), Pointer.getPeer(L));
+	}
+	protected native static void LLVMSetCurrentDebugLocation(@Ptr long Builder, @Ptr long L);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMGetCurrentDebugLocation(LLVM35svnLibrary.LLVMBuilderRef Builder) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMGetCurrentDebugLocation(Pointer.getPeer(Builder)));
+	}
+	@Ptr 
+	protected native static long LLVMGetCurrentDebugLocation(@Ptr long Builder);
+	public static void LLVMSetInstDebugLocation(LLVM35svnLibrary.LLVMBuilderRef Builder, LLVM35svnLibrary.LLVMValueRef Inst) {
+		LLVMSetInstDebugLocation(Pointer.getPeer(Builder), Pointer.getPeer(Inst));
+	}
+	protected native static void LLVMSetInstDebugLocation(@Ptr long Builder, @Ptr long Inst);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildRetVoid(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildRetVoid(Pointer.getPeer(LLVMBuilderRef1)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildRetVoid(@Ptr long LLVMBuilderRef1);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildRet(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildRet(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildRet(@Ptr long LLVMBuilderRef1, @Ptr long V);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAggregateRet(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, Pointer<LLVM35svnLibrary.LLVMValueRef > RetVals, int N) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAggregateRet(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(RetVals), N));
+	}
+	@Ptr 
+	protected native static long LLVMBuildAggregateRet(@Ptr long LLVMBuilderRef1, @Ptr long RetVals, int N);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildBr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMBasicBlockRef Dest) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildBr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Dest)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildBr(@Ptr long LLVMBuilderRef1, @Ptr long Dest);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildCondBr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef If, LLVM35svnLibrary.LLVMBasicBlockRef Then, LLVM35svnLibrary.LLVMBasicBlockRef Else) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildCondBr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(If), Pointer.getPeer(Then), Pointer.getPeer(Else)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildCondBr(@Ptr long LLVMBuilderRef1, @Ptr long If, @Ptr long Then, @Ptr long Else);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSwitch(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, LLVM35svnLibrary.LLVMBasicBlockRef Else, int NumCases) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSwitch(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Else), NumCases));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSwitch(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Else, int NumCases);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIndirectBr(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Addr, int NumDests) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIndirectBr(Pointer.getPeer(B), Pointer.getPeer(Addr), NumDests));
+	}
+	@Ptr 
+	protected native static long LLVMBuildIndirectBr(@Ptr long B, @Ptr long Addr, int NumDests);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInvoke(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMValueRef > Args, int NumArgs, LLVM35svnLibrary.LLVMBasicBlockRef Then, LLVM35svnLibrary.LLVMBasicBlockRef Catch, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInvoke(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Fn), Pointer.getPeer(Args), NumArgs, Pointer.getPeer(Then), Pointer.getPeer(Catch), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildInvoke(@Ptr long LLVMBuilderRef1, @Ptr long Fn, @Ptr long Args, int NumArgs, @Ptr long Then, @Ptr long Catch, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildLandingPad(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef PersFn, int NumClauses, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildLandingPad(Pointer.getPeer(B), Pointer.getPeer(Ty), Pointer.getPeer(PersFn), NumClauses, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildLandingPad(@Ptr long B, @Ptr long Ty, @Ptr long PersFn, int NumClauses, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildResume(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Exn) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildResume(Pointer.getPeer(B), Pointer.getPeer(Exn)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildResume(@Ptr long B, @Ptr long Exn);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildUnreachable(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildUnreachable(Pointer.getPeer(LLVMBuilderRef1)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildUnreachable(@Ptr long LLVMBuilderRef1);
+	public static void LLVMAddCase(LLVM35svnLibrary.LLVMValueRef Switch, LLVM35svnLibrary.LLVMValueRef OnVal, LLVM35svnLibrary.LLVMBasicBlockRef Dest) {
+		LLVMAddCase(Pointer.getPeer(Switch), Pointer.getPeer(OnVal), Pointer.getPeer(Dest));
+	}
+	protected native static void LLVMAddCase(@Ptr long Switch, @Ptr long OnVal, @Ptr long Dest);
+	public static void LLVMAddDestination(LLVM35svnLibrary.LLVMValueRef IndirectBr, LLVM35svnLibrary.LLVMBasicBlockRef Dest) {
+		LLVMAddDestination(Pointer.getPeer(IndirectBr), Pointer.getPeer(Dest));
+	}
+	protected native static void LLVMAddDestination(@Ptr long IndirectBr, @Ptr long Dest);
+	public static void LLVMAddClause(LLVM35svnLibrary.LLVMValueRef LandingPad, LLVM35svnLibrary.LLVMValueRef ClauseVal) {
+		LLVMAddClause(Pointer.getPeer(LandingPad), Pointer.getPeer(ClauseVal));
+	}
+	protected native static void LLVMAddClause(@Ptr long LandingPad, @Ptr long ClauseVal);
+	public static void LLVMSetCleanup(LLVM35svnLibrary.LLVMValueRef LandingPad, int Val) {
+		LLVMSetCleanup(Pointer.getPeer(LandingPad), Val);
+	}
+	protected native static void LLVMSetCleanup(@Ptr long LandingPad, int Val);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNSWAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNUWAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFAdd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFAdd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFAdd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNSWSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNUWSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFSub(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFSub(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFSub(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNSWMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNUWMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFMul(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFMul(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFMul(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildUDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildUDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildUDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildExactSDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildExactSDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildExactSDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFDiv(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFDiv(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFDiv(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildURem(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildURem(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildURem(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSRem(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSRem(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSRem(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFRem(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFRem(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFRem(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildShl(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildShl(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildShl(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildLShr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildLShr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildLShr(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAShr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAShr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildAShr(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAnd(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAnd(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildAnd(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildOr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildOr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildOr(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildXor(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildXor(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildXor(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildBinOp(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > Op, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildBinOp(Pointer.getPeer(B), (int)Op.value(), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildBinOp(@Ptr long B, int Op, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNeg(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNeg(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNeg(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNSWNeg(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNSWNeg(Pointer.getPeer(B), Pointer.getPeer(V), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNSWNeg(@Ptr long B, @Ptr long V, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNUWNeg(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNUWNeg(Pointer.getPeer(B), Pointer.getPeer(V), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNUWNeg(@Ptr long B, @Ptr long V, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFNeg(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFNeg(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFNeg(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildNot(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildNot(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildNot(@Ptr long LLVMBuilderRef1, @Ptr long V, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildMalloc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildMalloc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildMalloc(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildArrayMalloc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildArrayMalloc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Val), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildArrayMalloc(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Val, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAlloca(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAlloca(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildAlloca(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildArrayAlloca(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildArrayAlloca(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Val), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildArrayAlloca(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Val, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFree(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef PointerVal) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFree(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(PointerVal)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFree(@Ptr long LLVMBuilderRef1, @Ptr long PointerVal);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildLoad(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef PointerVal, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildLoad(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(PointerVal), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildLoad(@Ptr long LLVMBuilderRef1, @Ptr long PointerVal, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildStore(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMValueRef Ptr) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildStore(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(Ptr)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildStore(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long Ptr);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildGEP(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Pointer, Pointer<LLVM35svnLibrary.LLVMValueRef > Indices, int NumIndices, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildGEP(Pointer.getPeer(B), Pointer.getPeer(Pointer), Pointer.getPeer(Indices), NumIndices, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildGEP(@Ptr long B, @Ptr long Pointer, @Ptr long Indices, int NumIndices, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInBoundsGEP(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Pointer, Pointer<LLVM35svnLibrary.LLVMValueRef > Indices, int NumIndices, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInBoundsGEP(Pointer.getPeer(B), Pointer.getPeer(Pointer), Pointer.getPeer(Indices), NumIndices, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildInBoundsGEP(@Ptr long B, @Ptr long Pointer, @Ptr long Indices, int NumIndices, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildStructGEP(LLVM35svnLibrary.LLVMBuilderRef B, LLVM35svnLibrary.LLVMValueRef Pointer, int Idx, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildStructGEP(Pointer.getPeer(B), Pointer.getPeer(Pointer), Idx, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildStructGEP(@Ptr long B, @Ptr long Pointer, int Idx, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildGlobalString(LLVM35svnLibrary.LLVMBuilderRef B, Pointer<Byte > Str, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildGlobalString(Pointer.getPeer(B), Pointer.getPeer(Str), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildGlobalString(@Ptr long B, @Ptr long Str, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildGlobalStringPtr(LLVM35svnLibrary.LLVMBuilderRef B, Pointer<Byte > Str, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildGlobalStringPtr(Pointer.getPeer(B), Pointer.getPeer(Str), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildGlobalStringPtr(@Ptr long B, @Ptr long Str, @Ptr long Name);
+	public static int LLVMGetVolatile(LLVM35svnLibrary.LLVMValueRef MemoryAccessInst) {
+		return LLVMGetVolatile(Pointer.getPeer(MemoryAccessInst));
+	}
+	protected native static int LLVMGetVolatile(@Ptr long MemoryAccessInst);
+	public static void LLVMSetVolatile(LLVM35svnLibrary.LLVMValueRef MemoryAccessInst, int IsVolatile) {
+		LLVMSetVolatile(Pointer.getPeer(MemoryAccessInst), IsVolatile);
+	}
+	protected native static void LLVMSetVolatile(@Ptr long MemoryAccessInst, int IsVolatile);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildTrunc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildTrunc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildTrunc(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildZExt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildZExt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildZExt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSExt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSExt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSExt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPToUI(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPToUI(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFPToUI(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPToSI(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPToSI(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFPToSI(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildUIToFP(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildUIToFP(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildUIToFP(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSIToFP(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSIToFP(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSIToFP(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPTrunc(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPTrunc(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFPTrunc(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPExt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPExt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFPExt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPtrToInt(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPtrToInt(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildPtrToInt(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIntToPtr(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIntToPtr(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildIntToPtr(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAddrSpaceCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAddrSpaceCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildAddrSpaceCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildZExtOrBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildZExtOrBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildZExtOrBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSExtOrBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSExtOrBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSExtOrBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildTruncOrBitCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildTruncOrBitCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildTruncOrBitCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildCast(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMOpcode > Op, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildCast(Pointer.getPeer(B), (int)Op.value(), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildCast(@Ptr long B, int Op, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPointerCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPointerCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildPointerCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIntCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIntCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildIntCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFPCast(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, LLVM35svnLibrary.LLVMTypeRef DestTy, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFPCast(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(DestTy), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFPCast(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long DestTy, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildICmp(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, IntValuedEnum<LLVM35svnLibrary.LLVMIntPredicate > Op, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildICmp(Pointer.getPeer(LLVMBuilderRef1), (int)Op.value(), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildICmp(@Ptr long LLVMBuilderRef1, int Op, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFCmp(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, IntValuedEnum<LLVM35svnLibrary.LLVMRealPredicate > Op, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFCmp(Pointer.getPeer(LLVMBuilderRef1), (int)Op.value(), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFCmp(@Ptr long LLVMBuilderRef1, int Op, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPhi(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPhi(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildPhi(@Ptr long LLVMBuilderRef1, @Ptr long Ty, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildCall(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Fn, Pointer<LLVM35svnLibrary.LLVMValueRef > Args, int NumArgs, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildCall(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Fn), Pointer.getPeer(Args), NumArgs, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildCall(@Ptr long LLVMBuilderRef1, @Ptr long Fn, @Ptr long Args, int NumArgs, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildSelect(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef If, LLVM35svnLibrary.LLVMValueRef Then, LLVM35svnLibrary.LLVMValueRef Else, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildSelect(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(If), Pointer.getPeer(Then), Pointer.getPeer(Else), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildSelect(@Ptr long LLVMBuilderRef1, @Ptr long If, @Ptr long Then, @Ptr long Else, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildVAArg(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef List, LLVM35svnLibrary.LLVMTypeRef Ty, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildVAArg(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(List), Pointer.getPeer(Ty), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildVAArg(@Ptr long LLVMBuilderRef1, @Ptr long List, @Ptr long Ty, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildExtractElement(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef VecVal, LLVM35svnLibrary.LLVMValueRef Index, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildExtractElement(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(VecVal), Pointer.getPeer(Index), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildExtractElement(@Ptr long LLVMBuilderRef1, @Ptr long VecVal, @Ptr long Index, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInsertElement(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef VecVal, LLVM35svnLibrary.LLVMValueRef EltVal, LLVM35svnLibrary.LLVMValueRef Index, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInsertElement(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(VecVal), Pointer.getPeer(EltVal), Pointer.getPeer(Index), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildInsertElement(@Ptr long LLVMBuilderRef1, @Ptr long VecVal, @Ptr long EltVal, @Ptr long Index, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildShuffleVector(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef V1, LLVM35svnLibrary.LLVMValueRef V2, LLVM35svnLibrary.LLVMValueRef Mask, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildShuffleVector(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(V1), Pointer.getPeer(V2), Pointer.getPeer(Mask), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildShuffleVector(@Ptr long LLVMBuilderRef1, @Ptr long V1, @Ptr long V2, @Ptr long Mask, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildExtractValue(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef AggVal, int Index, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildExtractValue(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(AggVal), Index, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildExtractValue(@Ptr long LLVMBuilderRef1, @Ptr long AggVal, int Index, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildInsertValue(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef AggVal, LLVM35svnLibrary.LLVMValueRef EltVal, int Index, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildInsertValue(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(AggVal), Pointer.getPeer(EltVal), Index, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildInsertValue(@Ptr long LLVMBuilderRef1, @Ptr long AggVal, @Ptr long EltVal, int Index, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIsNull(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIsNull(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildIsNull(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildIsNotNull(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef Val, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildIsNotNull(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(Val), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildIsNotNull(@Ptr long LLVMBuilderRef1, @Ptr long Val, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildPtrDiff(LLVM35svnLibrary.LLVMBuilderRef LLVMBuilderRef1, LLVM35svnLibrary.LLVMValueRef LHS, LLVM35svnLibrary.LLVMValueRef RHS, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildPtrDiff(Pointer.getPeer(LLVMBuilderRef1), Pointer.getPeer(LHS), Pointer.getPeer(RHS), Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildPtrDiff(@Ptr long LLVMBuilderRef1, @Ptr long LHS, @Ptr long RHS, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildFence(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMAtomicOrdering > ordering, int singleThread, Pointer<Byte > Name) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildFence(Pointer.getPeer(B), (int)ordering.value(), singleThread, Pointer.getPeer(Name)));
+	}
+	@Ptr 
+	protected native static long LLVMBuildFence(@Ptr long B, int ordering, int singleThread, @Ptr long Name);
+	public static LLVM35svnLibrary.LLVMValueRef LLVMBuildAtomicRMW(LLVM35svnLibrary.LLVMBuilderRef B, IntValuedEnum<LLVM35svnLibrary.LLVMAtomicRMWBinOp > op, LLVM35svnLibrary.LLVMValueRef PTR, LLVM35svnLibrary.LLVMValueRef Val, IntValuedEnum<LLVM35svnLibrary.LLVMAtomicOrdering > ordering, int singleThread) {
+		return new LLVM35svnLibrary.LLVMValueRef(LLVMBuildAtomicRMW(Pointer.getPeer(B), (int)op.value(), Pointer.getPeer(PTR), Pointer.getPeer(Val), (int)ordering.value(), singleThread));
+	}
+	@Ptr 
+	protected native static long LLVMBuildAtomicRMW(@Ptr long B, int op, @Ptr long PTR, @Ptr long Val, int ordering, int singleThread);
+	public static LLVM35svnLibrary.LLVMModuleProviderRef LLVMCreateModuleProviderForExistingModule(LLVM35svnLibrary.LLVMModuleRef M) {
+		return new LLVM35svnLibrary.LLVMModuleProviderRef(LLVMCreateModuleProviderForExistingModule(Pointer.getPeer(M)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateModuleProviderForExistingModule(@Ptr long M);
+	public static void LLVMDisposeModuleProvider(LLVM35svnLibrary.LLVMModuleProviderRef M) {
+		LLVMDisposeModuleProvider(Pointer.getPeer(M));
+	}
+	protected native static void LLVMDisposeModuleProvider(@Ptr long M);
+	public static int LLVMCreateMemoryBufferWithContentsOfFile(Pointer<Byte > Path, Pointer<LLVM35svnLibrary.LLVMMemoryBufferRef > OutMemBuf, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMCreateMemoryBufferWithContentsOfFile(Pointer.getPeer(Path), Pointer.getPeer(OutMemBuf), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMCreateMemoryBufferWithContentsOfFile(@Ptr long Path, @Ptr long OutMemBuf, @Ptr long OutMessage);
+	public static int LLVMCreateMemoryBufferWithSTDIN(Pointer<LLVM35svnLibrary.LLVMMemoryBufferRef > OutMemBuf, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMCreateMemoryBufferWithSTDIN(Pointer.getPeer(OutMemBuf), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMCreateMemoryBufferWithSTDIN(@Ptr long OutMemBuf, @Ptr long OutMessage);
+	public static LLVM35svnLibrary.LLVMMemoryBufferRef LLVMCreateMemoryBufferWithMemoryRange(Pointer<Byte > InputData, @Ptr long InputDataLength, Pointer<Byte > BufferName, int RequiresNullTerminator) {
+		return new LLVM35svnLibrary.LLVMMemoryBufferRef(LLVMCreateMemoryBufferWithMemoryRange(Pointer.getPeer(InputData), InputDataLength, Pointer.getPeer(BufferName), RequiresNullTerminator));
+	}
+	@Ptr 
+	protected native static long LLVMCreateMemoryBufferWithMemoryRange(@Ptr long InputData, @Ptr long InputDataLength, @Ptr long BufferName, int RequiresNullTerminator);
+	public static LLVM35svnLibrary.LLVMMemoryBufferRef LLVMCreateMemoryBufferWithMemoryRangeCopy(Pointer<Byte > InputData, @Ptr long InputDataLength, Pointer<Byte > BufferName) {
+		return new LLVM35svnLibrary.LLVMMemoryBufferRef(LLVMCreateMemoryBufferWithMemoryRangeCopy(Pointer.getPeer(InputData), InputDataLength, Pointer.getPeer(BufferName)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateMemoryBufferWithMemoryRangeCopy(@Ptr long InputData, @Ptr long InputDataLength, @Ptr long BufferName);
+	public static Pointer<Byte > LLVMGetBufferStart(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
+		return Pointer.pointerToAddress(LLVMGetBufferStart(Pointer.getPeer(MemBuf)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMGetBufferStart(@Ptr long MemBuf);
+	@Ptr 
+	public static long LLVMGetBufferSize(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
+		return LLVMGetBufferSize(Pointer.getPeer(MemBuf));
+	}
+	@Ptr 
+	protected native static long LLVMGetBufferSize(@Ptr long MemBuf);
+	public static void LLVMDisposeMemoryBuffer(LLVM35svnLibrary.LLVMMemoryBufferRef MemBuf) {
+		LLVMDisposeMemoryBuffer(Pointer.getPeer(MemBuf));
+	}
+	protected native static void LLVMDisposeMemoryBuffer(@Ptr long MemBuf);
+	public static LLVM35svnLibrary.LLVMPassRegistryRef LLVMGetGlobalPassRegistry() {
+		return new LLVM35svnLibrary.LLVMPassRegistryRef(LLVMGetGlobalPassRegistry$2());
+	}
+	@Ptr 
+	protected native static long LLVMGetGlobalPassRegistry$2();
+	public static LLVM35svnLibrary.LLVMPassManagerRef LLVMCreatePassManager() {
+		return new LLVM35svnLibrary.LLVMPassManagerRef(LLVMCreatePassManager$2());
+	}
+	@Ptr 
+	protected native static long LLVMCreatePassManager$2();
+	public static LLVM35svnLibrary.LLVMPassManagerRef LLVMCreateFunctionPassManagerForModule(LLVM35svnLibrary.LLVMModuleRef M) {
+		return new LLVM35svnLibrary.LLVMPassManagerRef(LLVMCreateFunctionPassManagerForModule(Pointer.getPeer(M)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateFunctionPassManagerForModule(@Ptr long M);
+	public static LLVM35svnLibrary.LLVMPassManagerRef LLVMCreateFunctionPassManager(LLVM35svnLibrary.LLVMModuleProviderRef MP) {
+		return new LLVM35svnLibrary.LLVMPassManagerRef(LLVMCreateFunctionPassManager(Pointer.getPeer(MP)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateFunctionPassManager(@Ptr long MP);
+	public static int LLVMRunPassManager(LLVM35svnLibrary.LLVMPassManagerRef PM, LLVM35svnLibrary.LLVMModuleRef M) {
+		return LLVMRunPassManager(Pointer.getPeer(PM), Pointer.getPeer(M));
+	}
+	protected native static int LLVMRunPassManager(@Ptr long PM, @Ptr long M);
+	public static int LLVMInitializeFunctionPassManager(LLVM35svnLibrary.LLVMPassManagerRef FPM) {
+		return LLVMInitializeFunctionPassManager(Pointer.getPeer(FPM));
+	}
+	protected native static int LLVMInitializeFunctionPassManager(@Ptr long FPM);
+	public static int LLVMRunFunctionPassManager(LLVM35svnLibrary.LLVMPassManagerRef FPM, LLVM35svnLibrary.LLVMValueRef F) {
+		return LLVMRunFunctionPassManager(Pointer.getPeer(FPM), Pointer.getPeer(F));
+	}
+	protected native static int LLVMRunFunctionPassManager(@Ptr long FPM, @Ptr long F);
+	public static int LLVMFinalizeFunctionPassManager(LLVM35svnLibrary.LLVMPassManagerRef FPM) {
+		return LLVMFinalizeFunctionPassManager(Pointer.getPeer(FPM));
+	}
+	protected native static int LLVMFinalizeFunctionPassManager(@Ptr long FPM);
+	public static void LLVMDisposePassManager(LLVM35svnLibrary.LLVMPassManagerRef PM) {
+		LLVMDisposePassManager(Pointer.getPeer(PM));
+	}
+	protected native static void LLVMDisposePassManager(@Ptr long PM);
+	public static native int LLVMStartMultithreaded();
+	public static native void LLVMStopMultithreaded();
+	public static native int LLVMIsMultithreaded();
+	public static int LLVMVerifyModule(LLVM35svnLibrary.LLVMModuleRef M, IntValuedEnum<LLVM35svnLibrary.LLVMVerifierFailureAction > Action, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMVerifyModule(Pointer.getPeer(M), (int)Action.value(), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMVerifyModule(@Ptr long M, int Action, @Ptr long OutMessage);
+	public static int LLVMVerifyFunction(LLVM35svnLibrary.LLVMValueRef Fn, IntValuedEnum<LLVM35svnLibrary.LLVMVerifierFailureAction > Action) {
+		return LLVMVerifyFunction(Pointer.getPeer(Fn), (int)Action.value());
+	}
+	protected native static int LLVMVerifyFunction(@Ptr long Fn, int Action);
+	public static void LLVMViewFunctionCFG(LLVM35svnLibrary.LLVMValueRef Fn) {
+		LLVMViewFunctionCFG(Pointer.getPeer(Fn));
+	}
+	protected native static void LLVMViewFunctionCFG(@Ptr long Fn);
+	public static void LLVMViewFunctionCFGOnly(LLVM35svnLibrary.LLVMValueRef Fn) {
+		LLVMViewFunctionCFGOnly(Pointer.getPeer(Fn));
+	}
+	protected native static void LLVMViewFunctionCFGOnly(@Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMTargetDataRef LLVMCreateTargetData(Pointer<Byte > StringRep) {
+		return new LLVM35svnLibrary.LLVMTargetDataRef(LLVMCreateTargetData(Pointer.getPeer(StringRep)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateTargetData(@Ptr long StringRep);
+	public static void LLVMAddTargetData(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMPassManagerRef PM) {
+		LLVMAddTargetData(Pointer.getPeer(TD), Pointer.getPeer(PM));
+	}
+	protected native static void LLVMAddTargetData(@Ptr long TD, @Ptr long PM);
+	public static void LLVMAddTargetLibraryInfo(LLVM35svnLibrary.LLVMTargetLibraryInfoRef TLI, LLVM35svnLibrary.LLVMPassManagerRef PM) {
+		LLVMAddTargetLibraryInfo(Pointer.getPeer(TLI), Pointer.getPeer(PM));
+	}
+	protected native static void LLVMAddTargetLibraryInfo(@Ptr long TLI, @Ptr long PM);
+	public static Pointer<Byte > LLVMCopyStringRepOfTargetData(LLVM35svnLibrary.LLVMTargetDataRef TD) {
+		return Pointer.pointerToAddress(LLVMCopyStringRepOfTargetData(Pointer.getPeer(TD)), Byte.class);
+	}
+	@Ptr 
+	protected native static long LLVMCopyStringRepOfTargetData(@Ptr long TD);
+	public static IntValuedEnum<LLVM35svnLibrary.LLVMByteOrdering > LLVMByteOrder(LLVM35svnLibrary.LLVMTargetDataRef TD) {
+		return FlagSet.fromValue(LLVMByteOrder(Pointer.getPeer(TD)), LLVM35svnLibrary.LLVMByteOrdering.class);
+	}
+	protected native static int LLVMByteOrder(@Ptr long TD);
+	public static int LLVMPointerSize(LLVM35svnLibrary.LLVMTargetDataRef TD) {
+		return LLVMPointerSize(Pointer.getPeer(TD));
+	}
+	protected native static int LLVMPointerSize(@Ptr long TD);
+	public static int LLVMPointerSizeForAS(LLVM35svnLibrary.LLVMTargetDataRef TD, int AS) {
+		return LLVMPointerSizeForAS(Pointer.getPeer(TD), AS);
+	}
+	protected native static int LLVMPointerSizeForAS(@Ptr long TD, int AS);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrType(LLVM35svnLibrary.LLVMTargetDataRef TD) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrType(Pointer.getPeer(TD)));
+	}
+	@Ptr 
+	protected native static long LLVMIntPtrType(@Ptr long TD);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrTypeForAS(LLVM35svnLibrary.LLVMTargetDataRef TD, int AS) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrTypeForAS(Pointer.getPeer(TD), AS));
+	}
+	@Ptr 
+	protected native static long LLVMIntPtrTypeForAS(@Ptr long TD, int AS);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrTypeInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMTargetDataRef TD) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrTypeInContext(Pointer.getPeer(C), Pointer.getPeer(TD)));
+	}
+	@Ptr 
+	protected native static long LLVMIntPtrTypeInContext(@Ptr long C, @Ptr long TD);
+	public static LLVM35svnLibrary.LLVMTypeRef LLVMIntPtrTypeForASInContext(LLVM35svnLibrary.LLVMContextRef C, LLVM35svnLibrary.LLVMTargetDataRef TD, int AS) {
+		return new LLVM35svnLibrary.LLVMTypeRef(LLVMIntPtrTypeForASInContext(Pointer.getPeer(C), Pointer.getPeer(TD), AS));
+	}
+	@Ptr 
+	protected native static long LLVMIntPtrTypeForASInContext(@Ptr long C, @Ptr long TD, int AS);
+	public static long LLVMSizeOfTypeInBits(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return LLVMSizeOfTypeInBits(Pointer.getPeer(TD), Pointer.getPeer(Ty));
+	}
+	protected native static long LLVMSizeOfTypeInBits(@Ptr long TD, @Ptr long Ty);
+	public static long LLVMStoreSizeOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return LLVMStoreSizeOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
+	}
+	protected native static long LLVMStoreSizeOfType(@Ptr long TD, @Ptr long Ty);
+	public static long LLVMABISizeOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return LLVMABISizeOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
+	}
+	protected native static long LLVMABISizeOfType(@Ptr long TD, @Ptr long Ty);
+	public static int LLVMABIAlignmentOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return LLVMABIAlignmentOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
+	}
+	protected native static int LLVMABIAlignmentOfType(@Ptr long TD, @Ptr long Ty);
+	public static int LLVMCallFrameAlignmentOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return LLVMCallFrameAlignmentOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
+	}
+	protected native static int LLVMCallFrameAlignmentOfType(@Ptr long TD, @Ptr long Ty);
+	public static int LLVMPreferredAlignmentOfType(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef Ty) {
+		return LLVMPreferredAlignmentOfType(Pointer.getPeer(TD), Pointer.getPeer(Ty));
+	}
+	protected native static int LLVMPreferredAlignmentOfType(@Ptr long TD, @Ptr long Ty);
+	public static int LLVMPreferredAlignmentOfGlobal(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMValueRef GlobalVar) {
+		return LLVMPreferredAlignmentOfGlobal(Pointer.getPeer(TD), Pointer.getPeer(GlobalVar));
+	}
+	protected native static int LLVMPreferredAlignmentOfGlobal(@Ptr long TD, @Ptr long GlobalVar);
+	public static int LLVMElementAtOffset(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef StructTy, long Offset) {
+		return LLVMElementAtOffset(Pointer.getPeer(TD), Pointer.getPeer(StructTy), Offset);
+	}
+	protected native static int LLVMElementAtOffset(@Ptr long TD, @Ptr long StructTy, long Offset);
+	public static long LLVMOffsetOfElement(LLVM35svnLibrary.LLVMTargetDataRef TD, LLVM35svnLibrary.LLVMTypeRef StructTy, int Element) {
+		return LLVMOffsetOfElement(Pointer.getPeer(TD), Pointer.getPeer(StructTy), Element);
+	}
+	protected native static long LLVMOffsetOfElement(@Ptr long TD, @Ptr long StructTy, int Element);
+	public static void LLVMDisposeTargetData(LLVM35svnLibrary.LLVMTargetDataRef TD) {
+		LLVMDisposeTargetData(Pointer.getPeer(TD));
+	}
+	protected native static void LLVMDisposeTargetData(@Ptr long TD);
+	public static Pointer<? > llvm_create_optimizer() {
+		return Pointer.pointerToAddress(llvm_create_optimizer$2());
+	}
+	@Ptr 
+	protected native static long llvm_create_optimizer$2();
+	public static void llvm_destroy_optimizer(Pointer<? > lto) {
+		llvm_destroy_optimizer(Pointer.getPeer(lto));
+	}
+	protected native static void llvm_destroy_optimizer(@Ptr long lto);
+	public static IntValuedEnum<LLVM35svnLibrary.llvm_lto_status > llvm_read_object_file(Pointer<? > lto, Pointer<Byte > input_filename) {
+		return FlagSet.fromValue(llvm_read_object_file(Pointer.getPeer(lto), Pointer.getPeer(input_filename)), LLVM35svnLibrary.llvm_lto_status.class);
+	}
+	protected native static int llvm_read_object_file(@Ptr long lto, @Ptr long input_filename);
+	public static IntValuedEnum<LLVM35svnLibrary.llvm_lto_status > llvm_optimize_modules(Pointer<? > lto, Pointer<Byte > output_filename) {
+		return FlagSet.fromValue(llvm_optimize_modules(Pointer.getPeer(lto), Pointer.getPeer(output_filename)), LLVM35svnLibrary.llvm_lto_status.class);
+	}
+	protected native static int llvm_optimize_modules(@Ptr long lto, @Ptr long output_filename);
+	public static native void LLVMLinkInJIT();
+	public static native void LLVMLinkInMCJIT();
+	public static native void LLVMLinkInInterpreter();
+	public static LLVM35svnLibrary.LLVMGenericValueRef LLVMCreateGenericValueOfInt(LLVM35svnLibrary.LLVMTypeRef Ty, long N, int IsSigned) {
+		return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMCreateGenericValueOfInt(Pointer.getPeer(Ty), N, IsSigned));
+	}
+	@Ptr 
+	protected native static long LLVMCreateGenericValueOfInt(@Ptr long Ty, long N, int IsSigned);
+	public static LLVM35svnLibrary.LLVMGenericValueRef LLVMCreateGenericValueOfPointer(Pointer<? > P) {
+		return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMCreateGenericValueOfPointer(Pointer.getPeer(P)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateGenericValueOfPointer(@Ptr long P);
+	public static LLVM35svnLibrary.LLVMGenericValueRef LLVMCreateGenericValueOfFloat(LLVM35svnLibrary.LLVMTypeRef Ty, double N) {
+		return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMCreateGenericValueOfFloat(Pointer.getPeer(Ty), N));
+	}
+	@Ptr 
+	protected native static long LLVMCreateGenericValueOfFloat(@Ptr long Ty, double N);
+	public static int LLVMGenericValueIntWidth(LLVM35svnLibrary.LLVMGenericValueRef GenValRef) {
+		return LLVMGenericValueIntWidth(Pointer.getPeer(GenValRef));
+	}
+	protected native static int LLVMGenericValueIntWidth(@Ptr long GenValRef);
+	public static long LLVMGenericValueToInt(LLVM35svnLibrary.LLVMGenericValueRef GenVal, int IsSigned) {
+		return LLVMGenericValueToInt(Pointer.getPeer(GenVal), IsSigned);
+	}
+	protected native static long LLVMGenericValueToInt(@Ptr long GenVal, int IsSigned);
+	public static Pointer<? > LLVMGenericValueToPointer(LLVM35svnLibrary.LLVMGenericValueRef GenVal) {
+		return Pointer.pointerToAddress(LLVMGenericValueToPointer(Pointer.getPeer(GenVal)));
+	}
+	@Ptr 
+	protected native static long LLVMGenericValueToPointer(@Ptr long GenVal);
+	public static double LLVMGenericValueToFloat(LLVM35svnLibrary.LLVMTypeRef TyRef, LLVM35svnLibrary.LLVMGenericValueRef GenVal) {
+		return LLVMGenericValueToFloat(Pointer.getPeer(TyRef), Pointer.getPeer(GenVal));
+	}
+	protected native static double LLVMGenericValueToFloat(@Ptr long TyRef, @Ptr long GenVal);
+	public static void LLVMDisposeGenericValue(LLVM35svnLibrary.LLVMGenericValueRef GenVal) {
+		LLVMDisposeGenericValue(Pointer.getPeer(GenVal));
+	}
+	protected native static void LLVMDisposeGenericValue(@Ptr long GenVal);
+	public static int LLVMCreateExecutionEngineForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutEE, LLVM35svnLibrary.LLVMModuleRef M, Pointer<Pointer<Byte > > OutError) {
+		return LLVMCreateExecutionEngineForModule(Pointer.getPeer(OutEE), Pointer.getPeer(M), Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMCreateExecutionEngineForModule(@Ptr long OutEE, @Ptr long M, @Ptr long OutError);
+	public static int LLVMCreateInterpreterForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutInterp, LLVM35svnLibrary.LLVMModuleRef M, Pointer<Pointer<Byte > > OutError) {
+		return LLVMCreateInterpreterForModule(Pointer.getPeer(OutInterp), Pointer.getPeer(M), Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMCreateInterpreterForModule(@Ptr long OutInterp, @Ptr long M, @Ptr long OutError);
+	public static int LLVMCreateJITCompilerForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutJIT, LLVM35svnLibrary.LLVMModuleRef M, int OptLevel, Pointer<Pointer<Byte > > OutError) {
+		return LLVMCreateJITCompilerForModule(Pointer.getPeer(OutJIT), Pointer.getPeer(M), OptLevel, Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMCreateJITCompilerForModule(@Ptr long OutJIT, @Ptr long M, int OptLevel, @Ptr long OutError);
+	public static void LLVMInitializeMCJITCompilerOptions(Pointer<LLVMMCJITCompilerOptions > Options, @Ptr long SizeOfOptions) {
+		LLVMInitializeMCJITCompilerOptions(Pointer.getPeer(Options), SizeOfOptions);
+	}
+	protected native static void LLVMInitializeMCJITCompilerOptions(@Ptr long Options, @Ptr long SizeOfOptions);
+	public static int LLVMCreateMCJITCompilerForModule(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutJIT, LLVM35svnLibrary.LLVMModuleRef M, Pointer<LLVMMCJITCompilerOptions > Options, @Ptr long SizeOfOptions, Pointer<Pointer<Byte > > OutError) {
+		return LLVMCreateMCJITCompilerForModule(Pointer.getPeer(OutJIT), Pointer.getPeer(M), Pointer.getPeer(Options), SizeOfOptions, Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMCreateMCJITCompilerForModule(@Ptr long OutJIT, @Ptr long M, @Ptr long Options, @Ptr long SizeOfOptions, @Ptr long OutError);
+	public static int LLVMCreateExecutionEngine(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutEE, LLVM35svnLibrary.LLVMModuleProviderRef MP, Pointer<Pointer<Byte > > OutError) {
+		return LLVMCreateExecutionEngine(Pointer.getPeer(OutEE), Pointer.getPeer(MP), Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMCreateExecutionEngine(@Ptr long OutEE, @Ptr long MP, @Ptr long OutError);
+	public static int LLVMCreateInterpreter(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutInterp, LLVM35svnLibrary.LLVMModuleProviderRef MP, Pointer<Pointer<Byte > > OutError) {
+		return LLVMCreateInterpreter(Pointer.getPeer(OutInterp), Pointer.getPeer(MP), Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMCreateInterpreter(@Ptr long OutInterp, @Ptr long MP, @Ptr long OutError);
+	public static int LLVMCreateJITCompiler(Pointer<LLVM35svnLibrary.LLVMExecutionEngineRef > OutJIT, LLVM35svnLibrary.LLVMModuleProviderRef MP, int OptLevel, Pointer<Pointer<Byte > > OutError) {
+		return LLVMCreateJITCompiler(Pointer.getPeer(OutJIT), Pointer.getPeer(MP), OptLevel, Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMCreateJITCompiler(@Ptr long OutJIT, @Ptr long MP, int OptLevel, @Ptr long OutError);
+	public static void LLVMDisposeExecutionEngine(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
+		LLVMDisposeExecutionEngine(Pointer.getPeer(EE));
+	}
+	protected native static void LLVMDisposeExecutionEngine(@Ptr long EE);
+	public static void LLVMRunStaticConstructors(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
+		LLVMRunStaticConstructors(Pointer.getPeer(EE));
+	}
+	protected native static void LLVMRunStaticConstructors(@Ptr long EE);
+	public static void LLVMRunStaticDestructors(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
+		LLVMRunStaticDestructors(Pointer.getPeer(EE));
+	}
+	protected native static void LLVMRunStaticDestructors(@Ptr long EE);
+	public static int LLVMRunFunctionAsMain(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef F, int ArgC, Pointer<Pointer<Byte > > ArgV, Pointer<Pointer<Byte > > EnvP) {
+		return LLVMRunFunctionAsMain(Pointer.getPeer(EE), Pointer.getPeer(F), ArgC, Pointer.getPeer(ArgV), Pointer.getPeer(EnvP));
+	}
+	protected native static int LLVMRunFunctionAsMain(@Ptr long EE, @Ptr long F, int ArgC, @Ptr long ArgV, @Ptr long EnvP);
+	public static LLVM35svnLibrary.LLVMGenericValueRef LLVMRunFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef F, int NumArgs, Pointer<LLVM35svnLibrary.LLVMGenericValueRef > Args) {
+		return new LLVM35svnLibrary.LLVMGenericValueRef(LLVMRunFunction(Pointer.getPeer(EE), Pointer.getPeer(F), NumArgs, Pointer.getPeer(Args)));
+	}
+	@Ptr 
+	protected native static long LLVMRunFunction(@Ptr long EE, @Ptr long F, int NumArgs, @Ptr long Args);
+	public static void LLVMFreeMachineCodeForFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef F) {
+		LLVMFreeMachineCodeForFunction(Pointer.getPeer(EE), Pointer.getPeer(F));
+	}
+	protected native static void LLVMFreeMachineCodeForFunction(@Ptr long EE, @Ptr long F);
+	public static void LLVMAddModule(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleRef M) {
+		LLVMAddModule(Pointer.getPeer(EE), Pointer.getPeer(M));
+	}
+	protected native static void LLVMAddModule(@Ptr long EE, @Ptr long M);
+	public static void LLVMAddModuleProvider(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleProviderRef MP) {
+		LLVMAddModuleProvider(Pointer.getPeer(EE), Pointer.getPeer(MP));
+	}
+	protected native static void LLVMAddModuleProvider(@Ptr long EE, @Ptr long MP);
+	public static int LLVMRemoveModule(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleRef M, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutMod, Pointer<Pointer<Byte > > OutError) {
+		return LLVMRemoveModule(Pointer.getPeer(EE), Pointer.getPeer(M), Pointer.getPeer(OutMod), Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMRemoveModule(@Ptr long EE, @Ptr long M, @Ptr long OutMod, @Ptr long OutError);
+	public static int LLVMRemoveModuleProvider(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMModuleProviderRef MP, Pointer<LLVM35svnLibrary.LLVMModuleRef > OutMod, Pointer<Pointer<Byte > > OutError) {
+		return LLVMRemoveModuleProvider(Pointer.getPeer(EE), Pointer.getPeer(MP), Pointer.getPeer(OutMod), Pointer.getPeer(OutError));
+	}
+	protected native static int LLVMRemoveModuleProvider(@Ptr long EE, @Ptr long MP, @Ptr long OutMod, @Ptr long OutError);
+	public static int LLVMFindFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, Pointer<Byte > Name, Pointer<LLVM35svnLibrary.LLVMValueRef > OutFn) {
+		return LLVMFindFunction(Pointer.getPeer(EE), Pointer.getPeer(Name), Pointer.getPeer(OutFn));
+	}
+	protected native static int LLVMFindFunction(@Ptr long EE, @Ptr long Name, @Ptr long OutFn);
+	public static Pointer<? > LLVMRecompileAndRelinkFunction(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef Fn) {
+		return Pointer.pointerToAddress(LLVMRecompileAndRelinkFunction(Pointer.getPeer(EE), Pointer.getPeer(Fn)));
+	}
+	@Ptr 
+	protected native static long LLVMRecompileAndRelinkFunction(@Ptr long EE, @Ptr long Fn);
+	public static LLVM35svnLibrary.LLVMTargetDataRef LLVMGetExecutionEngineTargetData(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
+		return new LLVM35svnLibrary.LLVMTargetDataRef(LLVMGetExecutionEngineTargetData(Pointer.getPeer(EE)));
+	}
+	@Ptr 
+	protected native static long LLVMGetExecutionEngineTargetData(@Ptr long EE);
+	public static LLVM35svnLibrary.LLVMTargetMachineRef LLVMGetExecutionEngineTargetMachine(LLVM35svnLibrary.LLVMExecutionEngineRef EE) {
+		return new LLVM35svnLibrary.LLVMTargetMachineRef(LLVMGetExecutionEngineTargetMachine(Pointer.getPeer(EE)));
+	}
+	@Ptr 
+	protected native static long LLVMGetExecutionEngineTargetMachine(@Ptr long EE);
+	public static void LLVMAddGlobalMapping(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef Global, Pointer<? > Addr) {
+		LLVMAddGlobalMapping(Pointer.getPeer(EE), Pointer.getPeer(Global), Pointer.getPeer(Addr));
+	}
+	protected native static void LLVMAddGlobalMapping(@Ptr long EE, @Ptr long Global, @Ptr long Addr);
+	public static Pointer<? > LLVMGetPointerToGlobal(LLVM35svnLibrary.LLVMExecutionEngineRef EE, LLVM35svnLibrary.LLVMValueRef Global) {
+		return Pointer.pointerToAddress(LLVMGetPointerToGlobal(Pointer.getPeer(EE), Pointer.getPeer(Global)));
+	}
+	@Ptr 
+	protected native static long LLVMGetPointerToGlobal(@Ptr long EE, @Ptr long Global);
+	public static LLVM35svnLibrary.LLVMMCJITMemoryManagerRef LLVMCreateSimpleMCJITMemoryManager(Pointer<? > Opaque, Pointer<LLVM35svnLibrary.LLVMMemoryManagerAllocateCodeSectionCallback > AllocateCodeSection, Pointer<LLVM35svnLibrary.LLVMMemoryManagerAllocateDataSectionCallback > AllocateDataSection, Pointer<LLVM35svnLibrary.LLVMMemoryManagerFinalizeMemoryCallback > FinalizeMemory, Pointer<LLVM35svnLibrary.LLVMMemoryManagerDestroyCallback > Destroy) {
+		return new LLVM35svnLibrary.LLVMMCJITMemoryManagerRef(LLVMCreateSimpleMCJITMemoryManager(Pointer.getPeer(Opaque), Pointer.getPeer(AllocateCodeSection), Pointer.getPeer(AllocateDataSection), Pointer.getPeer(FinalizeMemory), Pointer.getPeer(Destroy)));
+	}
+	@Ptr 
+	protected native static long LLVMCreateSimpleMCJITMemoryManager(@Ptr long Opaque, @Ptr long AllocateCodeSection, @Ptr long AllocateDataSection, @Ptr long FinalizeMemory, @Ptr long Destroy);
+	public static void LLVMDisposeMCJITMemoryManager(LLVM35svnLibrary.LLVMMCJITMemoryManagerRef MM) {
+		LLVMDisposeMCJITMemoryManager(Pointer.getPeer(MM));
+	}
+	protected native static void LLVMDisposeMCJITMemoryManager(@Ptr long MM);
+	public static int LLVMLinkModules(LLVM35svnLibrary.LLVMModuleRef Dest, LLVM35svnLibrary.LLVMModuleRef Src, IntValuedEnum<LLVM35svnLibrary.LLVMLinkerMode > Mode, Pointer<Pointer<Byte > > OutMessage) {
+		return LLVMLinkModules(Pointer.getPeer(Dest), Pointer.getPeer(Src), (int)Mode.value(), Pointer.getPeer(OutMessage));
+	}
+	protected native static int LLVMLinkModules(@Ptr long Dest, @Ptr long Src, int Mode, @Ptr long OutMessage);
+	/** Pointer to unknown (opaque) type */
+	public static class lto_code_gen_t extends TypedPointer {
+		public lto_code_gen_t(long address) {
+			super(address);
+		}
+		public lto_code_gen_t(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMContextRef extends TypedPointer {
+		public LLVMContextRef(long address) {
+			super(address);
+		}
+		public LLVMContextRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMObjectFileRef extends TypedPointer {
+		public LLVMObjectFileRef(long address) {
+			super(address);
+		}
+		public LLVMObjectFileRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMSymbolIteratorRef extends TypedPointer {
+		public LLVMSymbolIteratorRef(long address) {
+			super(address);
+		}
+		public LLVMSymbolIteratorRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMTargetRef extends TypedPointer {
+		public LLVMTargetRef(long address) {
+			super(address);
+		}
+		public LLVMTargetRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMValueRef extends TypedPointer {
+		public LLVMValueRef(long address) {
+			super(address);
+		}
+		public LLVMValueRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMRelocationIteratorRef extends TypedPointer {
+		public LLVMRelocationIteratorRef(long address) {
+			super(address);
+		}
+		public LLVMRelocationIteratorRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMPassManagerRef extends TypedPointer {
+		public LLVMPassManagerRef(long address) {
+			super(address);
+		}
+		public LLVMPassManagerRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMTypeRef extends TypedPointer {
+		public LLVMTypeRef(long address) {
+			super(address);
+		}
+		public LLVMTypeRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMTargetMachineRef extends TypedPointer {
+		public LLVMTargetMachineRef(long address) {
+			super(address);
+		}
+		public LLVMTargetMachineRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMModuleProviderRef extends TypedPointer {
+		public LLVMModuleProviderRef(long address) {
+			super(address);
+		}
+		public LLVMModuleProviderRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMModuleRef extends TypedPointer {
+		public LLVMModuleRef(long address) {
+			super(address);
+		}
+		public LLVMModuleRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMGenericValueRef extends TypedPointer {
+		public LLVMGenericValueRef(long address) {
+			super(address);
+		}
+		public LLVMGenericValueRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMUseRef extends TypedPointer {
+		public LLVMUseRef(long address) {
+			super(address);
+		}
+		public LLVMUseRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class lto_module_t extends TypedPointer {
+		public lto_module_t(long address) {
+			super(address);
+		}
+		public lto_module_t(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMExecutionEngineRef extends TypedPointer {
+		public LLVMExecutionEngineRef(long address) {
+			super(address);
+		}
+		public LLVMExecutionEngineRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMBasicBlockRef extends TypedPointer {
+		public LLVMBasicBlockRef(long address) {
+			super(address);
+		}
+		public LLVMBasicBlockRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMTargetLibraryInfoRef extends TypedPointer {
+		public LLVMTargetLibraryInfoRef(long address) {
+			super(address);
+		}
+		public LLVMTargetLibraryInfoRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMMemoryBufferRef extends TypedPointer {
+		public LLVMMemoryBufferRef(long address) {
+			super(address);
+		}
+		public LLVMMemoryBufferRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMSectionIteratorRef extends TypedPointer {
+		public LLVMSectionIteratorRef(long address) {
+			super(address);
+		}
+		public LLVMSectionIteratorRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMPassRegistryRef extends TypedPointer {
+		public LLVMPassRegistryRef(long address) {
+			super(address);
+		}
+		public LLVMPassRegistryRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMMCJITMemoryManagerRef extends TypedPointer {
+		public LLVMMCJITMemoryManagerRef(long address) {
+			super(address);
+		}
+		public LLVMMCJITMemoryManagerRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMTargetDataRef extends TypedPointer {
+		public LLVMTargetDataRef(long address) {
+			super(address);
+		}
+		public LLVMTargetDataRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Pointer to unknown (opaque) type */
+	public static class LLVMBuilderRef extends TypedPointer {
+		public LLVMBuilderRef(long address) {
+			super(address);
+		}
+		public LLVMBuilderRef(Pointer address) {
+			super(address);
+		}
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueRelocationIterator {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueTargetData {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueTargetData {
 		
-  };
-  /** Undefined type */
-  public static interface LTOModule {
+	};
+	/** Undefined type */
+	public static interface LTOModule {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaquePassManager {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaquePassManager {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueTargetLibraryInfotData {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueTargetLibraryInfotData {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueMemoryBuffer {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueMemoryBuffer {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueBasicBlock {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueBasicBlock {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueGenericValue {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueGenericValue {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueMCJITMemoryManager {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueMCJITMemoryManager {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueValue {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueValue {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMTarget {
+	};
+	/** Undefined type */
+	public static interface LLVMTarget {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueTargetMachine {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueTargetMachine {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueUse {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueUse {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueModule {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueModule {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueType {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueType {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueSymbolIterator {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueSymbolIterator {
 		
-  };
-  /** Undefined type */
-  public static interface LTOCodeGenerator {
+	};
+	/** Undefined type */
+	public static interface LTOCodeGenerator {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueModuleProvider {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueModuleProvider {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueBuilder {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueBuilder {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueContext {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueContext {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueObjectFile {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueObjectFile {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaquePassRegistry {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaquePassRegistry {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueExecutionEngine {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueExecutionEngine {
 		
-  };
-  /** Undefined type */
-  public static interface LLVMOpaqueSectionIterator {
+	};
+	/** Undefined type */
+	public static interface LLVMOpaqueSectionIterator {
 		
-  };
+	};
 }
